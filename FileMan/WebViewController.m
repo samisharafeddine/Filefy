@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "WebViewController.h"
 #import "URLNavView.h"
-#import "DownloadManager.h"
+#import "TWRDownloadManager.h"
 
 @interface WebViewController ()
 
@@ -34,7 +34,7 @@
     
     NSString *fileName = [url lastPathComponent];
     
-    [[DownloadManager sharedManager] downloadFileAtURL:url withName:fileName];
+    [[TWRDownloadManager sharedManager] downloadFileForURL:[url absoluteString] withName:fileName progressBlock:nil remainingTime:nil completionBlock:nil enableBackgroundMode:YES];
     
     // Initiate reference to AppDelegate.
     //appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -221,7 +221,6 @@
         UIAlertAction *downloadAction = [UIAlertAction actionWithTitle:@"Download" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             // [todo]
-            [[DownloadManager sharedManager] downloadFileAtURL:URL withName:URL.lastPathComponent];
             
         }];
         

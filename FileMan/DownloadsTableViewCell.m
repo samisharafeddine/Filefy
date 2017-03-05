@@ -2,7 +2,7 @@
 //  DownloadsTableViewCell.m
 //  FileMan
 //
-//  Created by Sami Sharaf on 3/1/17.
+//  Created by Sami Sharaf on 3/5/17.
 //  Copyright © 2017 Sami Sharaf. All rights reserved.
 //
 
@@ -19,6 +19,38 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (TWRDownloadProgressBlock)progressBlock {
+    __weak typeof(self)weakSelf = self;
+    return ^void(CGFloat progress){
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            // do something with the progress on the cell!
+            
+            CGFloat prog = progress * 100;
+            
+            strongSelf.progress.progress = progress;
+            strongSelf.percentage.text = [NSString stringWithFormat:@"%i%%", (int)prog];
+            
+        });
+    };
+}
+
+- (TWRDownloadCompletionBlock)completionBlock {
+    __weak typeof(self)weakSelf = self;
+    return ^void(BOOL completed){
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            // do something
+            
+            strongSelf.info.text = @"Completed";
+            strongSelf.progress.hidden = YES;
+            strongSelf.percentage.hidden = YES;
+            strongSelf.progressHeight.constant = 0;
+            
+        });
+    };
 }
 
 @end

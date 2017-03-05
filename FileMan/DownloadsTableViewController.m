@@ -2,14 +2,14 @@
 //  DownloadsTableViewController.m
 //  FileMan
 //
-//  Created by Sami Sharaf on 3/1/17.
+//  Created by Sami Sharaf on 3/5/17.
 //  Copyright © 2017 Sami Sharaf. All rights reserved.
 //
 
 #import "DownloadsTableViewController.h"
 #import "DownloadsTableViewCell.h"
-#import "DownloadManager.h"
-#import "DownloadItem.h"
+#import "TWRDownloadManager.h"
+#import "TWRDownloadObject.h"
 
 @interface DownloadsTableViewController ()
 
@@ -25,17 +25,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //[self performSelector:@selector(reloadData) withObject:nil afterDelay:5];
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(reloadData) userInfo:nil repeats:YES];
-    
-}
-
--(void)reloadData {
-    
-    [self.tableView reloadData];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -57,12 +46,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[DownloadManager sharedManager] currentDownloads].count;
+    return [[[TWRDownloadManager sharedManager] currentDownloads] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Configure the cell...
+    
+    TWRDownloadObject *download = [[[TWRDownloadManager sharedManager] downloads] objectForKey:[[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row]];
     
     DownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadsCell" forIndexPath:indexPath];
     
@@ -72,10 +63,9 @@
         
     }
     
-    DownloadItem *downloadItem = [[[DownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row];
-    
-    cell.name.text = downloadItem.fileTitle;
-    cell.progress.progress = downloadItem.downloadProgress;
+    cell.name.text = download.fileName;
+    download.progressBlock = cell.progressBlock;
+    download.completionBlock = cell.completionBlock;
     
     return cell;
 }

@@ -203,7 +203,7 @@
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-        } else if (indexPath.row == 1) {
+        } else if (indexPath.row == 2) {
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             

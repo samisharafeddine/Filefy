@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MusicPlayerViewController.h"
+#import "TWRDownloadManager.h"
 
 @interface AppDelegate ()
 
@@ -129,10 +130,8 @@
     
 }
 
--(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    
-    self.backgroundTransferCompletionHandler = completionHandler;
-    
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
+    [TWRDownloadManager sharedManager].backgroundTransferCompletionHandler = completionHandler;
 }
 
 @end

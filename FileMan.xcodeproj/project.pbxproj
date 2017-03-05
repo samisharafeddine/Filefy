@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 210F8F3F1E2DB6150096E5C3 /* URLTextField.m */; };
 		2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */; };
-		211527211E68C2C4005F5C92 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2115271D1E68C2C4005F5C92 /* DownloadManager.m */; };
-		211527261E68C306005F5C92 /* DownloadsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 211527251E68C306005F5C92 /* DownloadsTableViewController.m */; };
-		2115272A1E68C31F005F5C92 /* DownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 211527291E68C31F005F5C92 /* DownloadItem.m */; };
-		2115272D1E68C371005F5C92 /* DownloadsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2115272C1E68C371005F5C92 /* DownloadsTableViewCell.m */; };
 		21183E561E46A60700029939 /* XFileParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 21183E551E46A60700029939 /* XFileParserTest.m */; };
 		21183E5A1E46ACA200029939 /* FileManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21183E591E46ACA200029939 /* FileManagerTableViewController.m */; };
 		211BE78A1E6B1005009A7F4C /* MaxDownloadsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7891E6B1005009A7F4C /* MaxDownloadsTableViewController.m */; };
+		211BE7BE1E6C7C6F009A7F4C /* TWRDownloadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7BD1E6C7C6F009A7F4C /* TWRDownloadObject.m */; };
+		211BE7C21E6C7C79009A7F4C /* TWRDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7C01E6C7C79009A7F4C /* TWRDownloadManager.m */; };
+		211BE7C61E6C7CA7009A7F4C /* DownloadsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7C51E6C7CA7009A7F4C /* DownloadsTableViewController.m */; };
+		211BE7C91E6C7CB7009A7F4C /* DownloadsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7C81E6C7CB7009A7F4C /* DownloadsTableViewCell.m */; };
 		211E7E181E2D3B8F00F571B2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211E7E171E2D3B8F00F571B2 /* MessageUI.framework */; };
 		212104CB1E2195800090BDF3 /* SearchEngineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */; };
 		214DCF8A1E2EA4FB00329A5A /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 214DCF891E2EA4FB00329A5A /* BookmarkTableViewCell.m */; };
@@ -53,20 +53,20 @@
 		210F8F3F1E2DB6150096E5C3 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLTextField.m; sourceTree = "<group>"; };
 		211527191E686AFC005F5C92 /* DefaultTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTabTableViewController.h; sourceTree = "<group>"; };
 		2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTabTableViewController.m; sourceTree = "<group>"; };
-		2115271C1E68C2C4005F5C92 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
-		2115271D1E68C2C4005F5C92 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
-		211527251E68C306005F5C92 /* DownloadsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsTableViewController.m; sourceTree = "<group>"; };
-		211527271E68C30D005F5C92 /* DownloadsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadsTableViewController.h; sourceTree = "<group>"; };
-		211527281E68C31F005F5C92 /* DownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadItem.h; sourceTree = "<group>"; };
-		211527291E68C31F005F5C92 /* DownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadItem.m; sourceTree = "<group>"; };
-		2115272B1E68C371005F5C92 /* DownloadsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsTableViewCell.h; sourceTree = "<group>"; };
-		2115272C1E68C371005F5C92 /* DownloadsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsTableViewCell.m; sourceTree = "<group>"; };
 		21183E541E46A60700029939 /* XFileParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFileParserTest.h; sourceTree = "<group>"; };
 		21183E551E46A60700029939 /* XFileParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFileParserTest.m; sourceTree = "<group>"; };
 		21183E581E46ACA200029939 /* FileManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerTableViewController.h; sourceTree = "<group>"; };
 		21183E591E46ACA200029939 /* FileManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManagerTableViewController.m; sourceTree = "<group>"; };
 		211BE7881E6B1005009A7F4C /* MaxDownloadsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaxDownloadsTableViewController.h; sourceTree = "<group>"; };
 		211BE7891E6B1005009A7F4C /* MaxDownloadsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaxDownloadsTableViewController.m; sourceTree = "<group>"; };
+		211BE7BD1E6C7C6F009A7F4C /* TWRDownloadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRDownloadObject.m; sourceTree = "<group>"; };
+		211BE7BF1E6C7C79009A7F4C /* TWRDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRDownloadManager.h; sourceTree = "<group>"; };
+		211BE7C01E6C7C79009A7F4C /* TWRDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRDownloadManager.m; sourceTree = "<group>"; };
+		211BE7C11E6C7C79009A7F4C /* TWRDownloadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRDownloadObject.h; sourceTree = "<group>"; };
+		211BE7C41E6C7CA7009A7F4C /* DownloadsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsTableViewController.h; sourceTree = "<group>"; };
+		211BE7C51E6C7CA7009A7F4C /* DownloadsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsTableViewController.m; sourceTree = "<group>"; };
+		211BE7C71E6C7CB7009A7F4C /* DownloadsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsTableViewCell.h; sourceTree = "<group>"; };
+		211BE7C81E6C7CB7009A7F4C /* DownloadsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsTableViewCell.m; sourceTree = "<group>"; };
 		211E7E171E2D3B8F00F571B2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		212104C91E2195800090BDF3 /* SearchEngineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchEngineTableViewController.h; sourceTree = "<group>"; };
 		212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchEngineTableViewController.m; sourceTree = "<group>"; };
@@ -163,6 +163,17 @@
 			name = XFile;
 			sourceTree = "<group>";
 		};
+		211BE7C31E6C7C8E009A7F4C /* Download Manager */ = {
+			isa = PBXGroup;
+			children = (
+				211BE7BF1E6C7C79009A7F4C /* TWRDownloadManager.h */,
+				211BE7C01E6C7C79009A7F4C /* TWRDownloadManager.m */,
+				211BE7C11E6C7C79009A7F4C /* TWRDownloadObject.h */,
+				211BE7BD1E6C7C6F009A7F4C /* TWRDownloadObject.m */,
+			);
+			name = "Download Manager";
+			sourceTree = "<group>";
+		};
 		211D8A231E16EED400DB3072 /* Web Browser */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,14 +212,11 @@
 		213C31E71E65C16D009A6F66 /* Downloads */ = {
 			isa = PBXGroup;
 			children = (
-				211527281E68C31F005F5C92 /* DownloadItem.h */,
-				211527291E68C31F005F5C92 /* DownloadItem.m */,
-				2115271C1E68C2C4005F5C92 /* DownloadManager.h */,
-				2115271D1E68C2C4005F5C92 /* DownloadManager.m */,
-				211527271E68C30D005F5C92 /* DownloadsTableViewController.h */,
-				211527251E68C306005F5C92 /* DownloadsTableViewController.m */,
-				2115272B1E68C371005F5C92 /* DownloadsTableViewCell.h */,
-				2115272C1E68C371005F5C92 /* DownloadsTableViewCell.m */,
+				211BE7C31E6C7C8E009A7F4C /* Download Manager */,
+				211BE7C41E6C7CA7009A7F4C /* DownloadsTableViewController.h */,
+				211BE7C51E6C7CA7009A7F4C /* DownloadsTableViewController.m */,
+				211BE7C71E6C7CB7009A7F4C /* DownloadsTableViewCell.h */,
+				211BE7C81E6C7CB7009A7F4C /* DownloadsTableViewCell.m */,
 			);
 			name = Downloads;
 			sourceTree = "<group>";
@@ -498,30 +506,30 @@
 				21A04F991E1C244500254D8F /* SettingsTableViewController.m in Sources */,
 				21183E5A1E46ACA200029939 /* FileManagerTableViewController.m in Sources */,
 				219B81501E4B83F500620348 /* TextViewerViewController.m in Sources */,
+				211BE7C61E6C7CA7009A7F4C /* DownloadsTableViewController.m in Sources */,
 				21CA73661E648B930028BCF6 /* TabBarViewController.m in Sources */,
 				21EFED281E14122B00D7755E /* AppDelegate.m in Sources */,
-				211527211E68C2C4005F5C92 /* DownloadManager.m in Sources */,
 				215129061E57071D0059428B /* XMusicFile.m in Sources */,
 				21741FC21E44A4A10030C063 /* XFileParser.m in Sources */,
 				21A0ECC71E46B54800E156D8 /* FileManagerTableViewCell.m in Sources */,
+				211BE7BE1E6C7C6F009A7F4C /* TWRDownloadObject.m in Sources */,
 				2180963F1E2EE8740059870E /* DataRef.m in Sources */,
 				219B815F1E4BDB1F00620348 /* EditPropsTableViewController.m in Sources */,
 				21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */,
 				2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */,
 				21183E561E46A60700029939 /* XFileParserTest.m in Sources */,
 				21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */,
-				2115272A1E68C31F005F5C92 /* DownloadItem.m in Sources */,
 				217010D51E43D7DB00A316F7 /* XFile.m in Sources */,
 				21EFED451E157FE000D7755E /* URLNavView.m in Sources */,
 				2180963A1E2ECF9C0059870E /* AddBTableViewController.m in Sources */,
 				211BE78A1E6B1005009A7F4C /* MaxDownloadsTableViewController.m in Sources */,
-				2115272D1E68C371005F5C92 /* DownloadsTableViewCell.m in Sources */,
 				212104CB1E2195800090BDF3 /* SearchEngineTableViewController.m in Sources */,
 				21EFED251E14122B00D7755E /* main.m in Sources */,
+				211BE7C91E6C7CB7009A7F4C /* DownloadsTableViewCell.m in Sources */,
 				219B814C1E4B649300620348 /* PDFViewerViewController.m in Sources */,
+				211BE7C21E6C7C79009A7F4C /* TWRDownloadManager.m in Sources */,
 				21A04F931E1ABDDA00254D8F /* HistoryTableViewController.m in Sources */,
 				210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */,
-				211527261E68C306005F5C92 /* DownloadsTableViewController.m in Sources */,
 				2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */,
 				214DCF901E2EAB8D00329A5A /* BookmarksTableViewController.m in Sources */,
 			);
