@@ -46,6 +46,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsURLs"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasCompletedTutorial"];
         [[NSUserDefaults standardUserDefaults] synchronize];

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *maxDownloads;
 @property (weak, nonatomic) IBOutlet UISwitch *backgroundDownloads;
 @property (weak, nonatomic) IBOutlet UILabel *mimes;
+@property (weak, nonatomic) IBOutlet UISwitch *backup;
 
 @end
 
@@ -27,6 +28,8 @@
     _homePageField.delegate = self;
     
     [self.backgroundDownloads addTarget:self action:@selector(backgroundSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.backup addTarget:self action:@selector(backupSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     
     /*
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived)];
@@ -86,6 +89,16 @@
     } else {
         
         [self.backgroundDownloads setOn:NO animated:NO];
+        
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"backup"]) {
+        
+        [self.backup setOn:YES animated:NO];
+        
+    } else {
+        
+        [self.backup setOn:NO animated:NO];
         
     }
     
@@ -295,6 +308,75 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backgroundDownloads"];
         
     }
+    
+}
+
+-(void)backupSwitchChanged:(UISwitch *)switchState {
+    
+    NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *docPath = array[0];
+    NSURL *docURL = [NSURL fileURLWithPath:docPath];
+    
+    if ([switchState isOn]) {
+        
+        if ([self addNoSkipBackupAttributeToItemAtURL:docURL]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
+            
+        } else {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backup"];
+            
+            [self.backup setOn:NO animated:YES];
+            
+        }
+        
+    } else {
+        
+        if ([self addSkipBackupAttributeToItemAtURL:docURL]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backup"];
+            
+        } else {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
+            
+            [self.backup setOn:YES animated:YES];
+            
+        }
+        
+    }
+    
+}
+
+-(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL {
+    
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: YES]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    
+    return success;
+    
+}
+
+- (BOOL)addNoSkipBackupAttributeToItemAtURL:(NSURL *)URL {
+    
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: NO]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error including %@ in backup %@", [URL lastPathComponent], error);
+    }
+    
+    return success;
     
 }
 

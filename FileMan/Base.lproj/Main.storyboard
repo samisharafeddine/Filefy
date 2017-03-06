@@ -1062,6 +1062,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundDownloads" destination="ky3-Rd-DhH" id="UPL-2J-xp5"/>
+                        <outlet property="backup" destination="8rn-Em-LV0" id="2kj-3M-aN1"/>
                         <outlet property="defaultTab" destination="PwG-cE-hKD" id="10z-oV-HBs"/>
                         <outlet property="homePageField" destination="jqg-CT-7HN" id="O1f-ck-1mu"/>
                         <outlet property="maxDownloads" destination="W7C-VB-IAv" id="X1B-R5-udN"/>
