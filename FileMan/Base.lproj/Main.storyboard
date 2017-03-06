@@ -391,8 +391,8 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mig-2O-A6l">
-                                            <rect key="frame" x="341" y="32" width="26" height="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mig-2O-A6l">
+                                            <rect key="frame" x="352" y="32" width="15" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -421,7 +421,7 @@
                                     <outlet property="progressHeight" destination="KEe-bg-cVw" id="gCE-1F-CGK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyDownloadsCell" rowHeight="60" id="OJz-GP-6fT" customClass="DownloadsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyDownloadsCell" rowHeight="60" id="OJz-GP-6fT">
                                 <rect key="frame" x="0.0" y="116" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJz-GP-6fT" id="WAe-Yj-3dj">
@@ -441,7 +441,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finishedDownloadsCell" rowHeight="60" id="qF6-Iw-k20" customClass="CompletedDownloadsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedDownloadsCell" rowHeight="60" id="qF6-Iw-k20" customClass="CompletedDownloadsTableViewCell">
                                 <rect key="frame" x="0.0" y="176" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qF6-Iw-k20" id="FEP-c4-rzI">
@@ -482,12 +482,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="info" destination="TgW-O0-XQr" id="zvT-vR-574"/>
                                     <outlet property="name" destination="vij-4V-TSe" id="wwH-Zm-uEJ"/>
                                     <outlet property="status" destination="TgW-O0-XQr" id="VWT-Po-GDM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyFinishedownloadsCell" rowHeight="60" id="ccT-Lt-WkS" customClass="DownloadsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyFinishedownloadsCell" rowHeight="60" id="ccT-Lt-WkS">
                                 <rect key="frame" x="0.0" y="236" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccT-Lt-WkS" id="4hn-0d-pyq">

@@ -125,11 +125,11 @@
             
         } else {
             
-            CompletedDownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"finishedDownloadsCell" forIndexPath:indexPath];
+            CompletedDownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"completedDownloadsCell" forIndexPath:indexPath];
             
             if (cell == nil) {
                 
-                cell = [[CompletedDownloadsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"finishedDownloadsCell"];
+                cell = [[CompletedDownloadsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"completedDownloadsCell"];
                 
             }
             
