@@ -38,11 +38,9 @@
         // Background session
         NSURLSessionConfiguration *backgroundConfiguration = nil;
 
-        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
-            backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
-        } else {
-            backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.Sami-Sharaf.FileMan.session"];
-        }
+        backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.Sami-Sharaf.FileMan.session"];
+        backgroundConfiguration.HTTPMaximumConnectionsPerHost = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
+        backgroundConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 
         self.backgroundSession = [NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:nil];
 
@@ -61,6 +59,7 @@
              progressBlock:(void(^)(CGFloat progress))progressBlock
              remainingTime:(void(^)(NSUInteger seconds))remainingTimeBlock
            completionBlock:(void(^)(BOOL completed))completionBlock
+                 infoBlock:(void(^)(NSString *info))infoBlock
       enableBackgroundMode:(BOOL)backgroundMode {
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -85,7 +84,7 @@
         } else {
             downloadTask = [self.session downloadTaskWithRequest:request];
         }
-        TWRDownloadObject *downloadObject = [[TWRDownloadObject alloc] initWithDownloadTask:downloadTask progressBlock:progressBlock remainingTime:remainingTimeBlock completionBlock:completionBlock];
+        TWRDownloadObject *downloadObject = [[TWRDownloadObject alloc] initWithDownloadTask:downloadTask progressBlock:progressBlock remainingTime:remainingTimeBlock completionBlock:completionBlock infoBlock:infoBlock];
         downloadObject.startDate = [NSDate date];
         downloadObject.fileName = fileName;
         [self.downloads addEntriesFromDictionary:@{urlString:downloadObject}];
@@ -145,6 +144,31 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
                 download.progressBlock(progress); //exception when progressblock is nil
             }
         });
+    }
+    
+    if (download.infoBlock) {
+        
+        NSTimeInterval interval = [download.startDate timeIntervalSinceNow];
+        NSTimeInterval downloadTime = interval * -1;
+        
+        float speed = (float)totalBytesWritten / (float)downloadTime;
+        
+        NSString *size = [NSByteCountFormatter stringFromByteCount:(int64_t)speed countStyle:NSByteCountFormatterCountStyleFile];
+        
+        NSString *speedSize = [NSString stringWithFormat:@"%@/sec", size];
+        
+        NSString *totalWrite = [NSByteCountFormatter stringFromByteCount:totalBytesWritten countStyle:NSByteCountFormatterCountStyleFile];
+        
+        NSString *overAllSize = [NSByteCountFormatter stringFromByteCount:totalBytesExpectedToWrite countStyle:NSByteCountFormatterCountStyleFile];
+        
+        NSString *info = [NSString stringWithFormat:@"%@ of %@ (%@)", totalWrite, overAllSize, speedSize];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if(download.infoBlock){
+                download.infoBlock(info);
+            }
+        });
+        
     }
 
     CGFloat remainingTime = [self remainingTimeForDownload:download bytesTransferred:totalBytesWritten totalBytesExpectedToWrite:totalBytesExpectedToWrite];

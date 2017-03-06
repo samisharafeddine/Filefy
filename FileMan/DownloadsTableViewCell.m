@@ -53,4 +53,27 @@
     };
 }
 
+- (TWRDownloadInfoBlock)infoBlock {
+    __weak typeof(self)weakSelf = self;
+    return ^void(NSString *info){
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            // do something
+            
+            strongSelf.info.text = info;
+            
+        });
+    };
+}
+
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.progress.hidden = NO;
+    self.percentage.hidden = NO;
+    self.progressHeight.constant = 2;
+    self.info.text = @"No progress information";
+    
+}
+
 @end

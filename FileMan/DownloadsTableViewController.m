@@ -66,6 +66,7 @@
     cell.name.text = download.fileName;
     download.progressBlock = cell.progressBlock;
     download.completionBlock = cell.completionBlock;
+    download.infoBlock = cell.infoBlock;
     
     return cell;
 }

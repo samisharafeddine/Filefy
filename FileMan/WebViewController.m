@@ -30,11 +30,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSURL *url = [NSURL URLWithString:@"http://mfile.narotama.ac.id/files/Zakki%20Falani/My%20Documents/googlehacking.pdf"];
+    //NSURL *url = [NSURL URLWithString:@"http://mfile.narotama.ac.id/files/Zakki%20Falani/My%20Documents/googlehacking.pdf"];
     
-    NSString *fileName = [url lastPathComponent];
+    //NSString *fileName = [url lastPathComponent];
     
-    [[TWRDownloadManager sharedManager] downloadFileForURL:[url absoluteString] withName:fileName progressBlock:nil remainingTime:nil completionBlock:nil enableBackgroundMode:YES];
+    //[[TWRDownloadManager sharedManager] downloadFileForURL:[url absoluteString] withName:fileName progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
     
     // Initiate reference to AppDelegate.
     //appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -221,6 +221,7 @@
         UIAlertAction *downloadAction = [UIAlertAction actionWithTitle:@"Download" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             // [todo]
+            [[TWRDownloadManager sharedManager] downloadFileForURL:[URL absoluteString] withName:[URL lastPathComponent] progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
             
         }];
         

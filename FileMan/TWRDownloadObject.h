@@ -12,12 +12,14 @@
 typedef void(^TWRDownloadRemainingTimeBlock)(NSUInteger seconds);
 typedef void(^TWRDownloadProgressBlock)(CGFloat progress);
 typedef void(^TWRDownloadCompletionBlock)(BOOL completed);
+typedef void(^TWRDownloadInfoBlock)(NSString *info);
 
 @interface TWRDownloadObject : NSObject
 
 @property (copy, nonatomic) TWRDownloadProgressBlock progressBlock;
 @property (copy, nonatomic) TWRDownloadCompletionBlock completionBlock;
 @property (copy, nonatomic) TWRDownloadRemainingTimeBlock remainingTimeBlock;
+@property (copy, nonatomic) TWRDownloadInfoBlock infoBlock;
 
 @property (strong, nonatomic) NSURLSessionDownloadTask *downloadTask;
 @property (copy, nonatomic) NSString *fileName;
@@ -26,6 +28,7 @@ typedef void(^TWRDownloadCompletionBlock)(BOOL completed);
 - (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)downloadTask
                        progressBlock:(TWRDownloadProgressBlock)progressBlock
                        remainingTime:(TWRDownloadRemainingTimeBlock)remainingTimeBlock
-                     completionBlock:(TWRDownloadCompletionBlock)completionBlock;
+                     completionBlock:(TWRDownloadCompletionBlock)completionBlock
+                           infoBlock:(TWRDownloadInfoBlock)infoBlock;
 
 @end

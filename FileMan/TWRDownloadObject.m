@@ -13,13 +13,15 @@
 - (instancetype)initWithDownloadTask:(NSURLSessionDownloadTask *)downloadTask
                        progressBlock:(TWRDownloadProgressBlock)progressBlock
                        remainingTime:(TWRDownloadRemainingTimeBlock)remainingTimeBlock
-                     completionBlock:(TWRDownloadCompletionBlock)completionBlock {
+                     completionBlock:(TWRDownloadCompletionBlock)completionBlock
+                           infoBlock:(TWRDownloadInfoBlock)infoBlock {
     self = [super init];
     if (self) {
         self.downloadTask = downloadTask;
         self.progressBlock = progressBlock;
         self.remainingTimeBlock = remainingTimeBlock;
         self.completionBlock = completionBlock;
+        self.infoBlock = infoBlock;
     }
     return self;
 }

@@ -21,6 +21,7 @@
              progressBlock:(void(^)(CGFloat progress))progressBlock
              remainingTime:(void(^)(NSUInteger seconds))remainingTimeBlock
            completionBlock:(void(^)(BOOL completed))completionBlock
+                 infoBlock:(void(^)(NSString *info))infoBlock
       enableBackgroundMode:(BOOL)backgroundMode;
 
 - (void)cancelAllDownloads;

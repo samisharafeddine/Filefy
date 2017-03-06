@@ -20,5 +20,6 @@
 
 @property (strong, nonatomic) TWRDownloadProgressBlock progressBlock;
 @property (strong, nonatomic) TWRDownloadCompletionBlock completionBlock;
+@property (strong, nonatomic) TWRDownloadInfoBlock infoBlock;
 
 @end
