@@ -38,6 +38,7 @@
 		21A0ECC71E46B54800E156D8 /* FileManagerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A0ECC61E46B54800E156D8 /* FileManagerTableViewCell.m */; };
 		21C19DBE1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C19DBD1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m */; };
 		21CA73661E648B930028BCF6 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CA73651E648B930028BCF6 /* TabBarViewController.m */; };
+		21EB2C891E6DB59F00AF90F3 /* StartDownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EB2C881E6DB59F00AF90F3 /* StartDownloadTableViewController.m */; };
 		21EFED251E14122B00D7755E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED241E14122B00D7755E /* main.m */; };
 		21EFED281E14122B00D7755E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED271E14122B00D7755E /* AppDelegate.m */; };
 		21EFED2E1E14122B00D7755E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EFED2C1E14122B00D7755E /* Main.storyboard */; };
@@ -108,6 +109,8 @@
 		21C19DBD1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedDownloadsTableViewCell.m; sourceTree = "<group>"; };
 		21CA73641E648B930028BCF6 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		21CA73651E648B930028BCF6 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		21EB2C871E6DB59F00AF90F3 /* StartDownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartDownloadTableViewController.h; sourceTree = "<group>"; };
+		21EB2C881E6DB59F00AF90F3 /* StartDownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartDownloadTableViewController.m; sourceTree = "<group>"; };
 		21EFED201E14122B00D7755E /* FileMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21EFED241E14122B00D7755E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21EFED261E14122B00D7755E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				211BE7C81E6C7CB7009A7F4C /* DownloadsTableViewCell.m */,
 				21C19DBC1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.h */,
 				21C19DBD1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m */,
+				21EB2C871E6DB59F00AF90F3 /* StartDownloadTableViewController.h */,
+				21EB2C881E6DB59F00AF90F3 /* StartDownloadTableViewController.m */,
 			);
 			name = Downloads;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				21183E561E46A60700029939 /* XFileParserTest.m in Sources */,
 				21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */,
 				217010D51E43D7DB00A316F7 /* XFile.m in Sources */,
+				21EB2C891E6DB59F00AF90F3 /* StartDownloadTableViewController.m in Sources */,
 				21EFED451E157FE000D7755E /* URLNavView.m in Sources */,
 				2180963A1E2ECF9C0059870E /* AddBTableViewController.m in Sources */,
 				21C19DBE1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m in Sources */,

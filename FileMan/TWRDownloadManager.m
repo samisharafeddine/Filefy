@@ -31,8 +31,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        
         // Default session
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        configuration.HTTPMaximumConnectionsPerHost = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
+        configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
 
         // Background session
@@ -81,8 +84,10 @@
         NSURLSessionDownloadTask *downloadTask;
         if (backgroundMode) {
             downloadTask = [self.backgroundSession downloadTaskWithRequest:request];
+            NSLog(@"Download using background mode.");
         } else {
             downloadTask = [self.session downloadTaskWithRequest:request];
+            NSLog(@"Download without using background mode.");
         }
         TWRDownloadObject *downloadObject = [[TWRDownloadObject alloc] initWithDownloadTask:downloadTask progressBlock:progressBlock remainingTime:remainingTimeBlock completionBlock:completionBlock infoBlock:infoBlock];
         downloadObject.startDate = [NSDate date];
@@ -97,7 +102,6 @@
     TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
     if (download) {
         [download.downloadTask cancel];
-        [self.downloads removeObjectForKey:fileIdentifier];
         if (download.completionBlock) {
             download.completionBlock(NO);
         }
@@ -188,11 +192,14 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
 
  	BOOL success = YES;
+    
+    NSString *logMessage;
 
     if ([downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSInteger statusCode = [(NSHTTPURLResponse*)downloadTask.response statusCode];
         if (statusCode >= 400) {
 	        NSLog(@"ERROR: HTTP status code %@", @(statusCode));
+            logMessage = [NSString stringWithFormat:@"Failed - Error: HTTP status code %@", @(statusCode)];
 			success = NO;
         }
     }
@@ -246,8 +253,13 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 	    if (error) {
             
 	        NSLog(@"ERROR: %@", error.localizedDescription);
+            logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
             
-	    }
+        } else {
+            
+            logMessage = @"Completed";
+            
+        }
         
 	}
 
@@ -274,7 +286,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     
     [completedDownloadsNames insertObject:download.fileName atIndex:0];
     [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
-    [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Completed"] atIndex:0];
+    [completedDownloadsStatuses insertObject:logMessage atIndex:0];
     
     [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
     [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
@@ -289,6 +301,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (error) {
         NSLog(@"ERROR: %@", error);
+        
+        NSString *logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
 
         NSString *fileIdentifier = task.originalRequest.URL.absoluteString;
         TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
@@ -313,7 +327,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
         
         [completedDownloadsNames insertObject:download.fileName atIndex:0];
         [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
-        [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Failed"] atIndex:0];
+        [completedDownloadsStatuses insertObject:logMessage atIndex:0];
         
         [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
         [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];

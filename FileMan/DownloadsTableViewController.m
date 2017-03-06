@@ -11,6 +11,7 @@
 #import "CompletedDownloadsTableViewCell.h"
 #import "TWRDownloadManager.h"
 #import "TWRDownloadObject.h"
+#import "StartDownloadTableViewController.h"
 
 @interface DownloadsTableViewController ()
 
@@ -30,6 +31,12 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self reloadData];
+    
+}
+
+-(void)reloadData {
     
     completedDownloadsNames = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
     completedDownloadsURLs = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
@@ -144,23 +151,139 @@
     
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    
+    if (indexPath.section == 0) {
+        
+        if ([currentDownloads[0] isEqualToString:@"No Active Downloads"]) {
+            
+            return NO;
+            
+        } else {
+            
+            DownloadsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            
+            if (cell.progress.hidden == YES) {
+                
+                return NO;
+                
+            } else {
+                
+                return YES;
+                
+            }
+            
+        }
+        
+    } else {
+        
+        if ([completedDownloadsNames[0] isEqualToString:@"No Completed Downloads"]) {
+            
+            return NO;
+            
+        } else {
+            
+            return YES;
+            
+        }
+        
+    }
+    
 }
-*/
+
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        UITableViewRowAction *cancel = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Cancel" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSString *identifier = [[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row];
+            
+            [[TWRDownloadManager sharedManager] cancelDownloadForUrl:identifier];
+            
+            [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.3];
+            
+        }];
+        
+        return @[cancel];
+        
+    } else {
+        
+        UITableViewRowAction *start = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Restart" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSString *urlString = completedDownloadsURLs[indexPath.row];
+            
+            NSURL *url = [NSURL URLWithString:urlString];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"reloadData" object:nil];
+            
+            [self downloadFileAtURL:url];
+            
+            [self reloadData];
+            
+        }];
+        
+        start.backgroundColor = [UIColor greenColor];
+        
+        UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSMutableArray *downloadsNames = [[NSMutableArray alloc] initWithArray:completedDownloadsNames];
+            NSMutableArray *downloadsurls = [[NSMutableArray alloc] initWithArray:completedDownloadsURLs];
+            NSMutableArray *downloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatuses];
+            
+            [downloadsNames removeObjectAtIndex:indexPath.row];
+            [downloadsurls removeObjectAtIndex:indexPath.row];
+            [downloadsStatuses removeObjectAtIndex:indexPath.row];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:downloadsNames forKey:@"completedDownloadsNames"];
+            [[NSUserDefaults standardUserDefaults] setObject:downloadsurls forKey:@"completedDownloadsURLs"];
+            [[NSUserDefaults standardUserDefaults] setObject:downloadsStatuses forKey:@"completedDownloadsStatuses"];
+            
+            [self reloadData];
+            
+        }];
+        
+        return @[delete,
+                 start];
+        
+    }
+    
+}
+
+-(void)downloadFileAtURL:(NSURL *)url {
+    
+    NSString *fileName = url.lastPathComponent.stringByDeletingPathExtension;
+    NSString *extension = url.lastPathComponent.pathExtension;
+    
+    StartDownloadTableViewController *vc = [StartDownloadTableViewController sharedInstance];
+    vc.url = url;
+    vc.name = fileName;
+    vc.fileExtension = extension;
+    
+    [self presentDownloadViewController:vc];
+    
+}
+
+-(void)presentDownloadViewController:(StartDownloadTableViewController *)downloadViewController {
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:downloadViewController];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
+    
+}
 
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
+    
 }
 */
 

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "WebViewController.h"
 #import "URLNavView.h"
-#import "TWRDownloadManager.h"
+#import "StartDownloadTableViewController.h"
 
 @interface WebViewController ()
 
@@ -29,12 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //NSURL *url = [NSURL URLWithString:@"http://mfile.narotama.ac.id/files/Zakki%20Falani/My%20Documents/googlehacking.pdf"];
-    
-    //NSString *fileName = [url lastPathComponent];
-    
-    //[[TWRDownloadManager sharedManager] downloadFileForURL:[url absoluteString] withName:fileName progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
     
     // Initiate reference to AppDelegate.
     //appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -110,6 +104,13 @@
         _homeButton.enabled = YES;
         
     }
+    
+}
+
+-(void)presentDownloadViewController:(StartDownloadTableViewController *)downloadViewController {
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:downloadViewController];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
     
 }
 
@@ -220,8 +221,7 @@
         
         UIAlertAction *downloadAction = [UIAlertAction actionWithTitle:@"Download" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            // [todo]
-            [[TWRDownloadManager sharedManager] downloadFileForURL:[URL absoluteString] withName:[URL lastPathComponent] progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
+            [self downloadFileAtURL:URL];
             
         }];
         
@@ -235,6 +235,20 @@
         [self presentViewController:actionSheet animated:YES completion:nil];
         
     }
+    
+}
+
+-(void)downloadFileAtURL:(NSURL *)url {
+    
+    NSString *fileName = url.lastPathComponent.stringByDeletingPathExtension;
+    NSString *extension = url.lastPathComponent.pathExtension;
+    
+    StartDownloadTableViewController *vc = [StartDownloadTableViewController sharedInstance];
+    vc.url = url;
+    vc.name = fileName;
+    vc.fileExtension = extension;
+    
+    [self presentDownloadViewController:vc];
     
 }
 

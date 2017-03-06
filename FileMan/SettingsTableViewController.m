@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *homePageField;
 @property (weak, nonatomic) IBOutlet UILabel *defaultTab;
 @property (weak, nonatomic) IBOutlet UILabel *maxDownloads;
+@property (weak, nonatomic) IBOutlet UISwitch *backgroundDownloads;
 
 @end
 
@@ -23,6 +24,8 @@
     [super viewDidLoad];
     
     _homePageField.delegate = self;
+    
+    [self.backgroundDownloads addTarget:self action:@selector(backgroundSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     
     /*
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived)];
@@ -72,6 +75,16 @@
     } else if ((int)defaultTab == 2) {
         
         self.defaultTab.text = @"File Manager";
+        
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"backgroundDownloads"]) {
+        
+        [self.backgroundDownloads setOn:YES animated:NO];
+        
+    } else {
+        
+        [self.backgroundDownloads setOn:NO animated:NO];
         
     }
     
@@ -259,6 +272,20 @@
     
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+-(void)backgroundSwitchChanged:(UISwitch *)switchState {
+    
+    if ([switchState isOn]) {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
+        
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backgroundDownloads"];
+        
+    }
     
 }
 
