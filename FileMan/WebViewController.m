@@ -10,6 +10,7 @@
 #import "WebViewController.h"
 #import "URLNavView.h"
 #import "StartDownloadTableViewController.h"
+#import "PasscodeTableViewController.h"
 
 @interface WebViewController ()
 
@@ -87,6 +88,25 @@
     [self.webView addGestureRecognizer:tapGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidLoad:) name:@"AVPlayerItemBecameCurrentNotification" object:nil];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeOnLaunch"]) {
+        
+        PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
+        
+        vc.purpose = 1;
+        
+        [self presentPasscodeViewController:vc];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeOnLaunch"];
+        
+    }
+    
+}
+
+-(void)presentPasscodeViewController:(PasscodeTableViewController *)passcodeViewController {
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passcodeViewController];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
     
 }
 

@@ -17,6 +17,7 @@
 #import "EditPropsTableViewController.h"
 #import "MusicPlayerViewController.h"
 #import "XMusicFile.h"
+#import "PasscodeTableViewController.h"
 
 @interface FileManagerTableViewController ()
 
@@ -66,6 +67,25 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeOnLaunch"]) {
+        
+        PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
+        
+        vc.purpose = 1;
+        
+        [self presentPasscodeViewController:vc];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeOnLaunch"];
+        
+    }
+    
+}
+
+-(void)presentPasscodeViewController:(PasscodeTableViewController *)passcodeViewController {
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passcodeViewController];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
     
 }
 

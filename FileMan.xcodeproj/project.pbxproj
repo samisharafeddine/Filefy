@@ -29,6 +29,8 @@
 		217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06921E6DD0720083846F /* MIMEsTableViewController.m */; };
 		217B06971E6DDAAD0083846F /* NewMIMETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06961E6DDAAD0083846F /* NewMIMETableViewController.m */; };
 		217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06991E6DE0E00083846F /* EditMIMETableViewController.m */; };
+		217B069D1E6E062F0083846F /* SetPasscodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B069C1E6E062F0083846F /* SetPasscodeTableViewController.m */; };
+		217B06A11E6E0AC40083846F /* PasscodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06A01E6E0AC40083846F /* PasscodeTableViewController.m */; };
 		2180963A1E2ECF9C0059870E /* AddBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218096391E2ECF9C0059870E /* AddBTableViewController.m */; };
 		2180963F1E2EE8740059870E /* DataRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 2180963E1E2EE8740059870E /* DataRef.m */; };
 		219B814C1E4B649300620348 /* PDFViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219B814B1E4B649300620348 /* PDFViewerViewController.m */; };
@@ -95,6 +97,10 @@
 		217B06961E6DDAAD0083846F /* NewMIMETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMIMETableViewController.m; sourceTree = "<group>"; };
 		217B06981E6DE0E00083846F /* EditMIMETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMIMETableViewController.h; sourceTree = "<group>"; };
 		217B06991E6DE0E00083846F /* EditMIMETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMIMETableViewController.m; sourceTree = "<group>"; };
+		217B069B1E6E062F0083846F /* SetPasscodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPasscodeTableViewController.h; sourceTree = "<group>"; };
+		217B069C1E6E062F0083846F /* SetPasscodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPasscodeTableViewController.m; sourceTree = "<group>"; };
+		217B069F1E6E0AC40083846F /* PasscodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasscodeTableViewController.h; sourceTree = "<group>"; };
+		217B06A01E6E0AC40083846F /* PasscodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasscodeTableViewController.m; sourceTree = "<group>"; };
 		218096381E2ECF9C0059870E /* AddBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBTableViewController.h; sourceTree = "<group>"; };
 		218096391E2ECF9C0059870E /* AddBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBTableViewController.m; sourceTree = "<group>"; };
 		2180963D1E2EE8740059870E /* DataRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRef.h; sourceTree = "<group>"; };
@@ -305,6 +311,17 @@
 			name = "MIME Types";
 			sourceTree = "<group>";
 		};
+		217B069E1E6E06360083846F /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				217B069B1E6E062F0083846F /* SetPasscodeTableViewController.h */,
+				217B069C1E6E062F0083846F /* SetPasscodeTableViewController.m */,
+				217B069F1E6E0AC40083846F /* PasscodeTableViewController.h */,
+				217B06A01E6E0AC40083846F /* PasscodeTableViewController.m */,
+			);
+			name = Passcode;
+			sourceTree = "<group>";
+		};
 		219B81491E4B647200620348 /* PDF Viewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +377,7 @@
 				217B068F1E6DD04A0083846F /* Default Tabs */,
 				217B06901E6DD0540083846F /* Max Downloads */,
 				217B06941E6DD07D0083846F /* MIME Types */,
+				217B069E1E6E06360083846F /* Passcode */,
 				21A04F971E1C244500254D8F /* SettingsTableViewController.h */,
 				21A04F981E1C244500254D8F /* SettingsTableViewController.m */,
 			);
@@ -567,6 +585,7 @@
 				21CA73661E648B930028BCF6 /* TabBarViewController.m in Sources */,
 				21EFED281E14122B00D7755E /* AppDelegate.m in Sources */,
 				215129061E57071D0059428B /* XMusicFile.m in Sources */,
+				217B06A11E6E0AC40083846F /* PasscodeTableViewController.m in Sources */,
 				21741FC21E44A4A10030C063 /* XFileParser.m in Sources */,
 				21A0ECC71E46B54800E156D8 /* FileManagerTableViewCell.m in Sources */,
 				211BE7BE1E6C7C6F009A7F4C /* TWRDownloadObject.m in Sources */,
@@ -591,6 +610,7 @@
 				211BE7C21E6C7C79009A7F4C /* TWRDownloadManager.m in Sources */,
 				21A04F931E1ABDDA00254D8F /* HistoryTableViewController.m in Sources */,
 				210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */,
+				217B069D1E6E062F0083846F /* SetPasscodeTableViewController.m in Sources */,
 				217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */,
 				2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */,
 				214DCF901E2EAB8D00329A5A /* BookmarksTableViewController.m in Sources */,

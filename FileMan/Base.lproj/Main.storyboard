@@ -1058,6 +1058,9 @@
                     <navigationItem key="navigationItem" title="Settings" id="DcW-Sb-ZdE">
                         <barButtonItem key="rightBarButtonItem" image="Heart" id="Qrj-Lv-RrZ">
                             <color key="tintColor" red="0.91545593738555908" green="0.29308891296386719" blue="0.20751205086708069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="loveMePlz:" destination="Xy1-hw-wU7" id="1ce-1J-aMv"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1067,6 +1070,7 @@
                         <outlet property="homePageField" destination="jqg-CT-7HN" id="O1f-ck-1mu"/>
                         <outlet property="maxDownloads" destination="W7C-VB-IAv" id="X1B-R5-udN"/>
                         <outlet property="mimes" destination="Mt5-ea-QGk" id="rxb-Wd-EU8"/>
+                        <outlet property="passcode" destination="nsG-Ej-RCJ" id="nvT-PO-O7D"/>
                         <outlet property="searchEngineLabel" destination="VAA-lz-KLi" id="uMN-mp-1Ta"/>
                     </connections>
                 </tableViewController>
@@ -1943,6 +1947,150 @@
             </objects>
             <point key="canvasLocation" x="5340" y="1698.8005997001501"/>
         </scene>
+        <!--Passcode-->
+        <scene sceneID="9cl-e6-9OI">
+            <objects>
+                <tableViewController id="Iz1-Hd-a6t" customClass="SetPasscodeTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fan-Af-oJ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="mSR-SL-9g4">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fv7-IF-I5A">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fv7-IF-I5A" id="u89-4j-UMo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kyJ-7G-Srt">
+                                                    <rect key="frame" x="8" y="11" width="359" height="20"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="kyJ-7G-Srt" secondAttribute="trailing" constant="8" id="J7I-2B-zJw"/>
+                                                <constraint firstItem="kyJ-7G-Srt" firstAttribute="centerY" secondItem="u89-4j-UMo" secondAttribute="centerY" id="TMn-MZ-MaO"/>
+                                                <constraint firstItem="kyJ-7G-Srt" firstAttribute="leading" secondItem="u89-4j-UMo" secondAttribute="leading" constant="8" id="m37-Ct-uVc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="4cd-uJ-tY3">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dhf-K7-IWO">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dhf-K7-IWO" id="r4e-hC-z9g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-Enter New Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-EF-VNS">
+                                                    <rect key="frame" x="8" y="11" width="359" height="20"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4vy-EF-VNS" secondAttribute="trailing" constant="8" id="gqh-AC-QYN"/>
+                                                <constraint firstItem="4vy-EF-VNS" firstAttribute="leading" secondItem="r4e-hC-z9g" secondAttribute="leading" constant="8" id="kfA-yt-Vkb"/>
+                                                <constraint firstItem="4vy-EF-VNS" firstAttribute="centerY" secondItem="r4e-hC-z9g" secondAttribute="centerY" id="oBW-Mc-2op"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Iz1-Hd-a6t" id="Qio-qj-vSg"/>
+                            <outlet property="delegate" destination="Iz1-Hd-a6t" id="Gg7-S8-wL2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Passcode" id="xtj-1T-8el">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MQk-WD-OK9">
+                            <connections>
+                                <action selector="cancel:" destination="Iz1-Hd-a6t" id="9r9-Iw-0Ef"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WBp-5n-YPe">
+                            <connections>
+                                <action selector="done:" destination="Iz1-Hd-a6t" id="Bwx-RW-Lkb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="passcode" destination="kyJ-7G-Srt" id="U7y-NI-38g"/>
+                        <outlet property="reEnterPascode" destination="4vy-EF-VNS" id="Ib1-YA-j70"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5yU-7b-Bln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7423" y="1699"/>
+        </scene>
+        <!--Enter Passcode-->
+        <scene sceneID="MEu-1Z-H1E">
+            <objects>
+                <tableViewController storyboardIdentifier="enterPasscodeVC" id="6Xp-MT-ZR0" customClass="PasscodeTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="HT4-xa-DZn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="ISI-Vq-rP8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aFZ-kN-9Zk">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFZ-kN-9Zk" id="Div-aS-bvk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2w-DZ-CZf">
+                                                    <rect key="frame" x="8" y="11" width="359" height="20"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="U2w-DZ-CZf" firstAttribute="centerY" secondItem="Div-aS-bvk" secondAttribute="centerY" id="AQr-3w-rU8"/>
+                                                <constraint firstAttribute="trailing" secondItem="U2w-DZ-CZf" secondAttribute="trailing" constant="8" id="V20-3y-ayB"/>
+                                                <constraint firstItem="U2w-DZ-CZf" firstAttribute="leading" secondItem="Div-aS-bvk" secondAttribute="leading" constant="8" id="xmC-eG-9wt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="6Xp-MT-ZR0" id="9qC-sv-RhS"/>
+                            <outlet property="delegate" destination="6Xp-MT-ZR0" id="AaW-co-gT8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Enter Passcode" id="gyp-1t-zFk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IY7-yT-9Af">
+                            <connections>
+                                <action selector="done:" destination="6Xp-MT-ZR0" id="ScJ-J8-w5D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="passcode" destination="U2w-DZ-CZf" id="6Uf-V3-Fiy"/>
+                        <segue destination="Iz1-Hd-a6t" kind="show" identifier="changePassSegue" id="wS6-83-PPJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dB-bm-2Fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8457" y="1699"/>
+        </scene>
         <!--Settings NavController-->
         <scene sceneID="4sl-WD-ADz">
             <objects>
@@ -1978,7 +2126,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lr6-dk-Fqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1948" y="153"/>
+            <point key="canvasLocation" x="-2038" y="589"/>
         </scene>
         <!--Bookmarks NavController-->
         <scene sceneID="e4a-1x-u18">
@@ -2101,6 +2249,24 @@
             </objects>
             <point key="canvasLocation" x="-922" y="-430"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gge-gR-EwG">
+            <objects>
+                <navigationController storyboardIdentifier="setPasscode" automaticallyAdjustsScrollViewInsets="NO" id="2Eh-89-75b" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UKD-fi-RIm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Iz1-Hd-a6t" kind="relationship" relationship="rootViewController" id="LDM-Zt-yH5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Hq-uh-q0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6382" y="1699"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Album" width="512" height="512"/>
@@ -2132,5 +2298,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="P2F-Fh-eoV"/>
         <segue reference="dwb-lK-N8q"/>
+        <segue reference="wS6-83-PPJ"/>
     </inferredMetricsTieBreakers>
 </document>

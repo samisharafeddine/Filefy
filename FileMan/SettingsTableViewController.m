@@ -7,6 +7,9 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "PasscodeTableViewController.h"
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
 @interface SettingsTableViewController ()
 
@@ -17,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *backgroundDownloads;
 @property (weak, nonatomic) IBOutlet UILabel *mimes;
 @property (weak, nonatomic) IBOutlet UISwitch *backup;
+@property (weak, nonatomic) IBOutlet UISwitch *passcode;
 
 @end
 
@@ -30,6 +34,8 @@
     [self.backgroundDownloads addTarget:self action:@selector(backgroundSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     
     [self.backup addTarget:self action:@selector(backupSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.passcode addTarget:self action:@selector(passcodeToggleSwitched:) forControlEvents:UIControlEventValueChanged];
     
     /*
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived)];
@@ -99,6 +105,16 @@
     } else {
         
         [self.backup setOn:NO animated:NO];
+        
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"]) {
+        
+        [self.passcode setOn:YES animated:NO];
+        
+    } else {
+        
+        [self.passcode setOn:NO animated:NO];
         
     }
     
@@ -244,7 +260,73 @@
             
         }
         
+    } else if (indexPath.section == 0) {
+        
+        if (indexPath.row == 1) {
+            
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"]) {
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Enable passcode lock and set passcode first." preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+                
+                [alert addAction:ok];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            } else {
+                
+                PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
+                
+                vc.purpose = 2;
+                [self presentPasscodeViewController:vc];
+                
+            }
+            
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+        }
+        
     }
+    
+}
+
+-(void)presentPasscodeViewController:(PasscodeTableViewController *)passcodeViewController {
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passcodeViewController];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
+    
+}
+
+-(void)passcodeToggleSwitched:(UISwitch *)switchState {
+    
+    if ([switchState isOn]) {
+        
+        NSString * storyboardName = @"Main";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"setPasscode"];
+        [vc setModalPresentationStyle:UIModalPresentationCustom];
+        [vc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+        [self presentViewController:vc animated:YES completion:^{
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didsetpasscode) name:@"setPasscode" object:nil];
+            
+        }];
+        
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
+        
+    }
+    
+    [self.passcode setOn:NO animated:YES];
+    
+}
+
+-(void)didsetpasscode {
+    
+    [self.passcode setOn:YES animated:YES];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeLock"];
     
 }
 
@@ -377,6 +459,16 @@
     }
     
     return success;
+    
+}
+
+-(IBAction)loveMePlz:(id)sender {
+    
+    SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
+    
+    tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [tweetSheet setInitialText:@"FileMan is an advanced file manager and downloader for iOS, Get it here: http://bit.ly/FileMan"];
+    [self presentViewController:tweetSheet animated:YES completion:nil];
     
 }
 
