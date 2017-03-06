@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *defaultTab;
 @property (weak, nonatomic) IBOutlet UILabel *maxDownloads;
 @property (weak, nonatomic) IBOutlet UISwitch *backgroundDownloads;
+@property (weak, nonatomic) IBOutlet UILabel *mimes;
 
 @end
 
@@ -91,6 +92,10 @@
     NSInteger maxDownloads = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
     
     self.maxDownloads.text = [NSString stringWithFormat:@"%ld", (long)maxDownloads];
+    
+    NSArray *mimeTypes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"defaultMIMETypes"];
+    
+    self.mimes.text = [NSString stringWithFormat:@"%lu", (unsigned long)mimeTypes.count];
     
 }
 
@@ -217,6 +222,10 @@
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
         } else if (indexPath.row == 2) {
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+        } else if (indexPath.row == 3) {
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             

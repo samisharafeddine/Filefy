@@ -26,6 +26,9 @@
 		2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158CED01E59F6FF0072A460 /* MusicPlayerViewController.m */; };
 		217010D51E43D7DB00A316F7 /* XFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 217010D41E43D7DB00A316F7 /* XFile.m */; };
 		21741FC21E44A4A10030C063 /* XFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 21741FC11E44A4A10030C063 /* XFileParser.m */; };
+		217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06921E6DD0720083846F /* MIMEsTableViewController.m */; };
+		217B06971E6DDAAD0083846F /* NewMIMETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06961E6DDAAD0083846F /* NewMIMETableViewController.m */; };
+		217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06991E6DE0E00083846F /* EditMIMETableViewController.m */; };
 		2180963A1E2ECF9C0059870E /* AddBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218096391E2ECF9C0059870E /* AddBTableViewController.m */; };
 		2180963F1E2EE8740059870E /* DataRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 2180963E1E2EE8740059870E /* DataRef.m */; };
 		219B814C1E4B649300620348 /* PDFViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219B814B1E4B649300620348 /* PDFViewerViewController.m */; };
@@ -86,6 +89,12 @@
 		217010D41E43D7DB00A316F7 /* XFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFile.m; sourceTree = "<group>"; };
 		21741FC01E44A4A10030C063 /* XFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFileParser.h; sourceTree = "<group>"; };
 		21741FC11E44A4A10030C063 /* XFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFileParser.m; sourceTree = "<group>"; };
+		217B06911E6DD0720083846F /* MIMEsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMEsTableViewController.h; sourceTree = "<group>"; };
+		217B06921E6DD0720083846F /* MIMEsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMEsTableViewController.m; sourceTree = "<group>"; };
+		217B06951E6DDAAD0083846F /* NewMIMETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMIMETableViewController.h; sourceTree = "<group>"; };
+		217B06961E6DDAAD0083846F /* NewMIMETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMIMETableViewController.m; sourceTree = "<group>"; };
+		217B06981E6DE0E00083846F /* EditMIMETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMIMETableViewController.h; sourceTree = "<group>"; };
+		217B06991E6DE0E00083846F /* EditMIMETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMIMETableViewController.m; sourceTree = "<group>"; };
 		218096381E2ECF9C0059870E /* AddBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBTableViewController.h; sourceTree = "<group>"; };
 		218096391E2ECF9C0059870E /* AddBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBTableViewController.m; sourceTree = "<group>"; };
 		2180963D1E2EE8740059870E /* DataRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRef.h; sourceTree = "<group>"; };
@@ -256,6 +265,46 @@
 			name = "File Manager";
 			sourceTree = "<group>";
 		};
+		217B068E1E6DD03F0083846F /* Search Engine */ = {
+			isa = PBXGroup;
+			children = (
+				212104C91E2195800090BDF3 /* SearchEngineTableViewController.h */,
+				212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */,
+			);
+			name = "Search Engine";
+			sourceTree = "<group>";
+		};
+		217B068F1E6DD04A0083846F /* Default Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				211527191E686AFC005F5C92 /* DefaultTabTableViewController.h */,
+				2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */,
+			);
+			name = "Default Tabs";
+			sourceTree = "<group>";
+		};
+		217B06901E6DD0540083846F /* Max Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				211BE7881E6B1005009A7F4C /* MaxDownloadsTableViewController.h */,
+				211BE7891E6B1005009A7F4C /* MaxDownloadsTableViewController.m */,
+			);
+			name = "Max Downloads";
+			sourceTree = "<group>";
+		};
+		217B06941E6DD07D0083846F /* MIME Types */ = {
+			isa = PBXGroup;
+			children = (
+				217B06911E6DD0720083846F /* MIMEsTableViewController.h */,
+				217B06921E6DD0720083846F /* MIMEsTableViewController.m */,
+				217B06951E6DDAAD0083846F /* NewMIMETableViewController.h */,
+				217B06961E6DDAAD0083846F /* NewMIMETableViewController.m */,
+				217B06981E6DE0E00083846F /* EditMIMETableViewController.h */,
+				217B06991E6DE0E00083846F /* EditMIMETableViewController.m */,
+			);
+			name = "MIME Types";
+			sourceTree = "<group>";
+		};
 		219B81491E4B647200620348 /* PDF Viewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,14 +356,12 @@
 		21A04F9B1E1D665000254D8F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				217B068E1E6DD03F0083846F /* Search Engine */,
+				217B068F1E6DD04A0083846F /* Default Tabs */,
+				217B06901E6DD0540083846F /* Max Downloads */,
+				217B06941E6DD07D0083846F /* MIME Types */,
 				21A04F971E1C244500254D8F /* SettingsTableViewController.h */,
 				21A04F981E1C244500254D8F /* SettingsTableViewController.m */,
-				212104C91E2195800090BDF3 /* SearchEngineTableViewController.h */,
-				212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */,
-				211527191E686AFC005F5C92 /* DefaultTabTableViewController.h */,
-				2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */,
-				211BE7881E6B1005009A7F4C /* MaxDownloadsTableViewController.h */,
-				211BE7891E6B1005009A7F4C /* MaxDownloadsTableViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -528,7 +575,9 @@
 				21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */,
 				2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */,
 				21183E561E46A60700029939 /* XFileParserTest.m in Sources */,
+				217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */,
 				21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */,
+				217B06971E6DDAAD0083846F /* NewMIMETableViewController.m in Sources */,
 				217010D51E43D7DB00A316F7 /* XFile.m in Sources */,
 				21EB2C891E6DB59F00AF90F3 /* StartDownloadTableViewController.m in Sources */,
 				21EFED451E157FE000D7755E /* URLNavView.m in Sources */,
@@ -542,6 +591,7 @@
 				211BE7C21E6C7C79009A7F4C /* TWRDownloadManager.m in Sources */,
 				21A04F931E1ABDDA00254D8F /* HistoryTableViewController.m in Sources */,
 				210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */,
+				217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */,
 				2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */,
 				214DCF901E2EAB8D00329A5A /* BookmarksTableViewController.m in Sources */,
 			);
