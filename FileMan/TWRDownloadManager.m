@@ -259,6 +259,26 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 
     // remove object from the download
     [self.downloads removeObjectForKey:fileIdentifier];
+    
+    NSArray *completedDownloadsNamess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
+    
+    NSArray *completedDownloadsURLss = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
+    
+    NSArray *completedDownloadsStatusess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsStatuses"];
+    
+    NSMutableArray *completedDownloadsNames = [[NSMutableArray alloc] initWithArray:completedDownloadsNamess];
+    
+    NSMutableArray *completedDownloadsURLs = [[NSMutableArray alloc] initWithArray:completedDownloadsURLss];
+    
+    NSMutableArray *completedDownloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatusess];
+    
+    [completedDownloadsNames insertObject:download.fileName atIndex:0];
+    [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
+    [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Completed"] atIndex:0];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
+    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
+    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsStatuses forKey:@"completedDownloadsStatuses"];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         // Show a local notification when download is over.
@@ -278,6 +298,26 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
                 download.completionBlock(NO);
             });
         }
+        
+        NSArray *completedDownloadsNamess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
+        
+        NSArray *completedDownloadsURLss = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
+        
+        NSArray *completedDownloadsStatusess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsStatuses"];
+        
+        NSMutableArray *completedDownloadsNames = [[NSMutableArray alloc] initWithArray:completedDownloadsNamess];
+        
+        NSMutableArray *completedDownloadsURLs = [[NSMutableArray alloc] initWithArray:completedDownloadsURLss];
+        
+        NSMutableArray *completedDownloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatusess];
+        
+        [completedDownloadsNames insertObject:download.fileName atIndex:0];
+        [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
+        [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Failed"] atIndex:0];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
+        [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
+        [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsStatuses forKey:@"completedDownloadsStatuses"];
 
         // remove object from the download
         [self.downloads removeObjectForKey:fileIdentifier];

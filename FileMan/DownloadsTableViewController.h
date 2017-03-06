@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DownloadsTableViewController : UITableViewController
+@interface DownloadsTableViewController : UITableViewController {
+    
+    NSArray *currentDownloads;
+    NSArray *completedDownloadsNames;
+    NSArray *completedDownloadsURLs;
+    NSArray *completedDownloadsStatuses;
+    NSArray *content;
+    
+}
 
 @end

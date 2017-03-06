@@ -8,6 +8,7 @@
 
 #import "DownloadsTableViewController.h"
 #import "DownloadsTableViewCell.h"
+#import "CompletedDownloadsTableViewCell.h"
 #import "TWRDownloadManager.h"
 #import "TWRDownloadObject.h"
 
@@ -30,6 +31,26 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    completedDownloadsNames = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
+    completedDownloadsURLs = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
+    completedDownloadsStatuses = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsStatuses"];
+    currentDownloads = [[TWRDownloadManager sharedManager] currentDownloads];
+    
+    if (currentDownloads.count == 0 || currentDownloads == nil) {
+        
+        currentDownloads = @[@"No Active Downloads"];
+        
+    }
+    
+    if (completedDownloadsNames.count == 0 || completedDownloadsNames == nil) {
+        
+        completedDownloadsNames = @[@"No Completed Downloads"];
+        
+    }
+    
+    content = @[currentDownloads,
+                completedDownloadsNames];
+    
     [self.tableView reloadData];
     
 }
@@ -42,33 +63,85 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[TWRDownloadManager sharedManager] currentDownloads] count];
+    return [content[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Configure the cell...
     
-    TWRDownloadObject *download = [[[TWRDownloadManager sharedManager] downloads] objectForKey:[[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row]];
-    
-    DownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadsCell" forIndexPath:indexPath];
-    
-    if (cell == nil) {
+    if (indexPath.section == 0) {
         
-        cell = [[DownloadsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"downloadsCell"];
+        if ([currentDownloads[0] isEqualToString:@"No Active Downloads"]) {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"emptyDownloadsCell" forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"emptyDownloadsCell"];
+                
+            }
+            
+            return cell;
+            
+        } else {
+            
+            TWRDownloadObject *download = [[[TWRDownloadManager sharedManager] downloads] objectForKey:[[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row]];
+            
+            DownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadsCell" forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                
+                cell = [[DownloadsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"downloadsCell"];
+                
+            }
+            
+            cell.name.text = download.fileName;
+            download.progressBlock = cell.progressBlock;
+            download.completionBlock = cell.completionBlock;
+            download.infoBlock = cell.infoBlock;
+            
+            return cell;
+            
+        }
+        
+    } else {
+        
+        if ([completedDownloadsNames[0] isEqualToString:@"No Completed Downloads"]) {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"emptyFinishedownloadsCell" forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"emptyFinishedownloadsCell"];
+                
+            }
+            
+            return cell;
+            
+        } else {
+            
+            CompletedDownloadsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"finishedDownloadsCell" forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                
+                cell = [[CompletedDownloadsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"finishedDownloadsCell"];
+                
+            }
+            
+            cell.name.text = completedDownloadsNames[indexPath.row];
+            cell.status.text = completedDownloadsStatuses[indexPath.row];
+            
+            return cell;
+            
+        }
         
     }
     
-    cell.name.text = download.fileName;
-    download.progressBlock = cell.progressBlock;
-    download.completionBlock = cell.completionBlock;
-    download.infoBlock = cell.infoBlock;
-    
-    return cell;
 }
 
 /*

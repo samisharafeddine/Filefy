@@ -42,6 +42,9 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"downloads"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"defaultTab"];
         [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:@"maxDownloads"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsNames"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsURLs"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasCompletedTutorial"];
         [[NSUserDefaults standardUserDefaults] synchronize];
