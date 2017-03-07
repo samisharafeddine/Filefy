@@ -17,5 +17,6 @@
 @synthesize isCopyingItems;
 @synthesize filesToBeCopied;
 @synthesize hasPlayedOnce;
+@synthesize lock;
 
 @end

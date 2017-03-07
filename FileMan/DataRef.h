@@ -14,6 +14,7 @@
     BOOL isMovingItems;
     BOOL isCopyingItems;
     BOOL hasPlayedOnce;
+    BOOL lock;
     
 }
 
@@ -24,5 +25,6 @@
 @property NSMutableArray *filesToBeCopied;
 @property BOOL isCopyingItems;
 @property BOOL hasPlayedOnce;
+@property BOOL lock;
 
 @end

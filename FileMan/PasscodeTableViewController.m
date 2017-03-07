@@ -41,6 +41,13 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.passcode.text = @"";
+    
+}
+
 -(IBAction)done:(id)sender {
     
     NSString *pass = [[NSUserDefaults standardUserDefaults] objectForKey:@"passcode"];

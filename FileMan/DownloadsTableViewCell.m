@@ -70,6 +70,8 @@
     [super prepareForReuse];
     
     self.progress.hidden = NO;
+    self.progress.progress = 0;
+    self.percentage.text = [NSString stringWithFormat:@"0%%"];
     self.percentage.hidden = NO;
     self.progressHeight.constant = 2;
     self.info.text = @"No progress information";

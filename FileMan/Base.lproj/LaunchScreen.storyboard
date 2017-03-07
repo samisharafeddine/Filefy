@@ -21,17 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLk-tQ-EBF">
-                                <rect key="frame" x="165" y="323" width="45" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FileMan Icon" translatesAutoresizingMaskIntoConstraints="NO" id="qEx-PF-Xoq">
+                                <rect key="frame" x="124" y="277" width="127" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="Vnd-pP-Aed"/>
+                                    <constraint firstAttribute="height" constant="112" id="hgr-EG-YKU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.0 (8)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Equ-zO-LAo">
+                                <rect key="frame" x="165" y="652" width="45" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nLk-tQ-EBF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BQL-QY-Dbn"/>
-                            <constraint firstItem="nLk-tQ-EBF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ye4-Nw-Bbp"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Equ-zO-LAo" secondAttribute="bottom" constant="3" id="0Ob-Zc-mq8"/>
+                            <constraint firstItem="qEx-PF-Xoq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="HbK-hj-bCS"/>
+                            <constraint firstItem="qEx-PF-Xoq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Tkj-Lh-n4U"/>
+                            <constraint firstItem="Equ-zO-LAo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zhU-wk-zJG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +48,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FileMan Icon" width="321" height="284"/>
+    </resources>
 </document>

@@ -18,6 +18,7 @@
 		211BE7C91E6C7CB7009A7F4C /* DownloadsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211BE7C81E6C7CB7009A7F4C /* DownloadsTableViewCell.m */; };
 		211E7E181E2D3B8F00F571B2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211E7E171E2D3B8F00F571B2 /* MessageUI.framework */; };
 		212104CB1E2195800090BDF3 /* SearchEngineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */; };
+		2136E6921E6F032D00570476 /* StepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2136E6911E6F032D00570476 /* StepsViewController.m */; };
 		214DCF8A1E2EA4FB00329A5A /* BookmarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 214DCF891E2EA4FB00329A5A /* BookmarkTableViewCell.m */; };
 		214DCF901E2EAB8D00329A5A /* BookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 214DCF8F1E2EAB8D00329A5A /* BookmarksTableViewController.m */; };
 		214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E00581E4CB30000B5ACC2 /* CoreImage.framework */; };
@@ -77,6 +78,8 @@
 		211E7E171E2D3B8F00F571B2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		212104C91E2195800090BDF3 /* SearchEngineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchEngineTableViewController.h; sourceTree = "<group>"; };
 		212104CA1E2195800090BDF3 /* SearchEngineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchEngineTableViewController.m; sourceTree = "<group>"; };
+		2136E6901E6F032D00570476 /* StepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepsViewController.h; sourceTree = "<group>"; };
+		2136E6911E6F032D00570476 /* StepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepsViewController.m; sourceTree = "<group>"; };
 		214DCF881E2EA4FB00329A5A /* BookmarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkTableViewCell.h; sourceTree = "<group>"; };
 		214DCF891E2EA4FB00329A5A /* BookmarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkTableViewCell.m; sourceTree = "<group>"; };
 		214DCF8E1E2EAB8D00329A5A /* BookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksTableViewController.h; sourceTree = "<group>"; };
@@ -228,6 +231,15 @@
 				B076DA1F3E6825376B72D08A /* libPods-FileMan.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2136E68F1E6F028700570476 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				2136E6901E6F032D00570476 /* StepsViewController.h */,
+				2136E6911E6F032D00570476 /* StepsViewController.m */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		213C31E71E65C16D009A6F66 /* Downloads */ = {
@@ -418,6 +430,7 @@
 				21EFED271E14122B00D7755E /* AppDelegate.m */,
 				2180963D1E2EE8740059870E /* DataRef.h */,
 				2180963E1E2EE8740059870E /* DataRef.m */,
+				2136E68F1E6F028700570476 /* Tutorial */,
 				21CA73671E648FAB0028BCF6 /* Tab Bar Controller */,
 				211D8A231E16EED400DB3072 /* Web Browser */,
 				21A04F9A1E1D664100254D8F /* History */,
@@ -609,6 +622,7 @@
 				219B814C1E4B649300620348 /* PDFViewerViewController.m in Sources */,
 				211BE7C21E6C7C79009A7F4C /* TWRDownloadManager.m in Sources */,
 				21A04F931E1ABDDA00254D8F /* HistoryTableViewController.m in Sources */,
+				2136E6921E6F032D00570476 /* StepsViewController.m in Sources */,
 				210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */,
 				217B069D1E6E062F0083846F /* SetPasscodeTableViewController.m in Sources */,
 				217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */,

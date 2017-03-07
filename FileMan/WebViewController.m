@@ -25,14 +25,18 @@
 
 @end
 
-@implementation WebViewController
+@implementation WebViewController {
+    
+    AppDelegate *appDelegate;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     // Initiate reference to AppDelegate.
-    //appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     toolbarHidden = NO;
     
@@ -124,7 +128,19 @@
         _homeButton.enabled = YES;
         
     }
-    
+    /*
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && appDelegate.dataRef.lock == YES) {
+        
+        PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
+        
+        vc.purpose = 1;
+        
+        [self presentPasscodeViewController:vc];
+        
+        appDelegate.dataRef.lock = NO;
+        
+    }
+    */
 }
 
 -(void)presentDownloadViewController:(StartDownloadTableViewController *)downloadViewController {
