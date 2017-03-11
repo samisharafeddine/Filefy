@@ -11,6 +11,8 @@
 #import "TWRDownloadManager.h"
 #import "PasscodeTableViewController.h"
 
+@import Firebase;
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [FIRApp configure];
     
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeOnLaunch"];
     
