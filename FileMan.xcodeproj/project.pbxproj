@@ -53,11 +53,10 @@
 		21EFED331E14122B00D7755E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EFED311E14122B00D7755E /* LaunchScreen.storyboard */; };
 		21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED3B1E141ADC00D7755E /* WebViewController.m */; };
 		21EFED451E157FE000D7755E /* URLNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED441E157FE000D7755E /* URLNavView.m */; };
-		6800B659BB2ED930D61B7C26 /* libPods-FileMan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D958EFF693D5A82457D88144 /* libPods-FileMan.a */; };
+		72EB1F7984DC1FA18D0B69B8 /* libPods-FileMan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4187CD894029BBDD188D1AFE /* libPods-FileMan.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13CBB8852F3478C262B045ED /* Pods-FileMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-FileMan/Pods-FileMan.release.xcconfig"; sourceTree = "<group>"; };
 		210F8F3E1E2DB6150096E5C3 /* URLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLTextField.h; sourceTree = "<group>"; };
 		210F8F3F1E2DB6150096E5C3 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLTextField.m; sourceTree = "<group>"; };
 		211527191E686AFC005F5C92 /* DefaultTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTabTableViewController.h; sourceTree = "<group>"; };
@@ -143,8 +142,9 @@
 		21EFED3B1E141ADC00D7755E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		21EFED431E157FE000D7755E /* URLNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLNavView.h; sourceTree = "<group>"; };
 		21EFED441E157FE000D7755E /* URLNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLNavView.m; sourceTree = "<group>"; };
-		7F01BE72B1DBFC0FD631C6F9 /* Pods-FileMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FileMan/Pods-FileMan.debug.xcconfig"; sourceTree = "<group>"; };
-		D958EFF693D5A82457D88144 /* libPods-FileMan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FileMan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40D7B51835BAA527DD06AA0D /* Pods-FileMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-FileMan/Pods-FileMan.release.xcconfig"; sourceTree = "<group>"; };
+		4187CD894029BBDD188D1AFE /* libPods-FileMan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FileMan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C7B92422E5F481D1DA264C0 /* Pods-FileMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FileMan/Pods-FileMan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,22 +156,13 @@
 				214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */,
 				219B81521E4BABB500620348 /* MediaPlayer.framework in Frameworks */,
 				211E7E181E2D3B8F00F571B2 /* MessageUI.framework in Frameworks */,
-				6800B659BB2ED930D61B7C26 /* libPods-FileMan.a in Frameworks */,
+				72EB1F7984DC1FA18D0B69B8 /* libPods-FileMan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C7C9054DA89524A5DB192F8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7F01BE72B1DBFC0FD631C6F9 /* Pods-FileMan.debug.xcconfig */,
-				13CBB8852F3478C262B045ED /* Pods-FileMan.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		2101C2E91E25AA7F008110EE /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +230,7 @@
 				214E00581E4CB30000B5ACC2 /* CoreImage.framework */,
 				219B81511E4BABB500620348 /* MediaPlayer.framework */,
 				211E7E171E2D3B8F00F571B2 /* MessageUI.framework */,
-				D958EFF693D5A82457D88144 /* libPods-FileMan.a */,
+				4187CD894029BBDD188D1AFE /* libPods-FileMan.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,7 +413,7 @@
 				21EFED221E14122B00D7755E /* FileMan */,
 				21EFED211E14122B00D7755E /* Products */,
 				211E7E161E2D3B8F00F571B2 /* Frameworks */,
-				0C7C9054DA89524A5DB192F8 /* Pods */,
+				2F5358547E5B4840CECEAA44 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -465,6 +456,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2F5358547E5B4840CECEAA44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C7B92422E5F481D1DA264C0 /* Pods-FileMan.debug.xcconfig */,
+				40D7B51835BAA527DD06AA0D /* Pods-FileMan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -472,13 +472,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21EFED371E14122B00D7755E /* Build configuration list for PBXNativeTarget "FileMan" */;
 			buildPhases = (
-				C36BBED496B0BE96D3EE7FC6 /* [CP] Check Pods Manifest.lock */,
+				D8FBBCA8831AB2EE22852AE2 /* [CP] Check Pods Manifest.lock */,
 				21EFED1C1E14122B00D7755E /* Sources */,
 				21EFED1D1E14122B00D7755E /* Frameworks */,
 				21EFED1E1E14122B00D7755E /* Resources */,
-				1B813A6082005FB688986C64 /* [CP] Embed Pods Frameworks */,
-				4D61A94B216016E029F7CD16 /* [CP] Copy Pods Resources */,
 				217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */,
+				1323B6A1CF5149C4DB2FA0FE /* [CP] Embed Pods Frameworks */,
+				54525F9E0270D8F7B810474A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -543,7 +543,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B813A6082005FB688986C64 /* [CP] Embed Pods Frameworks */ = {
+		1323B6A1CF5149C4DB2FA0FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,7 +560,7 @@
 		};
 		217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -568,11 +568,11 @@
 			name = "Run Script for firebase crash reporting ";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:186348427387:ios:8f5a7156796d0ab3\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/fileman-ad90a-firebase-crashreporting-45xj7-0c02020a4b.json\"";
 		};
-		4D61A94B216016E029F7CD16 /* [CP] Copy Pods Resources */ = {
+		54525F9E0270D8F7B810474A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -587,7 +587,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FileMan/Pods-FileMan-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C36BBED496B0BE96D3EE7FC6 /* [CP] Check Pods Manifest.lock */ = {
+		D8FBBCA8831AB2EE22852AE2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -764,7 +764,7 @@
 		};
 		21EFED381E14122B00D7755E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F01BE72B1DBFC0FD631C6F9 /* Pods-FileMan.debug.xcconfig */;
+			baseConfigurationReference = 9C7B92422E5F481D1DA264C0 /* Pods-FileMan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QV3625575M;
@@ -779,7 +779,7 @@
 		};
 		21EFED391E14122B00D7755E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13CBB8852F3478C262B045ED /* Pods-FileMan.release.xcconfig */;
+			baseConfigurationReference = 40D7B51835BAA527DD06AA0D /* Pods-FileMan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QV3625575M;
