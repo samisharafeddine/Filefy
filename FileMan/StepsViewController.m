@@ -7,6 +7,7 @@
 //
 
 #import "StepsViewController.h"
+#import "AppDelegate.h"
 
 @interface StepsViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AppDelegate *shared = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    shared.blockRotation = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +42,12 @@
     UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"RootController"];
     [vc setModalPresentationStyle:UIModalPresentationCustom];
     [vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:vc animated:YES completion:^{
+        
+        AppDelegate *shared = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        shared.blockRotation = NO;
+        
+    }];
     
 }
 
