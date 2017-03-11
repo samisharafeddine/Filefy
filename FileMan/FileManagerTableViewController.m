@@ -19,6 +19,8 @@
 #import "XMusicFile.h"
 #import "PasscodeTableViewController.h"
 
+@import Firebase;
+
 @interface FileManagerTableViewController ()
 
 @property (strong, nonatomic) UISearchController *searchController;
@@ -90,6 +92,8 @@
 }
 
 -(IBAction)showPlayer:(id)sender {
+    
+    FIRCrashLog(@"Showing music player");
     
     MusicPlayerViewController *player = [MusicPlayerViewController sharedInstance];
     [self presentMusicViewController:player];
@@ -622,6 +626,8 @@
 
 -(IBAction)editButtonPressed:(id)sender {
     
+    FIRCrashLog(@"Files editing started");
+    
     if (!isEditing) {
         
         isEditing = YES;
@@ -645,6 +651,8 @@
 }
 
 -(IBAction)deleteSelectedItems:(id)sender {
+    
+    FIRCrashLog(@"File deletion");
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete selected items?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -693,6 +701,8 @@
 }
 
 -(IBAction)optionsPressed:(id)sender {
+    
+    FIRCrashLog(@"Options List");
     
     NSString *moveActionTitle;
     NSString *copyActionTitle;
@@ -826,6 +836,8 @@
 }
 
 -(IBAction)newFolder:(id)sender {
+    
+    FIRCrashLog(@"New folder");
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Folder" message:@"Enter folder name" preferredStyle:UIAlertControllerStyleAlert];
     

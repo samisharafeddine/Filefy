@@ -8,6 +8,8 @@
 
 #import "PDFViewerViewController.h"
 
+@import Firebase;
+
 @interface PDFViewerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *pdfWebView;
@@ -37,6 +39,8 @@
 }
 
 -(IBAction)actionPressed:(id)sender {
+    
+    FIRCrashLog(@"Action button pressed in PDF viewer");
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[self.pdfURL] applicationActivities:nil];
     

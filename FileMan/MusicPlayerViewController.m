@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 
+@import Firebase;
+
 @interface MusicPlayerViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *albumArtwork;
@@ -54,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //assert(NO);
     
     self.songName.layer.shadowOpacity = 0.8;
     self.songName.layer.shadowRadius = 5.0;
@@ -504,11 +508,15 @@
 
 -(IBAction)playButtonPressed:(id)sender {
     
+    FIRCrashLog(@"Play song");
+    
     [self playOrPause];
     
 }
 
 -(IBAction)goBackPressed:(id)sender {
+    
+    FIRCrashLog(@"GoBack song");
     
     [self back];
     
@@ -516,11 +524,15 @@
 
 -(IBAction)goForwardPressed:(id)sender {
     
+    FIRCrashLog(@"GoForward Song");
+    
     [self next:NO];
     
 }
 
 -(IBAction)repeatPressed:(id)sender {
+    
+    FIRCrashLog(@"Repeat pressed");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -567,6 +579,8 @@
 
 -(IBAction)shuffleButtonSelected:(id)sender {
     
+    FIRCrashLog(@"Shufffle selected");
+    
     if (!shuffleEnabled) {
         
         shuffleEnabled = YES;
@@ -583,6 +597,8 @@
 
 -(IBAction)timeSliderValueChanged:(id)sender {
     
+    FIRCrashLog(@"Time Slider Value changed");
+    
     if (timer) {
         
         [self stopTimer];
@@ -594,6 +610,8 @@
 }
 
 -(IBAction)timeSliderFinishedChanging:(id)sender {
+    
+    FIRCrashLog(@"Time slider value finished changing");
     
     if (self.player.playing) {
         
@@ -614,6 +632,8 @@
 }
 
 -(IBAction)hideMusicVC:(id)sender {
+    
+    FIRCrashLog(@"Hiding MusicVC");
     
     [self dismissVc];
     

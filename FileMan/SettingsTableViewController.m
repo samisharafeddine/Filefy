@@ -11,6 +11,8 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 
+@import Firebase;
+
 @interface SettingsTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *searchEngineLabel;
@@ -463,6 +465,8 @@
 }
 
 -(IBAction)loveMePlz:(id)sender {
+    
+    FIRCrashLog(@"Dina :3");
     
     SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
     

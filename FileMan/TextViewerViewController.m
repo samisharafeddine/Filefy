@@ -8,6 +8,8 @@
 
 #import "TextViewerViewController.h"
 
+@import Firebase;
+
 @interface TextViewerViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *textViewer;
@@ -112,6 +114,8 @@
 
 -(IBAction)edit:(id)sender {
     
+    FIRCrashLog(@"Editing text");
+    
     if (!editMode) {
         
         self.textViewer.editable = YES;
@@ -143,6 +147,8 @@
 }
 
 -(IBAction)back:(id)sender {
+    
+    FIRCrashLog(@"Going back from text viewer");
     
     if (!editMode) {
         
@@ -199,6 +205,8 @@
 }
 
 -(IBAction)actionPressed:(id)sender {
+    
+    FIRCrashLog(@"Action button pressed in text viewer");
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
     

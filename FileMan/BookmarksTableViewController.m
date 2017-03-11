@@ -10,6 +10,8 @@
 #import "BookmarksTableViewController.h"
 #import "BookmarkTableViewCell.h"
 
+@import Firebase;
+
 @interface BookmarksTableViewController ()
 
 @end
@@ -117,6 +119,8 @@
 
 -(IBAction)doneButton:(id)sender {
     
+    FIRCrashLog(@"Done viewing bookmarks");
+    
     [self dismissViewControllerAnimated:YES completion:^{
         
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"loadBookmark" object:nil];
@@ -162,6 +166,8 @@
 }
 
 -(IBAction)addBookmark:(id)sender {
+    
+    FIRCrashLog(@"Add bookmark pressed");
     
     NSString *storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];

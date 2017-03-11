@@ -9,6 +9,8 @@
 #import "HistoryTableViewController.h"
 #import "HistoryTableViewCell.h"
 
+@import Firebase;
+
 @interface HistoryTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
@@ -45,6 +47,8 @@
 }
 
 -(IBAction)clearButton:(id)sender {
+    
+    FIRCrashLog(@"Clearing all history");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Are you sure you want to clear all history?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -95,6 +99,8 @@
 }
 
 -(IBAction)doneButton:(id)sender {
+    
+    FIRCrashLog(@"Done viewing history");
     
     [self dismissViewControllerAnimated:YES completion:^{
         

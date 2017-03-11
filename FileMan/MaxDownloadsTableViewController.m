@@ -8,6 +8,8 @@
 
 #import "MaxDownloadsTableViewController.h"
 
+@import Firebase;
+
 @interface MaxDownloadsTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -67,6 +69,8 @@
 }
 
 -(IBAction)done:(id)sender {
+    
+    FIRCrashLog(@"Done editing number of max downloads");
     
     NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     

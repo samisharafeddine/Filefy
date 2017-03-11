@@ -9,6 +9,8 @@
 #import "StartDownloadTableViewController.h"
 #import "TWRDownloadManager.h"
 
+@import Firebase;
+
 @interface StartDownloadTableViewController ()
 
 @end
@@ -53,6 +55,8 @@
 }
 
 -(IBAction)cancel:(id)sender {
+    
+    FIRCrashLog(@"Canceled starting download");
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

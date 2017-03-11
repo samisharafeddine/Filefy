@@ -8,6 +8,8 @@
 
 #import "AddBTableViewController.h"
 
+@import Firebase;
+
 @interface AddBTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *bookmarkTitle;
@@ -84,6 +86,8 @@
 }
 
 -(IBAction)cancelButton:(id)sender {
+    
+    FIRCrashLog(@"Canceled adding a bookmark");
     
     [self dismissViewControllerAnimated:YES completion:^{
         

@@ -8,6 +8,8 @@
 
 #import "EditMIMETableViewController.h"
 
+@import Firebase;
+
 @interface EditMIMETableViewController ()
 
 @end
@@ -33,12 +35,16 @@
 
 -(IBAction)cancel:(id)sender {
     
+    FIRCrashLog(@"Canceled editing MIME");
+    
     [[NSNotificationCenter defaultCenter] removeObserver:@"newMIME"];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 -(IBAction)save:(id)sender {
+    
+    FIRCrashLog(@"Save edited MIME");
     
     if ([self.mime.text isEqualToString:@""] || self.mime.text == nil) {
         

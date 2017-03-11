@@ -8,6 +8,8 @@
 
 #import "EditPropsTableViewController.h"
 
+@import Firebase;
+
 @interface EditPropsTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *fileName;
@@ -78,6 +80,8 @@
 }
 
 -(IBAction)editPressed:(id)sender {
+    
+    FIRCrashLog(@"Editing a file props");
     
     if (editMode) {
         

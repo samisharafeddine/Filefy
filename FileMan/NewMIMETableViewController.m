@@ -8,6 +8,8 @@
 
 #import "NewMIMETableViewController.h"
 
+@import Firebase;
+
 @interface NewMIMETableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *mime;
@@ -33,12 +35,16 @@
 
 -(IBAction)cancel:(id)sender {
     
+    FIRCrashLog(@"Cancel adding new MIME");
+    
     [[NSNotificationCenter defaultCenter] removeObserver:@"newMIME"];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 -(IBAction)save:(id)sender {
+    
+    FIRCrashLog(@"Save new MIME");
     
     if ([self.mime.text isEqualToString:@""] || self.mime.text == nil) {
         

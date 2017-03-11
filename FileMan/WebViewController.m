@@ -12,6 +12,8 @@
 #import "StartDownloadTableViewController.h"
 #import "PasscodeTableViewController.h"
 
+@import Firebase;
+
 @interface WebViewController ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -448,6 +450,8 @@
 
 -(IBAction)refreshOrStop {
     
+    FIRCrashLog(@"Refresh button pressed");
+    
     if (self.webView.loading == YES) {
         
         [_webView stopLoading];
@@ -503,11 +507,15 @@
 
 -(IBAction)goBack:(id)sender {
     
+    FIRCrashLog(@"GoBack button pressed");
+    
     [_webView goBack];
     
 }
 
 -(IBAction)goForward:(id)sender {
+    
+    FIRCrashLog(@"GoForward Button pressed");
     
     [_webView goForward];
     
@@ -576,6 +584,8 @@
 }
 
 -(IBAction)actionSheetPopup:(id)sender {
+    
+    FIRCrashLog(@"Action Sheet from web view controller");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@", self.webView.request.URL] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -711,6 +721,8 @@
 
 -(IBAction)showBookmarks:(id)sender {
     
+    FIRCrashLog(@"Show bookmarks pressed");
+    
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"BookmarksController"];
@@ -769,6 +781,8 @@
 }
 
 -(IBAction)homeTapped:(id)sender {
+    
+    FIRCrashLog(@"Home Tapped in web view controller");
     
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
     [self urlProcessing:homePage fromHomePageSetting:@"yes"];

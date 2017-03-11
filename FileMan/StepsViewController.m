@@ -9,6 +9,8 @@
 #import "StepsViewController.h"
 #import "AppDelegate.h"
 
+@import Firebase;
+
 @interface StepsViewController ()
 
 @end
@@ -30,6 +32,8 @@
 }
 
 -(IBAction)myAppIsDope:(id)sender {
+    
+    FIRCrashLog(@"Tutorial Start Button Pushed");
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
         
