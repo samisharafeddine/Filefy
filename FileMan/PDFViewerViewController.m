@@ -33,6 +33,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [FIRAnalytics logEventWithName:@"Using_PDF_Viewer" parameters:nil];
+    
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setToolbarHidden:YES];
     
@@ -41,6 +43,8 @@
 -(IBAction)actionPressed:(id)sender {
     
     FIRCrashLog(@"Action button pressed in PDF viewer");
+    
+    [FIRAnalytics logEventWithName:@"OpenIn_From_PDFViewer" parameters:nil];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[self.pdfURL] applicationActivities:nil];
     

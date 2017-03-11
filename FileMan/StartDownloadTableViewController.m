@@ -72,6 +72,8 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
         
+        [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
+        
         [self dismissViewControllerAnimated:YES completion:^{
             
             [[NSNotificationCenter defaultCenter] removeObserver:@"reloadData"];

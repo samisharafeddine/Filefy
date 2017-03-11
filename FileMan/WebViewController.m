@@ -360,6 +360,8 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
     
+    [FIRAnalytics logEventWithName:@"Load_Webpage" parameters:nil];
+    
 }
 
 -(void)updateButtons {
@@ -678,6 +680,8 @@
         [self.webView loadRequest:request];
         
     }
+    
+    [FIRAnalytics logEventWithName:@"Using_Search" parameters:@{@"Search_Engine": currentSearchEngine}];
     
 }
 

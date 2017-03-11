@@ -52,6 +52,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [FIRAnalytics logEventWithName:@"Using_Text_Viewer" parameters:nil];
+    
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setToolbarHidden:YES];
     
@@ -207,6 +209,8 @@
 -(IBAction)actionPressed:(id)sender {
     
     FIRCrashLog(@"Action button pressed in text viewer");
+    
+    [FIRAnalytics logEventWithName:@"OpenIn_From_TextViewer" parameters:nil];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
     

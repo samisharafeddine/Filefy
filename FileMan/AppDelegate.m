@@ -165,6 +165,8 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
+    [FIRAnalytics logEventWithName:@"Used_File_Importing" parameters:@{@"File_Type": [url pathExtension]}];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openFile" object:url];
     
     return YES;

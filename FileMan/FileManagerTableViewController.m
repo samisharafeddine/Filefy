@@ -640,6 +640,8 @@
 
 -(IBAction)editButtonPressed:(id)sender {
     
+    [FIRAnalytics logEventWithName:@"Using_File_Editing" parameters:nil];
+    
     FIRCrashLog(@"Files editing started");
     
     if (!isEditing) {

@@ -42,6 +42,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [FIRAnalytics logEventWithName:@"Using_FileProps_Editing" parameters:nil];
+    
     [self.navigationController setToolbarHidden:YES];
     
 }
@@ -138,6 +140,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 1) {
+        
+        [FIRAnalytics logEventWithName:@"Using_OpenIn_From_FileProps" parameters:nil];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
         

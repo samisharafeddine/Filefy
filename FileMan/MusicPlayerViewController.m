@@ -129,6 +129,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [FIRAnalytics logEventWithName:@"Using_Music_Player" parameters:nil];
+    
     if (self.fromSelection) {
         
         self.fromSelection = NO;
