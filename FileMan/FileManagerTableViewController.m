@@ -170,7 +170,16 @@
         
         //self.playerButton.image = [UIImage imageNamed:@"MusicPlayer"];
         self.playerButton.enabled = YES;
-        self.playbackIndicator.state = NAKPlaybackIndicatorViewStatePlaying;
+        
+        if (appDelegate.dataRef.isPlaying) {
+            
+            self.playbackIndicator.state = NAKPlaybackIndicatorViewStatePlaying;
+            
+        } else {
+            
+            self.playbackIndicator.state = NAKPlaybackIndicatorViewStatePaused;
+            
+        }
         
     } else {
         

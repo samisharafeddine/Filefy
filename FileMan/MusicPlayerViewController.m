@@ -34,7 +34,11 @@
 
 @end
 
-@implementation MusicPlayerViewController
+@implementation MusicPlayerViewController {
+    
+    AppDelegate *appDelegate;
+    
+}
 
 @synthesize fromSelection;
 
@@ -58,6 +62,8 @@
     // Do any additional setup after loading the view.
     
     //assert(NO);
+    
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.songName.layer.shadowOpacity = 0.8;
     self.songName.layer.shadowRadius = 5.0;
@@ -235,11 +241,15 @@
         [self.player pause];
         [self updateButtons];
         
+        appDelegate.dataRef.isPlaying = NO;
+        
     } else {
         
         [self.player play];
         [self startTimer];
         [self updateButtons];
+        
+        appDelegate.dataRef.isPlaying = YES;
         
     }
     
