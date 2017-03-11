@@ -478,6 +478,7 @@
 				21EFED1E1E14122B00D7755E /* Resources */,
 				1B813A6082005FB688986C64 /* [CP] Embed Pods Frameworks */,
 				4D61A94B216016E029F7CD16 /* [CP] Copy Pods Resources */,
+				217E46F71E74322F004E9F2A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -556,6 +557,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FileMan/Pods-FileMan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		217E46F71E74322F004E9F2A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		4D61A94B216016E029F7CD16 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

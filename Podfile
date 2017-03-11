@@ -8,6 +8,7 @@ target 'FileMan' do
   # Pods for FileMan
 
   pod 'Firebase/Core'
+  pod 'Firebase/Crash'
 
   pod "MWPhotoBrowser"
   pod "SSZipArchive"
