@@ -30,8 +30,8 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setToolbarHidden:YES];

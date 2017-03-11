@@ -26,8 +26,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationController.toolbarHidden = YES;
-    
     self.textViewer.delegate = self;
     
     self.navigationItem.title = self.title;
@@ -51,11 +49,11 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.toolbarHidden = YES;
+    [self.navigationController setToolbarHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardDidShowNotification object:nil];
     

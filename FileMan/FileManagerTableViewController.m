@@ -244,8 +244,6 @@
     
     isBarHidden = YES;
     
-    self.navigationController.toolbarHidden = YES;
-    
 }
 
 - (void)didReceiveMemoryWarning {
