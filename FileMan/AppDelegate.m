@@ -25,11 +25,27 @@
     
     [FIRApp configure];
     
+    NSNumber *buildNumber = (NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+    
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeOnLaunch"];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
         
         // Normal view
+        
+        // Assign buildNumber for older versions of FileMan.
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"buildNumber"] == nil) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
+            
+        }
+        
+        if ((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"buildNumber"] < buildNumber) {
+            
+            /* Place new settings here and update build number in NSUserDefaults */
+            [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
+            
+        }
         
     } else {
         
@@ -61,6 +77,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"passcode"];
+        [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
