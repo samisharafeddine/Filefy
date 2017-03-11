@@ -13,4 +13,6 @@ target 'FileMan' do
   pod "MWPhotoBrowser"
   pod "SSZipArchive"
 
+  pod 'NAKPlaybackIndicatorView'
+
 end

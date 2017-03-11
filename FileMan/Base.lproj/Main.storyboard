@@ -608,9 +608,14 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="File Manager" id="Bmc-yL-hhy">
-                        <barButtonItem key="rightBarButtonItem" image="MusicPlayer" id="yq6-lx-EWp">
+                        <barButtonItem key="rightBarButtonItem" id="OwE-Hc-kgx">
+                            <view key="customView" contentMode="scaleToFill" id="WhJ-hh-dPY" customClass="NAKPlaybackIndicatorView">
+                                <rect key="frame" x="381" y="16" width="13" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <connections>
-                                <action selector="showPlayer:" destination="DEF-Tb-nsl" id="ZCp-dG-UHY"/>
+                                <action selector="showPlayer:" destination="DEF-Tb-nsl" id="Bkk-lE-OBO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -618,7 +623,8 @@
                         <outlet property="createFolder" destination="WP5-Xc-3F1" id="i4g-ie-X3x"/>
                         <outlet property="editButton" destination="VSH-dH-FGT" id="8ib-VA-Rcu"/>
                         <outlet property="optionsButton" destination="Skn-y3-hEd" id="kkU-WK-ZPL"/>
-                        <outlet property="playerButton" destination="yq6-lx-EWp" id="MSU-WG-T8R"/>
+                        <outlet property="playbackIndicator" destination="WhJ-hh-dPY" id="aEN-74-TU3"/>
+                        <outlet property="playerButton" destination="OwE-Hc-kgx" id="SpD-CH-ABp"/>
                         <outlet property="removeButton" destination="Sfd-gg-jCA" id="dX4-dV-KmG"/>
                         <segue destination="nbp-T5-7RT" kind="show" identifier="pdfViewerSegue" id="c8r-59-QeB"/>
                         <segue destination="flN-gq-eEx" kind="show" identifier="textViewerSegue" id="3n1-o2-nAI"/>
@@ -2662,7 +2668,6 @@
         <image name="Home" width="22" height="22"/>
         <image name="List" width="22" height="22"/>
         <image name="Mail" width="33" height="33"/>
-        <image name="MusicPlayer" width="22" height="22"/>
         <image name="NewFolder" width="22" height="22"/>
         <image name="PlayButton" width="34" height="34"/>
         <image name="SettingsNotSelected" width="22" height="22"/>

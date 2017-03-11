@@ -19,6 +19,8 @@
 #import "XMusicFile.h"
 #import "PasscodeTableViewController.h"
 
+#import <NAKPlaybackIndicatorView.h>
+
 @import Firebase;
 
 @interface FileManagerTableViewController ()
@@ -30,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *optionsButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *createFolder;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *playerButton;
+
+@property (weak, nonatomic) IBOutlet NAKPlaybackIndicatorView *playbackIndicator;
 
 @end
 
@@ -64,6 +68,10 @@
     
     [self updateButtons];
     
+    UITapGestureRecognizer *tapInditator = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPlayer:)];
+    tapInditator.numberOfTapsRequired = 1;
+    [self.playbackIndicator addGestureRecognizer:tapInditator];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -95,8 +103,12 @@
     
     FIRCrashLog(@"Showing music player");
     
-    MusicPlayerViewController *player = [MusicPlayerViewController sharedInstance];
-    [self presentMusicViewController:player];
+    if (appDelegate.dataRef.hasPlayedOnce) {
+        
+        MusicPlayerViewController *player = [MusicPlayerViewController sharedInstance];
+        [self presentMusicViewController:player];
+        
+    }
     
 }
 
@@ -156,13 +168,15 @@
     
     if (appDelegate.dataRef.hasPlayedOnce) {
         
-        self.playerButton.image = [UIImage imageNamed:@"MusicPlayer"];
+        //self.playerButton.image = [UIImage imageNamed:@"MusicPlayer"];
         self.playerButton.enabled = YES;
+        self.playbackIndicator.state = NAKPlaybackIndicatorViewStatePlaying;
         
     } else {
         
-        self.playerButton.image = nil;
+        //self.playerButton.image = nil;
         self.playerButton.enabled = NO;
+        self.playbackIndicator.state = NAKPlaybackIndicatorViewStateStopped;
         
     }
     
