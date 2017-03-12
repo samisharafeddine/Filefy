@@ -468,6 +468,8 @@
     
     FIRCrashLog(@"Dina :3");
     
+    [FIRAnalytics logEventWithName:@"Dina" parameters:nil];
+    
     SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
     
     tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
