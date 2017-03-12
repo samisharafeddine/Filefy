@@ -239,17 +239,15 @@
         
         [self stopTimer];
         [self.player pause];
-        [self updateButtons];
-        
         appDelegate.dataRef.isPlaying = NO;
+        [self updateButtons];
         
     } else {
         
         [self.player play];
         [self startTimer];
-        [self updateButtons];
-        
         appDelegate.dataRef.isPlaying = YES;
+        [self updateButtons];
         
     }
     
