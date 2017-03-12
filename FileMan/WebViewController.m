@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *loadingProgressView;
 @property (weak, nonatomic) IBOutlet URLNavView *navBarView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *urlEffect;
 
 @end
 
@@ -51,6 +52,8 @@
     _navBarView.layer.cornerRadius = 5;
     _navBarView.layer.masksToBounds = YES;
     _urlField.layer.cornerRadius = 5;
+    _urlEffect.layer.cornerRadius = 5;
+    _urlEffect.layer.masksToBounds = YES;
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     _urlField.leftView = paddingView;
