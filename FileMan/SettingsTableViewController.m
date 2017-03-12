@@ -212,11 +212,15 @@
         
         if (indexPath.row == 0) {
             
+            [FIRAnalytics logEventWithName:@"Rate_App" parameters:nil];
+            
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195660245"]];
             
         } else if (indexPath.row == 1) {
+            
+            [FIRAnalytics logEventWithName:@"Send_Mail" parameters:nil];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -319,6 +323,8 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
         
+        [FIRAnalytics logEventWithName:@"Disable_Passcode" parameters:nil];
+        
     }
     
     [self.passcode setOn:NO animated:YES];
@@ -329,6 +335,8 @@
     
     [self.passcode setOn:YES animated:YES];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeLock"];
+    
+    [FIRAnalytics logEventWithName:@"Set_Passcode" parameters:nil];
     
 }
 
@@ -345,12 +353,16 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"hasURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [FIRAnalytics logEventWithName:@"Clear_Coockies" parameters:nil];
+    
 }
 
 -(void)clearCache {
     
     // Clear Cache.
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    [FIRAnalytics logEventWithName:@"Clear_Cache" parameters:nil];
     
 }
 
