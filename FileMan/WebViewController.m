@@ -568,6 +568,16 @@
         
     }
     
+    if ([self.urlField.text isEqualToString:@""] || self.urlField.text == nil) {
+        
+        refresh.hidden = YES;
+        
+    } else {
+        
+        refresh.hidden = NO;
+        
+    }
+    
     /*
      
      // Old method to color URLTextField
