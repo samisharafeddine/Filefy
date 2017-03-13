@@ -38,12 +38,16 @@
             
             [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
             
+            [FIRAnalytics logEventWithName:@"Updated_to_fix_build_recognition" parameters:@{@"Build": [NSString stringWithFormat:@"%ld", (long)[buildNumber integerValue]]}];
+            
         }
         
         if ((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"buildNumber"] < buildNumber) {
             
             /* Place new settings here and update build number in NSUserDefaults */
             [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
+            
+            [FIRAnalytics logEventWithName:@"Updated_To_Build" parameters:@{@"build": [NSString stringWithFormat:@"%ld", (long)[buildNumber integerValue]]}];
             
         }
         
