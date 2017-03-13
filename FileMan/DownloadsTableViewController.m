@@ -220,11 +220,30 @@
         
         UITableViewRowAction *cancel = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Cancel" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
-            NSString *identifier = [[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to cancel this download ?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
             
-            [[TWRDownloadManager sharedManager] cancelDownloadForUrl:identifier];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil];
             
-            [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.3];
+            UIAlertAction *cancelDownload = [UIAlertAction actionWithTitle:@"Cancel Download" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSString *identifier = [[[TWRDownloadManager sharedManager] currentDownloads] objectAtIndex:indexPath.row];
+                
+                [[TWRDownloadManager sharedManager] cancelDownloadForUrl:identifier];
+                
+                [self performSelector:@selector(reloadData) withObject:nil afterDelay:0.3];
+                
+            }];
+            
+            DownloadsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            
+            alert.popoverPresentationController.sourceView = cell;
+            alert.popoverPresentationController.sourceRect = cell.bounds;
+            alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            
+            [alert addAction:cancel];
+            [alert addAction:cancelDownload];
+            
+            [self presentViewController:alert animated:YES completion:nil];
             
         }];
         
