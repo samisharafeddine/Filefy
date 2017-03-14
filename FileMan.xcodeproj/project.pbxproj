@@ -560,7 +560,7 @@
 		};
 		217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -568,7 +568,7 @@
 			name = "Run Script for firebase crash reporting ";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:186348427387:ios:8f5a7156796d0ab3\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/fileman-ad90a-firebase-crashreporting-45xj7-0c02020a4b.json\"";
 		};
