@@ -96,8 +96,6 @@
     tapGesture.delegate = self;
     [self.webView addGestureRecognizer:tapGesture];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidLoad:) name:@"AVPlayerItemBecameCurrentNotification" object:nil];
-    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeOnLaunch"]) {
         
         PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
@@ -133,6 +131,9 @@
         _homeButton.enabled = YES;
         
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidLoad:) name:@"AVPlayerItemBecameCurrentNotification" object:nil];
+    
     /*
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && appDelegate.dataRef.lock == YES) {
         
@@ -146,6 +147,13 @@
         
     }
     */
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AVPlayerItemBecameCurrentNotification" object:nil];
+    
 }
 
 -(void)presentDownloadViewController:(StartDownloadTableViewController *)downloadViewController {
