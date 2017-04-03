@@ -48,6 +48,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFile:) name:@"openFileAtURL" object:nil];
     
+    [self.navigationController setToolbarHidden:NO animated:NO];
+    
     isBarHidden = NO;
     isEditing = NO;
     
@@ -131,6 +133,7 @@
         self.optionsButton.enabled = YES;
         self.createFolder.image = [UIImage imageNamed:@"NewFolder"];
         self.createFolder.enabled = YES;
+        self.searchController.searchBar.userInteractionEnabled = NO;
         
     } else {
         
@@ -142,6 +145,7 @@
         self.optionsButton.enabled = NO;
         self.createFolder.image = nil;
         self.createFolder.enabled = NO;
+        self.searchController.searchBar.userInteractionEnabled = YES;
         
     }
     
@@ -213,7 +217,12 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.toolbarHidden = NO;
+    if (isBarHidden) {
+        
+        [self.navigationController setToolbarHidden:NO animated:YES];
+        isBarHidden = NO;
+        
+    }
     
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
@@ -260,12 +269,16 @@
     
     self.navigationController.navigationBar.translucent = YES;
     
+    isCurrentView = YES;
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     isBarHidden = YES;
+    
+    isCurrentView = NO;
     
 }
 
@@ -548,8 +561,7 @@
                 photoBrowser.hidesBottomBarWhenPushed = YES;
                 
                 [self.navigationController setToolbarHidden:YES];
-                
-                //photoBrowser.hidesBottomBarWhenPushed = YES;
+                isBarHidden = YES;
                 
                 [self.navigationController pushViewController:photoBrowser animated:YES];
                 
@@ -619,24 +631,40 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (!isEditing) {
+    if (isCurrentView) {
         
-        if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+        if (!isEditing) {
             
-            [self.navigationController setToolbarHidden:NO animated:YES];
-            isBarHidden = NO;
-            
-        } else if (scrollView.contentOffset.y > scrollOffset && isBarHidden == NO) {
-            
-            [self.navigationController setToolbarHidden:YES animated:YES];
-            isBarHidden = YES;
-            
-        } else if (scrollView.contentOffset.y < scrollOffset && isBarHidden == YES) {
-            
-            [self.navigationController setToolbarHidden:NO animated:YES];
-            isBarHidden = NO;
-            
+            if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+                
+                if (isBarHidden) {
+                    
+                    [self.navigationController setToolbarHidden:NO animated:YES];
+                    isBarHidden = NO;
+                    
+                }
+                
+            } else if (scrollView.contentOffset.y > scrollOffset && isBarHidden == NO) {
+                
+                if (!isBarHidden) {
+                    
+                    [self.navigationController setToolbarHidden:YES animated:YES];
+                    isBarHidden = YES;
+                    
+                }
+                
+            } else if (scrollView.contentOffset.y < scrollOffset && isBarHidden == YES) {
+                
+                if (isBarHidden) {
+                    
+                    [self.navigationController setToolbarHidden:NO animated:YES];
+                    isBarHidden = NO;
+                    
+                }
+                
+            }
         }
+        
     }
     
 }
@@ -1055,8 +1083,7 @@
         photoBrowser.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController setToolbarHidden:YES];
-        
-        //photoBrowser.hidesBottomBarWhenPushed = YES;
+        isBarHidden = YES;
         
         [self.navigationController pushViewController:photoBrowser animated:YES];
         
@@ -1080,7 +1107,8 @@
         editor.path = selectedFile.filePath;
         editor.fileTitle = selectedFile.displayName;
         
-        editor.hidesBottomBarWhenPushed = YES;
+        [self.navigationController setToolbarHidden:YES animated:YES];
+        isBarHidden = YES;
         
     }
     
@@ -1095,7 +1123,8 @@
         pdfViewer.pdfURL = [NSURL fileURLWithPath:selectedFile.filePath];
         pdfViewer.pdfTitle = selectedFile.displayName;
         
-        pdfViewer.hidesBottomBarWhenPushed = YES;
+        [self.navigationController setToolbarHidden:YES animated:YES];
+        isBarHidden = YES;
         
     } else if ([segue.identifier isEqual:@"textViewerSegue"]) {
         
@@ -1108,7 +1137,8 @@
         textViewer.path = selectedFile.filePath;
         textViewer.title = selectedFile.displayName;
         
-        textViewer.hidesBottomBarWhenPushed = YES;
+        [self.navigationController setToolbarHidden:YES animated:YES];
+        isBarHidden = YES;
         
     }
     
@@ -1121,7 +1151,8 @@
         pdfViewer.pdfURL = [NSURL fileURLWithPath:passedFile.filePath];
         pdfViewer.pdfTitle = passedFile.displayName;
         
-        pdfViewer.hidesBottomBarWhenPushed = YES;
+        [self.navigationController setToolbarHidden:YES animated:YES];
+        isBarHidden = YES;
         
     } else if ([segue.identifier isEqual:@"openTextViewerSegue"]) {
         
@@ -1132,7 +1163,8 @@
         textViewer.path = passedFile.filePath;
         textViewer.title = passedFile.displayName;
         
-        textViewer.hidesBottomBarWhenPushed = YES;
+        [self.navigationController setToolbarHidden:YES animated:YES];
+        isBarHidden = YES;
         
     }
     

@@ -169,6 +169,8 @@
     
     FIRCrashLog(@"Add bookmark pressed");
     
+    //assert(false);
+    
     NSString *storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"addBookmarkController"];

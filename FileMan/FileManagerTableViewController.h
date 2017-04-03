@@ -18,6 +18,7 @@
     BOOL isEditing;
     NSIndexPath *indexPathForAccessoryButton;
     NSString *passedFilePath;
+    BOOL isCurrentView;
     
 }
 

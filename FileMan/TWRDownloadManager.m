@@ -34,15 +34,13 @@
         
         // Default session
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.HTTPMaximumConnectionsPerHost = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
         configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
 
         // Background session
         NSURLSessionConfiguration *backgroundConfiguration = nil;
 
-        backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.Sami-Sharaf.FileMan.session"];
-        backgroundConfiguration.HTTPMaximumConnectionsPerHost = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
+        backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.Sami-Sharaf.Filefy.DownloadSession"];
         backgroundConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 
         self.backgroundSession = [NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:nil];
