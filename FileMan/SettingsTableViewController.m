@@ -220,7 +220,7 @@
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195660245"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1222563596"]];
             
         } else if (indexPath.row == 1) {
             
@@ -491,7 +491,7 @@
     SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
     
     tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [tweetSheet setInitialText:@"FileMan is an advanced file manager and downloader for iOS, Get it here: http://bit.ly/FileMan"];
+    [tweetSheet setInitialText:@"Filefy is an advanced file manager and downloader for iOS, Get it here: http://bit.ly/Filefy"];
     [self presentViewController:tweetSheet animated:YES completion:nil];
     
 }

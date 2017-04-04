@@ -45,8 +45,6 @@
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     
-    NSLog(@"Selected Tab Bar Index: %lu", [self.tabBar.items indexOfObject:item]);
-    
     if ([self.tabBar.items indexOfObject:item] == 3) {
         
         self.tabBar.tintColor = [UIColor colorWithRed:251.0/255.0 green:206.0/255.0 blue:45.0/255.0 alpha:1.0];
