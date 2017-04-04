@@ -281,6 +281,8 @@
         actionSheet.popoverPresentationController.barButtonItem = self.actionSheetButton;
         actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
         
+        actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+        
         [self presentViewController:actionSheet animated:YES completion:nil];
         
     }
@@ -647,6 +649,8 @@
     actionSheet.popoverPresentationController.barButtonItem = self.actionSheetButton;
     actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     
+    actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
     [self presentViewController:actionSheet animated:YES completion:nil];
     
     
@@ -841,6 +845,9 @@
     }];
     
     [addedAlert addAction:okAction];
+    
+    addedAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
     [self presentViewController:addedAlert animated:YES completion:nil];
     
 }

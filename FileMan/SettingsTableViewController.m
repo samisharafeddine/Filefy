@@ -171,6 +171,8 @@
             actionSheet.popoverPresentationController.sourceRect = cell.bounds;
             actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
             
+            actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+            
             [self presentViewController:actionSheet animated:YES completion:nil];
             
         } else if (indexPath.row == 1) {
@@ -203,6 +205,8 @@
             actionSheet.popoverPresentationController.sourceView = cell;
             actionSheet.popoverPresentationController.sourceRect = cell.bounds;
             actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            
+            actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
             
             [self presentViewController:actionSheet animated:YES completion:nil];
             
@@ -277,6 +281,8 @@
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
                 
                 [alert addAction:ok];
+                
+                alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
                 
                 [self presentViewController:alert animated:YES completion:nil];
                 

@@ -746,6 +746,8 @@
     [alert addAction:cancel];
     [alert addAction:delete];
     
+    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
     alert.popoverPresentationController.barButtonItem = self.removeButton;
     alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     
@@ -807,6 +809,8 @@
         [self copyWithinFileMan];
         
     }];
+    
+    actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [actionSheet addAction:cancelAction];
     [actionSheet addAction:copyToClipboardAction];
@@ -914,6 +918,8 @@
         
     }];
     
+    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
     [alert addAction:cancelAction];
     [alert addAction:createAction];
     
@@ -1006,6 +1012,8 @@
 -(void)errorMessage:(NSString *)error {
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:UIAlertControllerStyleAlert];
+    
+    errorAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [self presentViewController:errorAlert animated:YES completion:^{
         

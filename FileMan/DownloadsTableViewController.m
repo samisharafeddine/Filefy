@@ -240,6 +240,8 @@
             alert.popoverPresentationController.sourceRect = cell.bounds;
             alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
             
+            alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+            
             [alert addAction:cancel];
             [alert addAction:cancelDownload];
             

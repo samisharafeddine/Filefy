@@ -68,6 +68,8 @@
     [actionSheet addAction:cancelAction];
     [actionSheet addAction:clearAction];
     
+    actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
     actionSheet.popoverPresentationController.barButtonItem = self.clearButton;
     actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     
