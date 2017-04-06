@@ -7,7 +7,6 @@
 //
 
 #import "TabBarViewController.h"
-#import "PasscodeTableViewController.h"
 
 @interface TabBarViewController ()
 

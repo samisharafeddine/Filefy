@@ -1,16 +1,19 @@
 //
 //  PasscodeTableViewController.m
-//  FileMan
+//  Filefy
 //
-//  Created by Sami Sharaf on 3/6/17.
+//  Created by Sami Sharaf on 4/6/17.
 //  Copyright © 2017 Sami Sharaf. All rights reserved.
 //
 
 #import "PasscodeTableViewController.h"
 
+#import <LocalAuthentication/LAContext.h>
+
 @interface PasscodeTableViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *passcode;
+@property (weak, nonatomic) IBOutlet UISwitch *passcodeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *touchIDSwitch;
 
 @end
 
@@ -19,6 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [LTHPasscodeViewController sharedUser].delegate = self;
+    
+    [self.passcodeSwitch addTarget:self
+                      action:@selector(stateChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.passcodeSwitch addTarget:self
+                            action:@selector(TIDstateChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self updateView];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -26,55 +39,57 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-+(instancetype)sharedInstance {
+-(void)updateView {
     
-    static PasscodeTableViewController *sharedInstanceVC = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken,^{
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
         
-        sharedInstanceVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"enterPasscodeVC"];
+        [self.passcodeSwitch setOn:YES];
         
-    });
-    
-    return sharedInstanceVC;
-    
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    self.passcode.text = @"";
-    
-}
-
--(IBAction)done:(id)sender {
-    
-    NSString *pass = [[NSUserDefaults standardUserDefaults] objectForKey:@"passcode"];
-    
-    if ([self.passcode.text isEqualToString:pass]) {
-        
-        if (self.purpose == 1) {
+        if ([self isTouchIDAvailable]) {
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+            self.touchIDSwitch.enabled = YES;
             
-        } else if (self.purpose == 2) {
+            if ([[LTHPasscodeViewController sharedUser] allowUnlockWithTouchID]) {
+                
+                [self.touchIDSwitch setOn:YES];
+                
+            } else {
+                
+                [self.touchIDSwitch setOn:NO];
+                
+            }
             
-            [self performSegueWithIdentifier:@"changePassSegue" sender:self];
+        } else {
+            
+            self.touchIDSwitch.enabled = NO;
+            [self.touchIDSwitch setOn:NO];
             
         }
         
     } else {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Wrong Passcode" preferredStyle:UIAlertControllerStyleAlert];
+        [self.passcodeSwitch setOn:NO];
         
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        
-        alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-        
-        [alert addAction:ok];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        if ([self isTouchIDAvailable]) {
+            
+            self.touchIDSwitch.enabled = NO;
+            
+            if ([[LTHPasscodeViewController sharedUser] allowUnlockWithTouchID]) {
+                
+                [self.touchIDSwitch setOn:YES];
+                
+            } else {
+                
+                [self.touchIDSwitch setOn:NO];
+                
+            }
+            
+        } else {
+            
+            self.touchIDSwitch.enabled = NO;
+            [self.touchIDSwitch setOn:NO];
+            
+        }
         
     }
     
@@ -83,6 +98,95 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 2) {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[LTHPasscodeViewController sharedUser] showForChangingPasscodeInViewController:self asModal:YES];
+            
+        } else {
+            
+            [self errorMessage:@"Please set a passcode first."];
+            
+        }
+        
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+- (void)stateChanged:(UISwitch *)switchState {
+    
+    if ([switchState isOn]) {
+        
+        if (![LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[LTHPasscodeViewController sharedUser] showForEnablingPasscodeInViewController:self asModal:YES];
+            
+        }
+        
+    } else {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[LTHPasscodeViewController sharedUser] showForDisablingPasscodeInViewController:self asModal:YES];
+            
+        }
+        
+    }
+    
+}
+
+- (void)TIDstateChanged:(UISwitch *)switchState {
+    
+    if ([switchState isOn]) {
+        
+        [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:YES];
+        
+    } else {
+        
+        [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
+        
+    }
+    
+}
+
+- (void)passcodeViewControllerWillClose {
+    
+    [self updateView];
+    
+}
+
+- (BOOL)isTouchIDAvailable {
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending) {
+        return [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil];
+    }
+    return NO;
+}
+
+-(void)errorMessage:(NSString *)error {
+    
+    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:UIAlertControllerStyleAlert];
+    
+    errorAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
+    [self presentViewController:errorAlert animated:YES completion:^{
+        
+        [self performSelector:@selector(dismissError:) withObject:errorAlert afterDelay:2];
+        
+    }];
+    
+}
+
+-(void)dismissError:(UIAlertController *)alert {
+    
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 /*

@@ -10,7 +10,6 @@
 #import "WebViewController.h"
 #import "URLNavView.h"
 #import "StartDownloadTableViewController.h"
-#import "PasscodeTableViewController.h"
 
 @import Firebase;
 
@@ -96,25 +95,6 @@
     tapGesture.delegate = self;
     [self.webView addGestureRecognizer:tapGesture];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeOnLaunch"]) {
-        
-        PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
-        
-        vc.purpose = 1;
-        
-        [self presentPasscodeViewController:vc];
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeOnLaunch"];
-        
-    }
-    
-}
-
--(void)presentPasscodeViewController:(PasscodeTableViewController *)passcodeViewController {
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passcodeViewController];
-    [self.navigationController presentViewController:navController animated:YES completion:nil];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -133,20 +113,6 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidLoad:) name:@"AVPlayerItemBecameCurrentNotification" object:nil];
-    
-    /*
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"] && appDelegate.dataRef.lock == YES) {
-        
-        PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
-        
-        vc.purpose = 1;
-        
-        [self presentPasscodeViewController:vc];
-        
-        appDelegate.dataRef.lock = NO;
-        
-    }
-    */
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

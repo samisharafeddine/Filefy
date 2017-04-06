@@ -7,7 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "PasscodeTableViewController.h"
+#import "LTHPasscodeViewController.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 
@@ -18,11 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *searchEngineLabel;
 @property (weak, nonatomic) IBOutlet UITextField *homePageField;
 @property (weak, nonatomic) IBOutlet UILabel *defaultTab;
-@property (weak, nonatomic) IBOutlet UILabel *maxDownloads;
-@property (weak, nonatomic) IBOutlet UISwitch *backgroundDownloads;
 @property (weak, nonatomic) IBOutlet UILabel *mimes;
-@property (weak, nonatomic) IBOutlet UISwitch *backup;
-@property (weak, nonatomic) IBOutlet UISwitch *passcode;
+@property (weak, nonatomic) IBOutlet UILabel *passcodeEnabled;
 
 @end
 
@@ -32,12 +29,6 @@
     [super viewDidLoad];
     
     _homePageField.delegate = self;
-    
-    [self.backgroundDownloads addTarget:self action:@selector(backgroundSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.backup addTarget:self action:@selector(backupSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.passcode addTarget:self action:@selector(passcodeToggleSwitched:) forControlEvents:UIControlEventValueChanged];
     
     /*
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived)];
@@ -90,39 +81,15 @@
         
     }
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"backgroundDownloads"]) {
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
         
-        [self.backgroundDownloads setOn:YES animated:NO];
-        
-    } else {
-        
-        [self.backgroundDownloads setOn:NO animated:NO];
-        
-    }
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"backup"]) {
-        
-        [self.backup setOn:YES animated:NO];
+        self.passcodeEnabled.text = @"Enabled";
         
     } else {
         
-        [self.backup setOn:NO animated:NO];
+        self.passcodeEnabled.text = @"Disabled";
         
     }
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"passcodeLock"]) {
-        
-        [self.passcode setOn:YES animated:NO];
-        
-    } else {
-        
-        [self.passcode setOn:NO animated:NO];
-        
-    }
-    
-    NSInteger maxDownloads = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxDownloads"];
-    
-    self.maxDownloads.text = [NSString stringWithFormat:@"%ld", (long)maxDownloads];
     
     NSArray *mimeTypes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"defaultMIMETypes"];
     
@@ -244,6 +211,10 @@
             // Present mail view controller on screen
             [self presentViewController:mc animated:YES completion:NULL];
             
+        } else if (indexPath.section == 0) {
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
         }
         
     } else if (indexPath.section == 1) {
@@ -256,19 +227,7 @@
         
     } else if (indexPath.section == 2) {
         
-        if (indexPath.row == 0) {
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-        } else if (indexPath.row == 2) {
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-        } else if (indexPath.row == 3) {
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-        }
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     } else if (indexPath.section == 0) {
         
@@ -288,10 +247,7 @@
                 
             } else {
                 
-                PasscodeTableViewController *vc = [PasscodeTableViewController sharedInstance];
-                
-                vc.purpose = 2;
-                [self presentPasscodeViewController:vc];
+                // Passcode implementation was here.
                 
             }
             
@@ -300,49 +256,6 @@
         }
         
     }
-    
-}
-
--(void)presentPasscodeViewController:(PasscodeTableViewController *)passcodeViewController {
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:passcodeViewController];
-    [self.navigationController presentViewController:navController animated:YES completion:nil];
-    
-}
-
--(void)passcodeToggleSwitched:(UISwitch *)switchState {
-    
-    if ([switchState isOn]) {
-        
-        NSString * storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"setPasscode"];
-        [vc setModalPresentationStyle:UIModalPresentationCustom];
-        [vc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-        [self presentViewController:vc animated:YES completion:^{
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didsetpasscode) name:@"setPasscode" object:nil];
-            
-        }];
-        
-    } else {
-        
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
-        
-        [FIRAnalytics logEventWithName:@"Disable_Passcode" parameters:nil];
-        
-    }
-    
-    [self.passcode setOn:NO animated:YES];
-    
-}
-
--(void)didsetpasscode {
-    
-    [self.passcode setOn:YES animated:YES];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"passcodeLock"];
-    
-    [FIRAnalytics logEventWithName:@"Set_Passcode" parameters:nil];
     
 }
 
@@ -396,89 +309,6 @@
     
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
-    
-}
-
--(void)backgroundSwitchChanged:(UISwitch *)switchState {
-    
-    if ([switchState isOn]) {
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
-        
-    } else {
-        
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backgroundDownloads"];
-        
-    }
-    
-}
-
--(void)backupSwitchChanged:(UISwitch *)switchState {
-    
-    NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *docPath = array[0];
-    NSURL *docURL = [NSURL fileURLWithPath:docPath];
-    
-    if ([switchState isOn]) {
-        
-        if ([self addNoSkipBackupAttributeToItemAtURL:docURL]) {
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
-            
-        } else {
-            
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backup"];
-            
-            [self.backup setOn:NO animated:YES];
-            
-        }
-        
-    } else {
-        
-        if ([self addSkipBackupAttributeToItemAtURL:docURL]) {
-            
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"backup"];
-            
-        } else {
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
-            
-            [self.backup setOn:YES animated:YES];
-            
-        }
-        
-    }
-    
-}
-
--(BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL {
-    
-    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
-    
-    NSError *error = nil;
-    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: YES]
-                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
-    if(!success){
-        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
-    }
-    
-    return success;
-    
-}
-
-- (BOOL)addNoSkipBackupAttributeToItemAtURL:(NSURL *)URL {
-    
-    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
-    
-    NSError *error = nil;
-    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: NO]
-                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
-    if(!success){
-        NSLog(@"Error including %@ in backup %@", [URL lastPathComponent], error);
-    }
-    
-    return success;
     
 }
 

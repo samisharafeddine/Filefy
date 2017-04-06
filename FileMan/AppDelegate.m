@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MusicPlayerViewController.h"
 #import "TWRDownloadManager.h"
-#import "PasscodeTableViewController.h"
+#import "LTHPasscodeViewController.h"
 
 @import Firebase;
 
@@ -25,31 +25,9 @@
     
     [FIRApp configure];
     
-    NSNumber *buildNumber = (NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeOnLaunch"];
-    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
         
         // Normal view
-        
-        // Assign buildNumber for older versions of FileMan.
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"buildNumber"] == nil) {
-            
-            [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
-            
-            [FIRAnalytics logEventWithName:@"Updated_to_fix_build_recognition" parameters:@{@"Build": [NSString stringWithFormat:@"%ld", (long)[buildNumber integerValue]]}];
-            
-        }
-        
-        if ((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"buildNumber"] < buildNumber) {
-            
-            /* Place new settings here and update build number in NSUserDefaults */
-            [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
-            
-            [FIRAnalytics logEventWithName:@"Updated_To_Build" parameters:@{@"build": [NSString stringWithFormat:@"%ld", (long)[buildNumber integerValue]]}];
-            
-        }
         
     } else {
         
@@ -78,10 +56,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsURLs"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backup"];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"passcodeLock"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"passcode"];
-        [[NSUserDefaults standardUserDefaults] setObject:buildNumber forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -92,6 +66,8 @@
     
     self.dataRef.hasPlayedOnce = NO;
     
+    [self performSelector:@selector(showPasscode) withObject:nil afterDelay:0.5];
+    
     //assert(NO);
     
     return YES;
@@ -101,7 +77,12 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     
-    self.dataRef.lock = YES;
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
+        if ([LTHPasscodeViewController didPasscodeTimerEnd])
+            [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                     withLogout:NO
+                                                                 andLogoutTitle:nil];
+    }
     
 }
 
@@ -110,7 +91,12 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    self.dataRef.lock = YES;
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
+        if ([LTHPasscodeViewController didPasscodeTimerEnd])
+            [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                     withLogout:NO
+                                                                 andLogoutTitle:nil];
+    }
     
 }
 
@@ -179,6 +165,17 @@
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
     [TWRDownloadManager sharedManager].backgroundTransferCompletionHandler = completionHandler;
+}
+
+-(void)showPasscode {
+    
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
+        if ([LTHPasscodeViewController didPasscodeTimerEnd])
+            [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                     withLogout:NO
+                                                                 andLogoutTitle:nil];
+    }
+    
 }
 
 @end

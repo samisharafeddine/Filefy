@@ -15,7 +15,6 @@
     BOOL isCopyingItems;
     BOOL hasPlayedOnce;
     BOOL isPlaying;
-    BOOL lock;
     
 }
 
@@ -27,6 +26,5 @@
 @property BOOL isCopyingItems;
 @property BOOL hasPlayedOnce;
 @property BOOL isPlaying;
-@property BOOL lock;
 
 @end
