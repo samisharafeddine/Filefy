@@ -10,6 +10,7 @@
 #import "LTHPasscodeViewController.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 @import Firebase;
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *defaultTab;
 @property (weak, nonatomic) IBOutlet UILabel *mimes;
 @property (weak, nonatomic) IBOutlet UILabel *passcodeEnabled;
+@property (weak, nonatomic) IBOutlet UILabel *dropboxLabel;
 
 @end
 
@@ -46,6 +48,8 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeDropboxLabel) name:@"dropboxStatusChanged" object:nil];
     
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
     _homePageField.text = homePage;
@@ -89,6 +93,16 @@
     } else {
         
         self.passcodeEnabled.text = @"Disabled";
+        
+    }
+    
+    if ([[DBClientsManager authorizedClient] isAuthorized]) {
+        
+        self.dropboxLabel.text = @"Unlink Dropbox";
+        
+    } else {
+        
+        self.dropboxLabel.text = @"Link Dropbox";
         
     }
     
@@ -200,7 +214,7 @@
             
         }
         
-    } else if (indexPath.section == 4) {
+    } else if (indexPath.section == 5) {
         
         if (indexPath.row == 0) {
             
@@ -276,6 +290,51 @@
             
         }
         
+    } else if (indexPath.section == 4) {
+        
+        if ([[DBClientsManager authorizedClient] isAuthorized]) {
+            
+            UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Logout of Dropbox ?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                
+                [DBClientsManager unlinkAndResetClients];
+                [self changeDropboxLabel];
+                
+            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     
+                                                                     // Cancels ActionSheet
+                                                                     
+                                                                 }];
+            
+            actionSheet.popoverPresentationController.sourceView = cell;
+            actionSheet.popoverPresentationController.sourceRect = cell.bounds;
+            actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            
+            actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+            
+            [actionSheet addAction:cancelAction];
+            [actionSheet addAction:action];
+            
+            [self presentViewController:actionSheet animated:YES completion:nil];
+            
+        } else {
+            
+            [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                           controller:self
+                                              openURL:^(NSURL *url) {
+                                                  [[UIApplication sharedApplication] openURL:url];
+                                              }
+                                          browserAuth:YES];
+            
+        }
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
     }
     
 }
@@ -344,6 +403,20 @@
     tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     [tweetSheet setInitialText:@"Filefy is an advanced file manager and downloader for iOS, Get it here: http://bit.ly/Filefy"];
     [self presentViewController:tweetSheet animated:YES completion:nil];
+    
+}
+
+-(void)changeDropboxLabel {
+    
+    if ([[DBClientsManager authorizedClient] isAuthorized]) {
+        
+        self.dropboxLabel.text = @"Unlink Dropbox";
+        
+    } else {
+        
+        self.dropboxLabel.text = @"Link Dropbox";
+        
+    }
     
 }
 

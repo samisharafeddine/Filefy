@@ -10,6 +10,7 @@
 #import "MusicPlayerViewController.h"
 #import "TWRDownloadManager.h"
 #import "LTHPasscodeViewController.h"
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 @import Firebase;
 
@@ -22,6 +23,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
+    
+    if ([[DBClientsManager authorizedClient] isAuthorized]) {
+        
+        NSLog(@"DropBox Authorized");
+        
+    } else {
+        
+        NSLog(@"DropBox Not Authorized");
+        
+    }
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"finishedLaunching"];
     
@@ -58,6 +71,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsURLs"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"TouchID"];
+        [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -175,6 +190,43 @@
                                                                      withLogout:NO
                                                                  andLogoutTitle:nil];
     }
+    
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
+    if (authResult != nil) {
+        if ([authResult isSuccess]) {
+            NSLog(@"Success! User is logged into Dropbox.");
+        } else if ([authResult isCancel]) {
+            NSLog(@"Authorization flow was manually canceled by user!");
+        } else if ([authResult isError]) {
+            NSLog(@"Error: %@", authResult);
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dropboxStatusChanged" object:nil];
+        
+    }
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    DBOAuthResult *authResult = [DBClientsManager handleRedirectURL:url];
+    if (authResult != nil) {
+        if ([authResult isSuccess]) {
+            NSLog(@"Success! User is logged into Dropbox.");
+        } else if ([authResult isCancel]) {
+            NSLog(@"Authorization flow was manually canceled by user!");
+        } else if ([authResult isError]) {
+            NSLog(@"Error: %@", authResult);
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dropboxStatusChanged" object:nil];
+        
+    }
+    return NO;
     
 }
 

@@ -49,7 +49,7 @@
             
             self.touchIDSwitch.enabled = YES;
             
-            if ([[LTHPasscodeViewController sharedUser] allowUnlockWithTouchID]) {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TouchID"]) {
                 
                 [self.touchIDSwitch setOn:YES];
                 
@@ -74,7 +74,7 @@
             
             self.touchIDSwitch.enabled = NO;
             
-            if ([[LTHPasscodeViewController sharedUser] allowUnlockWithTouchID]) {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TouchID"]) {
                 
                 [self.touchIDSwitch setOn:YES];
                 
@@ -147,10 +147,12 @@
     if ([switchState isOn]) {
         
         [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:YES];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TouchID"];
         
     } else {
         
         [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"TouchID"];
         
     }
     

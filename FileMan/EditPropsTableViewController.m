@@ -8,6 +8,8 @@
 
 #import "EditPropsTableViewController.h"
 
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+
 @import Firebase;
 
 @interface EditPropsTableViewController ()
@@ -133,6 +135,20 @@
     
 }
 
+-(void)infoMessageWithTitle:(NSString *)title andMessage:(NSString *)message {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        
+        [self performSelector:@selector(dismissError:) withObject:alert afterDelay:2];
+        
+    }];
+    
+}
+
 -(void)dismissError:(UIAlertController *)alert {
     
     [alert dismissViewControllerAnimated:YES completion:nil];
@@ -151,7 +167,26 @@
         
         [self presentViewController:activityView animated:YES completion:nil];
         
+    } else if (indexPath.section == 2) {
+        
+        DBUserClient *client = [DBClientsManager authorizedClient];
+        
+        NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:self.path];
+        
+        [[[client.filesRoutes uploadData:[NSString stringWithFormat:@"/%@", [self.path lastPathComponent]] inputData:fileData]
+          setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
+              if (result) {
+                  NSLog(@"%@\n", result);
+              } else {
+                  NSLog(@"%@\n%@\n", routeError, networkError);
+              }
+          }] setProgressBlock:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
+              NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
+          }];
+        
     }
+    
+    [self infoMessageWithTitle:@"Uploading" andMessage:@"File is now being uploaded to Dropbox."];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     

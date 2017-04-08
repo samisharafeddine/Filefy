@@ -815,7 +815,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Sometimes changing the Browser's User Agent requires app restart." id="4Ll-jg-lO0">
+                            <tableViewSection id="4Ll-jg-lO0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="cak-fc-3Pr">
                                         <rect key="frame" x="0.0" y="239" width="375" height="44"/>
@@ -885,7 +885,7 @@
                             <tableViewSection id="EYu-xG-bEp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="n2O-R7-YpZ" style="IBUITableViewCellStyleDefault" id="zHh-N8-Tpu">
-                                        <rect key="frame" x="0.0" y="391" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHh-N8-Tpu" id="d0w-U9-Q8H">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -902,7 +902,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="vLs-O0-ugU" style="IBUITableViewCellStyleDefault" id="O0G-vV-WfR">
-                                        <rect key="frame" x="0.0" y="435" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="407" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O0G-vV-WfR" id="cah-1N-6yv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -920,10 +920,55 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="ky6-Wi-dmY">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="R1q-5M-mhG">
+                                        <rect key="frame" x="0.0" y="487" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R1q-5M-mhG" id="MZb-g9-QzG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-ds-SLW">
+                                                    <rect key="frame" x="124.5" y="8" width="126.5" height="27"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropBox" translatesAutoresizingMaskIntoConstraints="NO" id="dDK-Wh-I71">
+                                                            <rect key="frame" x="0.0" y="3" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="bwi-FJ-1py"/>
+                                                                <constraint firstAttribute="height" constant="22" id="teP-t6-7TY"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link DropBox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-b9-bkB">
+                                                            <rect key="frame" x="30" y="4" width="96.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="bTd-b9-bkB" firstAttribute="centerY" secondItem="jgp-ds-SLW" secondAttribute="centerY" id="0uW-P0-I23"/>
+                                                        <constraint firstAttribute="height" constant="27" id="Xnl-I7-fck"/>
+                                                        <constraint firstItem="bTd-b9-bkB" firstAttribute="leading" secondItem="dDK-Wh-I71" secondAttribute="trailing" constant="8" id="aiq-NG-WBG"/>
+                                                        <constraint firstItem="dDK-Wh-I71" firstAttribute="centerY" secondItem="jgp-ds-SLW" secondAttribute="centerY" id="eMD-2T-jFq"/>
+                                                        <constraint firstItem="dDK-Wh-I71" firstAttribute="leading" secondItem="jgp-ds-SLW" secondAttribute="leading" id="klY-Hb-YdW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bTd-b9-bkB" secondAttribute="trailing" id="zgt-xX-wpC"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jgp-ds-SLW" firstAttribute="centerY" secondItem="MZb-g9-QzG" secondAttribute="centerY" id="G6B-YT-f0z"/>
+                                                <constraint firstItem="jgp-ds-SLW" firstAttribute="centerX" secondItem="MZb-g9-QzG" secondAttribute="centerX" id="yYv-am-bmf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection footerTitle="Copyright © 2017 Sami Sharaf All rights reserved. / Version 1.0.0" id="PBy-Qh-STp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tIc-Gz-4CH">
-                                        <rect key="frame" x="0.0" y="515" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="567" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tIc-Gz-4CH" id="V0j-AY-JKi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -965,7 +1010,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dFF-Xd-nBL">
-                                        <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="611" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dFF-Xd-nBL" id="M6B-1r-Evl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1024,6 +1069,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="defaultTab" destination="PwG-cE-hKD" id="10z-oV-HBs"/>
+                        <outlet property="dropboxLabel" destination="bTd-b9-bkB" id="sQV-Po-eux"/>
                         <outlet property="homePageField" destination="jqg-CT-7HN" id="O1f-ck-1mu"/>
                         <outlet property="mimes" destination="Mt5-ea-QGk" id="rxb-Wd-EU8"/>
                         <outlet property="passcodeEnabled" destination="xbU-g4-276" id="vg8-Qo-eB5"/>
@@ -1285,6 +1331,51 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="qAt-C7-Nyd">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xBp-9k-K8i">
+                                        <rect key="frame" x="0.0" y="267" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xBp-9k-K8i" id="ZsL-82-CMo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQG-Sk-jd5">
+                                                    <rect key="frame" x="104" y="8" width="167" height="27"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DropBox" translatesAutoresizingMaskIntoConstraints="NO" id="YcE-Da-ii9">
+                                                            <rect key="frame" x="0.0" y="3" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="bD9-Ji-726"/>
+                                                                <constraint firstAttribute="height" constant="22" id="myN-Ya-uwa"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload to Dropbox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQO-K4-q1u">
+                                                            <rect key="frame" x="30" y="4" width="137" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="XQO-K4-q1u" secondAttribute="trailing" id="1c4-fq-ECC"/>
+                                                        <constraint firstItem="XQO-K4-q1u" firstAttribute="centerY" secondItem="ZQG-Sk-jd5" secondAttribute="centerY" id="MWq-P0-XJL"/>
+                                                        <constraint firstItem="XQO-K4-q1u" firstAttribute="leading" secondItem="YcE-Da-ii9" secondAttribute="trailing" constant="8" id="Rtg-lu-20s"/>
+                                                        <constraint firstItem="YcE-Da-ii9" firstAttribute="leading" secondItem="ZQG-Sk-jd5" secondAttribute="leading" id="fHI-58-blP"/>
+                                                        <constraint firstAttribute="height" constant="27" id="js6-4O-UsY"/>
+                                                        <constraint firstItem="YcE-Da-ii9" firstAttribute="centerY" secondItem="ZQG-Sk-jd5" secondAttribute="centerY" id="wge-kB-fo2"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZQG-Sk-jd5" firstAttribute="centerY" secondItem="ZsL-82-CMo" secondAttribute="centerY" id="bBB-uR-ZQ5"/>
+                                                <constraint firstItem="ZQG-Sk-jd5" firstAttribute="centerX" secondItem="ZsL-82-CMo" secondAttribute="centerX" id="ee2-QB-l3J"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -2105,7 +2196,7 @@
         <!--Tutorial-->
         <scene sceneID="Ig7-bL-jaO">
             <objects>
-                <viewController storyboardIdentifier="WelcomeController" title="Tutorial" id="ouG-5x-JrD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeController" title="Tutorial" id="ouG-5x-JrD" customClass="WelcomeControllerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0KM-Gj-XMO"/>
                         <viewControllerLayoutGuide type="bottom" id="FcA-lv-ZCx"/>
@@ -2114,9 +2205,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="squareColorVert" translatesAutoresizingMaskIntoConstraints="NO" id="dNE-4h-NYl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exh-ai-QOF">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="yqC-9Q-KJV"/>
                                 </constraints>
@@ -2203,7 +2298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8Q-JC-uZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="2477"/>
+            <point key="canvasLocation" x="917.60000000000002" y="2476.9115442278862"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zvn-d7-bqd">
@@ -2217,22 +2312,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to FileMan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="hBI-Mb-7Jd">
-                                <rect key="frame" x="52.5" y="135.5" width="270" height="58"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Filefy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="hBI-Mb-7Jd">
+                                <rect key="frame" x="52.5" y="164.5" width="270" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" id="f9V-EJ-VhT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="← Swipe to Begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLt-jB-fB2">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.80784313725490198" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="YVq-0o-qwr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An advanced file manager and downloader for iOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-rO-DFe">
@@ -2241,7 +2337,7 @@
                                     <constraint firstAttribute="width" constant="270" id="r4A-2s-rf8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FileMan Icon" translatesAutoresizingMaskIntoConstraints="NO" id="NPs-uX-feq">
@@ -2252,7 +2348,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.34509803919999998" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rLt-jB-fB2" secondAttribute="trailing" id="GE3-jm-00d"/>
                             <constraint firstItem="rLt-jB-fB2" firstAttribute="leading" secondItem="7v7-iG-dv2" secondAttribute="leading" id="O9r-lS-aN3"/>
@@ -2291,6 +2387,7 @@
                                     <constraint firstAttribute="height" constant="29" id="vw5-gV-0r3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BrowserPage" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-eT-H9j">
@@ -2298,11 +2395,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next: Downloads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-Gh-q5m">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="oYg-WU-MgW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="ALG-nO-Jqk">
@@ -2312,10 +2410,11 @@
                                 </constraints>
                                 <string key="text">The built in web browser lets you surf the internet freely, and prompts you to download files according to your settings configuration</string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ALG-nO-Jqk" firstAttribute="leading" secondItem="8kJ-2k-PYg" secondAttribute="leadingMargin" constant="35" id="0mf-mh-MSy"/>
                             <constraint firstItem="ALG-nO-Jqk" firstAttribute="centerX" secondItem="fwe-Gh-q5m" secondAttribute="centerX" id="4tr-Qn-Zip"/>
@@ -2351,11 +2450,12 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next: File Manager" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkK-VO-ADK">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="eNa-PN-P7h"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloads" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="331.5" translatesAutoresizingMaskIntoConstraints="NO" id="czT-nM-uz9">
@@ -2365,6 +2465,7 @@
                                     <constraint firstAttribute="width" constant="118" id="TCW-j9-rF2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownloadsPage" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-6J-kS5">
@@ -2376,10 +2477,11 @@
                                     <constraint firstAttribute="height" constant="85" id="cWd-Aq-AvL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.34509803919999998" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cee-Dt-H31" firstAttribute="top" secondItem="ajQ-6J-kS5" secondAttribute="bottom" constant="18" id="1u9-P4-k1v"/>
                             <constraint firstItem="ajQ-6J-kS5" firstAttribute="centerX" secondItem="cee-Dt-H31" secondAttribute="centerX" id="6rm-dc-qvt"/>
@@ -2421,36 +2523,38 @@
                                     <constraint firstAttribute="width" constant="135" id="nHU-Lw-88m"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FileManagerPage" translatesAutoresizingMaskIntoConstraints="NO" id="Cat-7H-oLv">
                                 <rect key="frame" x="95" y="111" width="184" height="375"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KGt-ZS-snL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KGt-ZS-snL">
                                 <rect key="frame" x="31" y="498" width="313" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="rIm-5R-wHg"/>
                                 </constraints>
                                 <string key="text">With a built in file manager, you can browse, import, and display almost any file, it also features a music player, video player, and a photo viewer</string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iif-OK-hU2">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="q1c-PQ-wiz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Start">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="myAppIsDope:" destination="sWo-2L-3Fa" eventType="touchUpInside" id="hZj-qP-wMn"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iif-OK-hU2" secondAttribute="trailing" id="0Dw-P8-KBH"/>
                             <constraint firstItem="iif-OK-hU2" firstAttribute="centerX" secondItem="Q7B-D5-ZDC" secondAttribute="centerX" id="4uj-Va-Jdq"/>
@@ -2485,6 +2589,7 @@
         <image name="Delete" width="22" height="22"/>
         <image name="DownloadsPage" width="210" height="427"/>
         <image name="DownloadsSelected" width="22" height="22"/>
+        <image name="DropBox" width="50" height="50"/>
         <image name="FileMan Icon" width="321" height="284"/>
         <image name="FileManagerPage" width="210" height="427"/>
         <image name="FilesNotSelected" width="22" height="22"/>
@@ -2503,6 +2608,7 @@
         <image name="SettingsSelected" width="22" height="22"/>
         <image name="VolumeHigh" width="50" height="50"/>
         <image name="VolumeLow" width="50" height="50"/>
+        <image name="squareColorVert" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dwb-lK-N8q"/>

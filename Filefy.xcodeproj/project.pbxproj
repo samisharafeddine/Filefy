@@ -23,8 +23,11 @@
 		214DCF901E2EAB8D00329A5A /* BookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 214DCF8F1E2EAB8D00329A5A /* BookmarksTableViewController.m */; };
 		214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E00581E4CB30000B5ACC2 /* CoreImage.framework */; };
 		214E005B1E4CCE8C00B5ACC2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E005A1E4CCE8C00B5ACC2 /* AVFoundation.framework */; };
+		214FD0841E998A6D008A69BC /* WelcomeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 214FD0831E998A6D008A69BC /* WelcomeControllerViewController.m */; };
 		215129061E57071D0059428B /* XMusicFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 215129051E57071D0059428B /* XMusicFile.m */; };
 		2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158CED01E59F6FF0072A460 /* MusicPlayerViewController.m */; };
+		216910291E994D1000A44D5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216910281E994D1000A44D5D /* QuartzCore.framework */; };
+		2169102B1E994D1900A44D5D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2169102A1E994D1900A44D5D /* Security.framework */; };
 		217010D51E43D7DB00A316F7 /* XFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 217010D41E43D7DB00A316F7 /* XFile.m */; };
 		21741FC21E44A4A10030C063 /* XFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 21741FC11E44A4A10030C063 /* XFileParser.m */; };
 		217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06921E6DD0720083846F /* MIMEsTableViewController.m */; };
@@ -88,10 +91,15 @@
 		214DCF8F1E2EAB8D00329A5A /* BookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksTableViewController.m; sourceTree = "<group>"; };
 		214E00581E4CB30000B5ACC2 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		214E005A1E4CCE8C00B5ACC2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		214FD0821E998A6D008A69BC /* WelcomeControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeControllerViewController.h; sourceTree = "<group>"; };
+		214FD0831E998A6D008A69BC /* WelcomeControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeControllerViewController.m; sourceTree = "<group>"; };
 		215129041E57071D0059428B /* XMusicFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMusicFile.h; sourceTree = "<group>"; };
 		215129051E57071D0059428B /* XMusicFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMusicFile.m; sourceTree = "<group>"; };
 		2158CECF1E59F6FF0072A460 /* MusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayerViewController.h; sourceTree = "<group>"; };
 		2158CED01E59F6FF0072A460 /* MusicPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayerViewController.m; sourceTree = "<group>"; };
+		216910281E994D1000A44D5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2169102A1E994D1900A44D5D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2169102C1E99532600A44D5D /* Filefy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filefy.entitlements; sourceTree = SOURCE_ROOT; };
 		217010D31E43D7DB00A316F7 /* XFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFile.h; sourceTree = "<group>"; };
 		217010D41E43D7DB00A316F7 /* XFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFile.m; sourceTree = "<group>"; };
 		21741FC01E44A4A10030C063 /* XFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFileParser.h; sourceTree = "<group>"; };
@@ -154,6 +162,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2169102B1E994D1900A44D5D /* Security.framework in Frameworks */,
+				216910291E994D1000A44D5D /* QuartzCore.framework in Frameworks */,
 				214E005B1E4CCE8C00B5ACC2 /* AVFoundation.framework in Frameworks */,
 				214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */,
 				219B81521E4BABB500620348 /* MediaPlayer.framework in Frameworks */,
@@ -228,6 +238,8 @@
 		211E7E161E2D3B8F00F571B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2169102A1E994D1900A44D5D /* Security.framework */,
+				216910281E994D1000A44D5D /* QuartzCore.framework */,
 				214E005A1E4CCE8C00B5ACC2 /* AVFoundation.framework */,
 				214E00581E4CB30000B5ACC2 /* CoreImage.framework */,
 				219B81511E4BABB500620348 /* MediaPlayer.framework */,
@@ -242,6 +254,8 @@
 			children = (
 				2136E6901E6F032D00570476 /* StepsViewController.h */,
 				2136E6911E6F032D00570476 /* StepsViewController.m */,
+				214FD0821E998A6D008A69BC /* WelcomeControllerViewController.h */,
+				214FD0831E998A6D008A69BC /* WelcomeControllerViewController.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -423,6 +437,7 @@
 		21EFED221E14122B00D7755E /* Filefy */ = {
 			isa = PBXGroup;
 			children = (
+				2169102C1E99532600A44D5D /* Filefy.entitlements */,
 				21EFED261E14122B00D7755E /* AppDelegate.h */,
 				21EFED271E14122B00D7755E /* AppDelegate.m */,
 				2180963D1E2EE8740059870E /* DataRef.h */,
@@ -500,6 +515,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -611,6 +629,7 @@
 				21183E5A1E46ACA200029939 /* FileManagerTableViewController.m in Sources */,
 				219B81501E4B83F500620348 /* TextViewerViewController.m in Sources */,
 				211BE7C61E6C7CA7009A7F4C /* DownloadsTableViewController.m in Sources */,
+				214FD0841E998A6D008A69BC /* WelcomeControllerViewController.m in Sources */,
 				21CA73661E648B930028BCF6 /* TabBarViewController.m in Sources */,
 				21EFED281E14122B00D7755E /* AppDelegate.m in Sources */,
 				21C70EB31E96E05B00A52BC8 /* LTHPasscodeViewController.m in Sources */,
@@ -764,6 +783,7 @@
 			baseConfigurationReference = 0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;
 				DEVELOPMENT_TEAM = QV3625575M;
 				INFOPLIST_FILE = FileMan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -779,6 +799,7 @@
 			baseConfigurationReference = 135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;
 				DEVELOPMENT_TEAM = QV3625575M;
 				INFOPLIST_FILE = FileMan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

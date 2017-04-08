@@ -103,6 +103,8 @@
     tapGesture.delegate = self;
     [self.webView addGestureRecognizer:tapGesture];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
