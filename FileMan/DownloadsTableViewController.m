@@ -143,6 +143,7 @@
             
             cell.name.text = completedDownloadsNames[indexPath.row];
             cell.status.text = completedDownloadsStatuses[indexPath.row];
+            cell.url.text = completedDownloadsURLs[indexPath.row];
             
             return cell;
             
@@ -229,6 +230,8 @@
             
         }];
         
+        cancel.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:88.0/255.0 blue:48.0/255.0 alpha:1.0];
+        
         return @[cancel];
         
     } else {
@@ -247,7 +250,7 @@
             
         }];
         
-        start.backgroundColor = [UIColor greenColor];
+        start.backgroundColor = [UIColor colorWithRed:105.0/255.0 green:219.0/255.0 blue:49.0/255.0 alpha:1.0];
         
         UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
@@ -267,7 +270,24 @@
             
         }];
         
+        delete.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:88.0/255.0 blue:48.0/255.0 alpha:1.0];
+        
+        UITableViewRowAction *copyLink = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Copy URL" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSString *urlString = completedDownloadsURLs[indexPath.row];
+            
+            // Copy link address string.
+            UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+            [pasteBoard setString:[NSString stringWithFormat:@"%@", urlString]];
+            
+            [tableView setEditing:NO animated:YES];
+            
+        }];
+        
+        copyLink.backgroundColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+        
         return @[delete,
+                 copyLink,
                  start];
         
     }
@@ -292,6 +312,20 @@
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:downloadViewController];
     [self.navigationController presentViewController:navController animated:YES completion:nil];
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        return 60.0;
+        
+    } else {
+        
+        return 67.0;
+        
+    }
     
 }
 

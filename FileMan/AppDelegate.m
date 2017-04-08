@@ -66,7 +66,7 @@
     
     self.dataRef.hasPlayedOnce = NO;
     
-    [self performSelector:@selector(showPasscode) withObject:nil afterDelay:0.5];
+    //[self performSelector:@selector(showPasscode) withObject:nil afterDelay:0.5];
     
     //assert(NO);
     

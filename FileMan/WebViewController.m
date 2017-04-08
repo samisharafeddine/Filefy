@@ -98,6 +98,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     // Homepage Button Appearence.
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];

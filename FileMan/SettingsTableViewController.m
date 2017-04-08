@@ -45,6 +45,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
     _homePageField.text = homePage;
