@@ -186,130 +186,91 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSLog(@"Download finisehd!");
 
-    NSString *fileIdentifier = downloadTask.originalRequest.URL.absoluteString;
-    TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
-
- 	BOOL success = YES;
-    
-    NSString *logMessage;
-
-    if ([downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        NSInteger statusCode = [(NSHTTPURLResponse*)downloadTask.response statusCode];
-        if (statusCode >= 400) {
-	        NSLog(@"ERROR: HTTP status code %@", @(statusCode));
-            logMessage = [NSString stringWithFormat:@"Failed - Error: HTTP status code %@", @(statusCode)];
-			success = NO;
+    if (self.downloads != nil) {
+        
+        NSString *fileIdentifier = downloadTask.originalRequest.URL.absoluteString;
+        TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
+        
+        BOOL success = YES;
+        
+        NSString *logMessage;
+        
+        if ([downloadTask.response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSInteger statusCode = [(NSHTTPURLResponse*)downloadTask.response statusCode];
+            if (statusCode >= 400) {
+                NSLog(@"ERROR: HTTP status code %@", @(statusCode));
+                logMessage = [NSString stringWithFormat:@"Failed - Error: HTTP status code %@", @(statusCode)];
+                success = NO;
+            }
         }
-    }
-
-	if (success) {
-
-        NSError *error;
-        NSFileManager *fileManager = [NSFileManager defaultManager];
         
-        NSArray *dir = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-        NSURL *docurl = dir[0];
-        
-        NSString *destinationFilename = download.fileName;
-        NSURL *destinationURL = [docurl URLByAppendingPathComponent:destinationFilename];
-        NSURL *url;
-        
-        if ([fileManager fileExistsAtPath:[destinationURL path]]) {
+        if (success) {
             
-            NSString *fileName = destinationFilename.stringByDeletingPathExtension;
-            NSString *extension = destinationFilename.pathExtension;
+            NSError *error;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
             
-            int i = 1;
+            NSArray *dir = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+            NSURL *docurl = dir[0];
             
-            while (i != 0) {
+            NSString *destinationFilename = download.fileName;
+            NSURL *destinationURL = [docurl URLByAppendingPathComponent:destinationFilename];
+            NSURL *url;
+            
+            if ([fileManager fileExistsAtPath:[destinationURL path]]) {
                 
-                NSString *newFileName = [NSString stringWithFormat:@"%@-%d", fileName, i];
-                NSString *fullName = [NSString stringWithFormat:@"%@.%@", newFileName, extension];
+                NSString *fileName = destinationFilename.stringByDeletingPathExtension;
+                NSString *extension = destinationFilename.pathExtension;
                 
-                url = [docurl URLByAppendingPathComponent:fullName];
+                int i = 1;
                 
-                if ([fileManager fileExistsAtPath:[url path]]) {
+                while (i != 0) {
                     
-                    i++;
+                    NSString *newFileName = [NSString stringWithFormat:@"%@-%d", fileName, i];
+                    NSString *fullName = [NSString stringWithFormat:@"%@.%@", newFileName, extension];
                     
-                } else {
+                    url = [docurl URLByAppendingPathComponent:fullName];
                     
-                    i = 0;
+                    if ([fileManager fileExistsAtPath:[url path]]) {
+                        
+                        i++;
+                        
+                    } else {
+                        
+                        i = 0;
+                        
+                    }
                     
                 }
                 
+            } else {
+                
+                url = destinationURL;
+                
             }
             
-        } else {
+            [fileManager moveItemAtURL:location toURL:url error:&error];
             
-            url = destinationURL;
-            
-        }
-        
-        [fileManager moveItemAtURL:location toURL:url error:&error];
-        
-	    if (error) {
-            
-	        NSLog(@"ERROR: %@", error.localizedDescription);
-            logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
-            
-        } else {
-            
-            logMessage = @"Completed";
+            if (error) {
+                
+                NSLog(@"ERROR: %@", error.localizedDescription);
+                logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
+                
+            } else {
+                
+                logMessage = @"Completed";
+                
+            }
             
         }
         
-	}
-
-    if (download.completionBlock) {
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            download.completionBlock(success);
-        });
-    }
-
-    // remove object from the download
-    [self.downloads removeObjectForKey:fileIdentifier];
-    
-    NSArray *completedDownloadsNamess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
-    
-    NSArray *completedDownloadsURLss = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
-    
-    NSArray *completedDownloadsStatusess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsStatuses"];
-    
-    NSMutableArray *completedDownloadsNames = [[NSMutableArray alloc] initWithArray:completedDownloadsNamess];
-    
-    NSMutableArray *completedDownloadsURLs = [[NSMutableArray alloc] initWithArray:completedDownloadsURLss];
-    
-    NSMutableArray *completedDownloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatusess];
-    
-    [completedDownloadsNames insertObject:download.fileName atIndex:0];
-    [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
-    [completedDownloadsStatuses insertObject:logMessage atIndex:0];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
-    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
-    [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsStatuses forKey:@"completedDownloadsStatuses"];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Show a local notification when download is over.
-        // [todo]
-    });
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    if (error) {
-        NSLog(@"ERROR: %@", error);
-        
-        NSString *logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
-
-        NSString *fileIdentifier = task.originalRequest.URL.absoluteString;
-        TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
-
         if (download.completionBlock) {
             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                download.completionBlock(NO);
+                download.completionBlock(success);
             });
         }
+        
+        // remove object from the download
+        [self.downloads removeObjectForKey:fileIdentifier];
         
         NSArray *completedDownloadsNamess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
         
@@ -323,17 +284,118 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
         
         NSMutableArray *completedDownloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatusess];
         
-        [completedDownloadsNames insertObject:download.fileName atIndex:0];
-        [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
-        [completedDownloadsStatuses insertObject:logMessage atIndex:0];
+        if (download.fileName != nil || ![download.fileName isEqualToString:@""]) {
+            
+            [completedDownloadsNames insertObject:download.fileName atIndex:0];
+            
+        } else {
+            
+            [completedDownloadsNames insertObject:[NSString stringWithFormat:@"No Name"] atIndex:0];
+            
+        }
+        
+        if (fileIdentifier != nil || ![fileIdentifier isEqualToString:@""]) {
+            
+            [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
+            
+        } else {
+            
+            [completedDownloadsURLs insertObject:[NSString stringWithFormat:@"No URL"] atIndex:0];
+            
+        }
+        
+        if (logMessage != nil || ![logMessage isEqualToString:@""]) {
+            
+            [completedDownloadsStatuses insertObject:logMessage atIndex:0];
+            
+        } else {
+            
+            [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Unknown Status"] atIndex:0];
+            
+        }
         
         [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
         [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
         [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsStatuses forKey:@"completedDownloadsStatuses"];
-
-        // remove object from the download
-        [self.downloads removeObjectForKey:fileIdentifier];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Show a local notification when download is over.
+            // [todo]
+        });
+        
     }
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error) {
+        
+        if (self.downloads != nil) {
+            
+            NSLog(@"ERROR: %@", error);
+            
+            NSString *logMessage = [NSString stringWithFormat:@"Failed - Error: %@", error.localizedDescription];
+            
+            NSString *fileIdentifier = task.originalRequest.URL.absoluteString;
+            TWRDownloadObject *download = [self.downloads objectForKey:fileIdentifier];
+            
+            if (download.completionBlock) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    download.completionBlock(NO);
+                });
+            }
+            
+            NSArray *completedDownloadsNamess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsNames"];
+            
+            NSArray *completedDownloadsURLss = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsURLs"];
+            
+            NSArray *completedDownloadsStatusess = [[NSUserDefaults standardUserDefaults] objectForKey:@"completedDownloadsStatuses"];
+            
+            NSMutableArray *completedDownloadsNames = [[NSMutableArray alloc] initWithArray:completedDownloadsNamess];
+            
+            NSMutableArray *completedDownloadsURLs = [[NSMutableArray alloc] initWithArray:completedDownloadsURLss];
+            
+            NSMutableArray *completedDownloadsStatuses = [[NSMutableArray alloc] initWithArray:completedDownloadsStatusess];
+            
+            if (download.fileName != nil || ![download.fileName isEqualToString:@""]) {
+                
+                [completedDownloadsNames insertObject:download.fileName atIndex:0];
+                
+            } else {
+                
+                [completedDownloadsNames insertObject:[NSString stringWithFormat:@"No Name"] atIndex:0];
+                
+            }
+            
+            if (fileIdentifier != nil || ![fileIdentifier isEqualToString:@""]) {
+                
+                [completedDownloadsURLs insertObject:fileIdentifier atIndex:0];
+                
+            } else {
+                
+                [completedDownloadsURLs insertObject:[NSString stringWithFormat:@"No URL"] atIndex:0];
+                
+            }
+            
+            if (logMessage != nil || ![logMessage isEqualToString:@""]) {
+                
+                [completedDownloadsStatuses insertObject:logMessage atIndex:0];
+                
+            } else {
+                
+                [completedDownloadsStatuses insertObject:[NSString stringWithFormat:@"Unknown Status"] atIndex:0];
+                
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsNames forKey:@"completedDownloadsNames"];
+            [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsURLs forKey:@"completedDownloadsURLs"];
+            [[NSUserDefaults standardUserDefaults] setObject:completedDownloadsStatuses forKey:@"completedDownloadsStatuses"];
+            
+            // remove object from the download
+            [self.downloads removeObjectForKey:fileIdentifier];
+        }
+            
+        }
+        
 }
 
 - (CGFloat)remainingTimeForDownload:(TWRDownloadObject *)download
