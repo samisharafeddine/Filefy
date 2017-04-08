@@ -54,10 +54,12 @@
 		21EFED331E14122B00D7755E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EFED311E14122B00D7755E /* LaunchScreen.storyboard */; };
 		21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED3B1E141ADC00D7755E /* WebViewController.m */; };
 		21EFED451E157FE000D7755E /* URLNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED441E157FE000D7755E /* URLNavView.m */; };
-		D67D1E2B772FB019B4D43E66 /* libPods-Filefy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F025BDA8C619D24515EF54C5 /* libPods-Filefy.a */; };
+		97EAE85BDED054BF1C7573BD /* libPods-Filefy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.debug.xcconfig"; sourceTree = "<group>"; };
+		135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.release.xcconfig"; sourceTree = "<group>"; };
 		210F8F3E1E2DB6150096E5C3 /* URLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLTextField.h; sourceTree = "<group>"; };
 		210F8F3F1E2DB6150096E5C3 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLTextField.m; sourceTree = "<group>"; };
 		211350F61E92E01F000E446B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -144,9 +146,7 @@
 		21EFED3B1E141ADC00D7755E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		21EFED431E157FE000D7755E /* URLNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLNavView.h; sourceTree = "<group>"; };
 		21EFED441E157FE000D7755E /* URLNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLNavView.m; sourceTree = "<group>"; };
-		5937130311C60951B2CF7C33 /* Pods-Filefy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.debug.xcconfig"; sourceTree = "<group>"; };
-		DF5566B661134B7E02C0827B /* Pods-Filefy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.release.xcconfig"; sourceTree = "<group>"; };
-		F025BDA8C619D24515EF54C5 /* libPods-Filefy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Filefy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Filefy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 				214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */,
 				219B81521E4BABB500620348 /* MediaPlayer.framework in Frameworks */,
 				211E7E181E2D3B8F00F571B2 /* MessageUI.framework in Frameworks */,
-				D67D1E2B772FB019B4D43E66 /* libPods-Filefy.a in Frameworks */,
+				97EAE85BDED054BF1C7573BD /* libPods-Filefy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +232,7 @@
 				214E00581E4CB30000B5ACC2 /* CoreImage.framework */,
 				219B81511E4BABB500620348 /* MediaPlayer.framework */,
 				211E7E171E2D3B8F00F571B2 /* MessageUI.framework */,
-				F025BDA8C619D24515EF54C5 /* libPods-Filefy.a */,
+				61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -408,7 +408,7 @@
 				21EFED221E14122B00D7755E /* Filefy */,
 				21EFED211E14122B00D7755E /* Products */,
 				211E7E161E2D3B8F00F571B2 /* Frameworks */,
-				DAC6259F0E38EA5D482A8948 /* Pods */,
+				25352B48FA745596B314957C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,11 +452,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DAC6259F0E38EA5D482A8948 /* Pods */ = {
+		25352B48FA745596B314957C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5937130311C60951B2CF7C33 /* Pods-Filefy.debug.xcconfig */,
-				DF5566B661134B7E02C0827B /* Pods-Filefy.release.xcconfig */,
+				0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */,
+				135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -468,13 +468,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21EFED371E14122B00D7755E /* Build configuration list for PBXNativeTarget "Filefy" */;
 			buildPhases = (
-				63D7F9A7379D6172E3D85A25 /* [CP] Check Pods Manifest.lock */,
+				5208C89ACF239D4B0CD68C07 /* [CP] Check Pods Manifest.lock */,
 				21EFED1C1E14122B00D7755E /* Sources */,
 				21EFED1D1E14122B00D7755E /* Frameworks */,
 				21EFED1E1E14122B00D7755E /* Resources */,
 				217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */,
-				8D662E969C5067E2A3FC31EB /* [CP] Embed Pods Frameworks */,
-				6B869ECDF19478EFEAB37F8F /* [CP] Copy Pods Resources */,
+				10B4FE2C3270D79429C15412 /* [CP] Embed Pods Frameworks */,
+				06E85356B29022EA4B791F74 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,36 +540,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script for firebase crash reporting ";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
-		};
-		63D7F9A7379D6172E3D85A25 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6B869ECDF19478EFEAB37F8F /* [CP] Copy Pods Resources */ = {
+		06E85356B29022EA4B791F74 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,7 +555,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Filefy/Pods-Filefy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D662E969C5067E2A3FC31EB /* [CP] Embed Pods Frameworks */ = {
+		10B4FE2C3270D79429C15412 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -597,6 +568,35 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Filefy/Pods-Filefy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script for firebase crash reporting ";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
+		};
+		5208C89ACF239D4B0CD68C07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -761,7 +761,7 @@
 		};
 		21EFED381E14122B00D7755E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5937130311C60951B2CF7C33 /* Pods-Filefy.debug.xcconfig */;
+			baseConfigurationReference = 0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QV3625575M;
@@ -776,7 +776,7 @@
 		};
 		21EFED391E14122B00D7755E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF5566B661134B7E02C0827B /* Pods-Filefy.release.xcconfig */;
+			baseConfigurationReference = 135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QV3625575M;

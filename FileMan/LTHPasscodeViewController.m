@@ -1710,7 +1710,7 @@ static const NSInteger LTHMaxPasscodeDigits = 10;
     _backgroundColor = [UIColor colorWithRed:0.97f green:0.97f blue:1.0f alpha:1.00f];
     _passcodeBackgroundColor = [UIColor clearColor];
     _coverViewBackgroundColor = [UIColor colorWithRed:0.97f green:0.97f blue:1.0f alpha:1.00f];
-    _failedAttemptLabelBackgroundColor =  [UIColor colorWithRed:0.8f green:0.1f blue:0.2f alpha:1.000f];
+    _failedAttemptLabelBackgroundColor =  [UIColor colorWithRed:253.0/255.0 green:88.0/255.0 blue:48.0/255.0 alpha:1.000f];
     _enterPasscodeLabelBackgroundColor = [UIColor clearColor];
     
     // Text
