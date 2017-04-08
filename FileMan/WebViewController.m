@@ -37,6 +37,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [LTHPasscodeViewController sharedUser].delegate = self;
+    
     // Initiate reference to AppDelegate.
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -73,21 +75,27 @@
     
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
     
-    if (homePage == nil || [homePage isEqual:@""]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"finishedLaunching"]) {
         
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasURL"] == YES) {
+        didEnterPasscode = NO;
+        
+        if (homePage == nil || [homePage isEqual:@""]) {
             
-            NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastURL"];
-            NSURL *lastUrl = [NSURL URLWithString:urlString];
-            NSURLRequest *request = [NSURLRequest requestWithURL:lastUrl];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasURL"] == YES) {
+                
+                NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastURL"];
+                NSURL *lastUrl = [NSURL URLWithString:urlString];
+                NSURLRequest *request = [NSURLRequest requestWithURL:lastUrl];
+                
+                [self.webView loadRequest:request];
+                
+            }
             
-            [self.webView loadRequest:request];
+        } else {
+            
+            [self urlProcessing:homePage fromHomePageSetting:@"yes"];
             
         }
-        
-    } else {
-        
-        [self urlProcessing:homePage fromHomePageSetting:@"yes"];
         
     }
     
@@ -114,6 +122,22 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidLoad:) name:@"AVPlayerItemBecameCurrentNotification" object:nil];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"finishedLaunching"]) {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+            
+            if ([LTHPasscodeViewController didPasscodeTimerEnd])
+                [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                         withLogout:NO
+                                                                     andLogoutTitle:nil];
+            
+        }
+        
+    }
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -816,6 +840,38 @@
     addedAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [self presentViewController:addedAlert animated:YES completion:nil];
+    
+}
+
+// LTHPasscodeViewController Delegate
+
+- (void)passcodeWasEnteredSuccessfully {
+    
+    NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
+    
+    if (didEnterPasscode == NO) {
+        
+        if (homePage == nil || [homePage isEqual:@""]) {
+            
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasURL"] == YES) {
+                
+                NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastURL"];
+                NSURL *lastUrl = [NSURL URLWithString:urlString];
+                NSURLRequest *request = [NSURLRequest requestWithURL:lastUrl];
+                
+                [self.webView loadRequest:request];
+                
+            }
+            
+        } else {
+            
+            [self urlProcessing:homePage fromHomePageSetting:@"yes"];
+            
+        }
+        
+    }
+    
+    didEnterPasscode = YES;
     
 }
 

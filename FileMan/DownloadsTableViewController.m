@@ -12,6 +12,7 @@
 #import "TWRDownloadManager.h"
 #import "TWRDownloadObject.h"
 #import "StartDownloadTableViewController.h"
+#import "LTHPasscodeViewController.h"
 
 @interface DownloadsTableViewController ()
 
@@ -34,6 +35,26 @@
     [super viewWillAppear:animated];
     
     [self reloadData];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"finishedLaunching"]) {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+            
+            if ([LTHPasscodeViewController didPasscodeTimerEnd])
+                [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                         withLogout:NO
+                                                                     andLogoutTitle:nil];
+            
+        }
+        
+    }
     
 }
 

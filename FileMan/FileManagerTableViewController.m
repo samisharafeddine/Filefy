@@ -17,6 +17,7 @@
 #import "EditPropsTableViewController.h"
 #import "MusicPlayerViewController.h"
 #import "XMusicFile.h"
+#import "LTHPasscodeViewController.h"
 
 #import <NAKPlaybackIndicatorView.h>
 
@@ -250,6 +251,21 @@
     self.navigationController.navigationBar.translucent = YES;
     
     isCurrentView = YES;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"finishedLaunching"]) {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+            
+            if ([LTHPasscodeViewController didPasscodeTimerEnd])
+                [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                         withLogout:NO
+                                                                     andLogoutTitle:nil];
+            
+        }
+        
+    }
     
 }
 

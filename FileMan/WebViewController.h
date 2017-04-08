@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface WebViewController : UIViewController <UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, NSURLConnectionDelegate> {
+#import "LTHPasscodeViewController.h"
+
+@interface WebViewController : UIViewController <UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, NSURLConnectionDelegate, LTHPasscodeViewControllerDelegate> {
     
     BOOL loadCompleted;
     NSTimer *loadTimer;
     BOOL toolbarHidden;
     CGFloat lastContentOffsetY;
     UIButton *refresh;
+    BOOL didEnterPasscode;
     
 }
 

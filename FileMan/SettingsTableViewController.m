@@ -98,6 +98,26 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"finishedLaunching"]) {
+        
+        if ([LTHPasscodeViewController doesPasscodeExist]) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+            
+            if ([LTHPasscodeViewController didPasscodeTimerEnd])
+                [[LTHPasscodeViewController sharedUser] showLockScreenWithAnimation:YES
+                                                                         withLogout:NO
+                                                                     andLogoutTitle:nil];
+            
+        }
+        
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

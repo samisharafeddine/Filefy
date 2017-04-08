@@ -23,6 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"finishedLaunching"];
+    
     [FIRApp configure];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
@@ -65,8 +67,6 @@
     self.XFileParser = [[XFileParser alloc] init];
     
     self.dataRef.hasPlayedOnce = NO;
-    
-    //[self performSelector:@selector(showPasscode) withObject:nil afterDelay:0.5];
     
     //assert(NO);
     
