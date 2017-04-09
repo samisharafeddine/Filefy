@@ -35,6 +35,7 @@
         // Default session
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+        configuration.HTTPMaximumConnectionsPerHost = 2;
         self.session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
 
         // Background session

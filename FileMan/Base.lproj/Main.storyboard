@@ -92,7 +92,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Browser" id="txN-Eg-Me4"/>
                         <view key="titleView" contentMode="scaleToFill" id="m7y-eh-wff" customClass="URLNavView">
-                            <rect key="frame" x="8" y="6" width="359" height="33"/>
+                            <rect key="frame" x="8" y="5.5" width="359" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-r7-aZ4">
@@ -418,6 +418,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="KEe-bg-cVw"/>
                                             </constraints>
+                                            <color key="trackTintColor" red="0.88406170685279184" green="0.88406170685279184" blue="0.88406170685279184" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No progress information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-Q4-ekO">
                                             <rect key="frame" x="8" y="43" width="117" height="12"/>
@@ -432,7 +433,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mig-2O-A6l">
-                                            <rect key="frame" x="352" y="32" width="15" height="12"/>
+                                            <rect key="frame" x="352.5" y="32" width="14.5" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -495,7 +496,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sI-Oc-bzZ">
-                                            <rect key="frame" x="8" y="32" width="21" height="12"/>
+                                            <rect key="frame" x="8" y="32" width="359" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -523,6 +524,7 @@
                                         <constraint firstAttribute="bottom" secondItem="NR3-qU-7n8" secondAttribute="bottom" constant="8" id="hCw-7r-pkJ"/>
                                         <constraint firstItem="0sI-Oc-bzZ" firstAttribute="top" secondItem="uSV-da-Plh" secondAttribute="bottom" constant="3" id="nFR-W5-fGt"/>
                                         <constraint firstItem="Nca-VI-3t5" firstAttribute="leading" secondItem="FEP-c4-rzI" secondAttribute="leading" constant="8" id="r6W-Cx-X9P"/>
+                                        <constraint firstItem="0sI-Oc-bzZ" firstAttribute="trailing" secondItem="FEP-c4-rzI" secondAttribute="trailingMargin" id="umM-b0-xQj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

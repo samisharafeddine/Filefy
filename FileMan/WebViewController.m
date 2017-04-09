@@ -223,7 +223,7 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
-    //NSLog(@"MIME Type: %@", [response MIMEType]);
+    NSLog(@"MIME Type: %@", [response MIMEType]);
     
     NSArray *mimeTypes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
     
