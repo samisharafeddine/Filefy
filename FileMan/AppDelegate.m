@@ -24,6 +24,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
+        
+        NSLog(@"Filefy Plus Enabled");
+        
+    } else {
+        
+        NSLog(@"Filefy Plus Not Enabled");
+        
+    }
+    
+    int buildNumber = 14;
+    
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
     if ([[DBClientsManager authorizedClient] isAuthorized]) {
@@ -36,7 +48,15 @@
         
     }
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"finishedLaunching"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"finishedLaunching"];
+        
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+        
+    }
     
     [FIRApp configure];
     
@@ -76,7 +96,19 @@
         [LTHPasscodeViewController deletePasscode];
         [DBClientsManager unlinkAndResetClients];
         
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FilefyPlus"];
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:14 forKey:@"buildNumber"];
+        
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
+    
+    if (buildNumber > [[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"]) {
+        
+        // Do anything for the new build here
+        NSLog(@"New Build");
+        [[NSUserDefaults standardUserDefaults] setInteger:buildNumber forKey:@"buildNumber"];
         
     }
     

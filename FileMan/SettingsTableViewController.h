@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <StoreKit/StoreKit.h>
 
-@interface SettingsTableViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate> {
+@interface SettingsTableViewController : UITableViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver> {
     
     CGRect rect;
     
