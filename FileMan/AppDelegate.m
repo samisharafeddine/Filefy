@@ -73,6 +73,8 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"backgroundDownloads"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"TouchID"];
         [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
+        [LTHPasscodeViewController deletePasscode];
+        [DBClientsManager unlinkAndResetClients];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         

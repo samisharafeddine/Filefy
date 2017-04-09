@@ -265,6 +265,10 @@
             
         }
         
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
+        
     }
     
 }
