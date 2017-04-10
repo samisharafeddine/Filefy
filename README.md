@@ -1,6 +1,6 @@
-## FileMan - An advanced file manager and downloader for iOS
+## Filefy - An Advanced File and Media for iOS
 
-FileMan is a fully featured advanced file manager, with a built in web browser, capable of detecting any given MIME Type and downloading the corresponding files.
+Filefy is a fully featured advanced file manager, with a built in web browser, capable of detecting any given MIME Type and downloading the corresponding files.
 
 ### Features
 
