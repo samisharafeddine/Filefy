@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 14;
+    int buildNumber = 15;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -96,7 +96,7 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FilefyPlus"];
         
-        [[NSUserDefaults standardUserDefaults] setInteger:14 forKey:@"buildNumber"];
+        [[NSUserDefaults standardUserDefaults] setInteger:15 forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         

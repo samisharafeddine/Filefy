@@ -262,7 +262,7 @@
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
             // Email Subject
-            NSString *emailTitle = @"";
+            NSString *emailTitle = @"Filefy";
             // Email Content
             NSString *messageBody = @"";
             // To address
@@ -292,6 +292,8 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     } else if (indexPath.section == 0) {
+        
+        [FIRAnalytics logEventWithName:@"Pressed_PasscodeLock" parameters:nil];
         
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
             
@@ -362,6 +364,8 @@
         
         if (indexPath.row == 0) {
             
+            [FIRAnalytics logEventWithName:@"Pressed_Purchase" parameters:nil];
+            
             if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
                 
                 NSLog(@"User requests Filefy Plus");
@@ -405,6 +409,8 @@
             
         } else if (indexPath.row == 1) {
             
+            [FIRAnalytics logEventWithName:@"Pressed_Restore_Purchase" parameters:nil];
+            
             //this is called when the user restores purchases, you should hook this up to a button
             [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
             [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
@@ -419,7 +425,7 @@
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     SKProduct *validProduct = nil;
-    int count = [response.products count];
+    int count = (int)[response.products count];
     if(count > 0){
         validProduct = [response.products objectAtIndex:0];
         NSLog(@"Products Available!");
@@ -455,7 +461,7 @@
         
     }
     
-    NSLog(@"received restored transactions: %i", queue.transactions.count);
+    NSLog(@"received restored transactions: %i", (int)queue.transactions.count);
     for(SKPaymentTransaction *transaction in queue.transactions){
         if(transaction.transactionState == SKPaymentTransactionStateRestored){
             //called when the user successfully restores a purchase
@@ -643,7 +649,7 @@
     SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
     
     tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [tweetSheet setInitialText:@"Filefy is an advanced file manager and downloader for iOS, Get it here: http://bit.ly/Filefy"];
+    [tweetSheet setInitialText:@"Filefy is an Advanced File and Media Manager for iOS, Get it here: http://bit.ly/Filefy"];
     [self presentViewController:tweetSheet animated:YES completion:nil];
     
 }

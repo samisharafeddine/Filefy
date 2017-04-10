@@ -2311,9 +2311,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="squareColorVert" translatesAutoresizingMaskIntoConstraints="NO" id="dNE-4h-NYl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dNE-4h-NYl">
+                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="667"/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-BP-zc5">
+                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="667"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.34509803919999998" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exh-ai-QOF">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
@@ -2392,12 +2396,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="exh-ai-QOF" firstAttribute="leading" secondItem="7h0-Pz-w7n" secondAttribute="leading" id="44S-qb-CMu"/>
+                            <constraint firstItem="8bK-BP-zc5" firstAttribute="width" secondItem="dNE-4h-NYl" secondAttribute="width" id="7DS-yJ-5Z7"/>
+                            <constraint firstAttribute="trailing" secondItem="dNE-4h-NYl" secondAttribute="trailing" id="Fal-xz-fO0"/>
+                            <constraint firstItem="dNE-4h-NYl" firstAttribute="leading" secondItem="8bK-BP-zc5" secondAttribute="trailing" id="GP5-20-jLP"/>
                             <constraint firstAttribute="trailing" secondItem="7fv-nK-pjt" secondAttribute="trailing" id="J2v-Tm-vQ2"/>
                             <constraint firstItem="FcA-lv-ZCx" firstAttribute="top" secondItem="exh-ai-QOF" secondAttribute="bottom" id="O4V-59-k4X"/>
                             <constraint firstItem="7fv-nK-pjt" firstAttribute="leading" secondItem="7h0-Pz-w7n" secondAttribute="leading" id="WHG-np-kLy"/>
+                            <constraint firstItem="8bK-BP-zc5" firstAttribute="leading" secondItem="7h0-Pz-w7n" secondAttribute="leading" id="YTJ-Ly-tTO"/>
+                            <constraint firstItem="FcA-lv-ZCx" firstAttribute="top" secondItem="dNE-4h-NYl" secondAttribute="bottom" id="ZWM-hb-28j"/>
                             <constraint firstItem="7fv-nK-pjt" firstAttribute="top" secondItem="7h0-Pz-w7n" secondAttribute="top" id="hc6-Qu-RYh"/>
+                            <constraint firstItem="8bK-BP-zc5" firstAttribute="top" secondItem="0KM-Gj-XMO" secondAttribute="bottom" id="lx9-nv-1eK"/>
+                            <constraint firstItem="dNE-4h-NYl" firstAttribute="top" secondItem="0KM-Gj-XMO" secondAttribute="bottom" id="lyh-49-Ncm"/>
                             <constraint firstAttribute="trailing" secondItem="exh-ai-QOF" secondAttribute="trailing" id="tGN-1c-xgs"/>
                             <constraint firstItem="FcA-lv-ZCx" firstAttribute="top" secondItem="7fv-nK-pjt" secondAttribute="bottom" id="xzp-NK-5r3"/>
+                            <constraint firstItem="FcA-lv-ZCx" firstAttribute="top" secondItem="8bK-BP-zc5" secondAttribute="bottom" id="yqg-7a-QXN"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -2437,7 +2449,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An advanced file manager and downloader for iOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-rO-DFe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An Advanced File and Media Manager for iOS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-rO-DFe">
                                 <rect key="frame" x="52.5" y="469.5" width="270" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" id="r4A-2s-rf8"/>
@@ -2640,7 +2652,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="rIm-5R-wHg"/>
                                 </constraints>
-                                <string key="text">With a built in file manager, you can browse, import, and display almost any file, it also features a music player, video player, and a photo viewer</string>
+                                <string key="text">With a built in file manager, you can browse, import, and display almost any file, it also features a music, video, and photo viewer</string>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2690,14 +2702,14 @@
         <image name="Back" width="22" height="22"/>
         <image name="BackButton" width="52" height="52"/>
         <image name="BrowserNotSelected" width="22" height="22"/>
-        <image name="BrowserPage" width="210" height="427"/>
+        <image name="BrowserPage" width="243" height="488"/>
         <image name="BrowserSelected" width="22" height="22"/>
         <image name="Delete" width="22" height="22"/>
-        <image name="DownloadsPage" width="210" height="427"/>
+        <image name="DownloadsPage" width="243" height="488"/>
         <image name="DownloadsSelected" width="22" height="22"/>
         <image name="DropBox" width="50" height="50"/>
         <image name="FileMan Icon" width="321" height="284"/>
-        <image name="FileManagerPage" width="210" height="427"/>
+        <image name="FileManagerPage" width="243" height="488"/>
         <image name="FilesNotSelected" width="22" height="22"/>
         <image name="FilesSelected" width="22" height="22"/>
         <image name="Forward" width="22" height="22"/>
@@ -2715,7 +2727,6 @@
         <image name="SettingsSelected" width="22" height="22"/>
         <image name="VolumeHigh" width="50" height="50"/>
         <image name="VolumeLow" width="50" height="50"/>
-        <image name="squareColorVert" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dwb-lK-N8q"/>
