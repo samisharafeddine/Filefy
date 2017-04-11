@@ -169,24 +169,32 @@
         
     } else if (indexPath.section == 2) {
         
-        DBUserClient *client = [DBClientsManager authorizedClient];
-        
-        NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:self.path];
-        
-        [[[client.filesRoutes uploadData:[NSString stringWithFormat:@"/%@", [self.path lastPathComponent]] inputData:fileData]
-          setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
-              if (result) {
-                  NSLog(@"%@\n", result);
-              } else {
-                  NSLog(@"%@\n%@\n", routeError, networkError);
-              }
-          }] setProgressBlock:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
-              NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
-          }];
+        if ([[DBClientsManager authorizedClient] isAuthorized]) {
+            
+            DBUserClient *client = [DBClientsManager authorizedClient];
+            
+            NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:self.path];
+            
+            [[[client.filesRoutes uploadData:[NSString stringWithFormat:@"/%@", [self.path lastPathComponent]] inputData:fileData]
+              setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
+                  if (result) {
+                      NSLog(@"%@\n", result);
+                  } else {
+                      NSLog(@"%@\n%@\n", routeError, networkError);
+                  }
+              }] setProgressBlock:^(int64_t bytesUploaded, int64_t totalBytesUploaded, int64_t totalBytesExpectedToUploaded) {
+                  NSLog(@"\n%lld\n%lld\n%lld\n", bytesUploaded, totalBytesUploaded, totalBytesExpectedToUploaded);
+              }];
+            
+            [self infoMessageWithTitle:@"Uploading" andMessage:@"File is now being uploaded to Dropbox."];
+            
+        } else {
+            
+            [self infoMessageWithTitle:@"Dropbox Not Linked" andMessage:@"You do not have a linked Dropbox account."];
+            
+        }
         
     }
-    
-    [self infoMessageWithTitle:@"Uploading" andMessage:@"File is now being uploaded to Dropbox."];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
