@@ -1524,7 +1524,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Album" translatesAutoresizingMaskIntoConstraints="NO" id="yOX-vr-BCL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Album" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-OV-vB9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Album" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-OV-vB9">
                                 <rect key="frame" x="27.5" y="72" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DF6-OV-vB9" secondAttribute="height" multiplier="1:1" id="LsN-62-KX5"/>
