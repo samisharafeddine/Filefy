@@ -107,7 +107,7 @@
  *
  * Checks the file extension of the file at path.
  * Supported Image formats: .gif, .jpg, .jpeg, .png, Returns File Type "image".
- * Supported Video formats: .mp4, .mov, .avi, .3gp, Returns File Type "video".
+ * Supported Video formats: .mp4, .mov, .avi, .3gp, .m4v, Returns File Type "video".
  * Supported Audio formats: .mp3, .m4a, .wav, Returns File Type "audio".
  * Archives (.zip), Documents (.pdf), Text (.txt), Json (.json), Returns "archive", "pdf", "txt", "json" respectively.
  * If File Extension is not recognized, Return "unknown".
@@ -120,7 +120,7 @@
         
         fileType = @"image";
         
-    } else if ([[path.lowercaseString pathExtension] isEqualToString:@"mp4"] || [[path.lowercaseString pathExtension] isEqualToString:@"mov"] || [[path.lowercaseString pathExtension] isEqualToString:@"flv"] || [[path.lowercaseString pathExtension] isEqualToString:@"avi"] || [[path.lowercaseString pathExtension] isEqualToString:@"3gp"]) {
+    } else if ([[path.lowercaseString pathExtension] isEqualToString:@"mp4"] || [[path.lowercaseString pathExtension] isEqualToString:@"mov"] || [[path.lowercaseString pathExtension] isEqualToString:@"flv"] || [[path.lowercaseString pathExtension] isEqualToString:@"avi"] || [[path.lowercaseString pathExtension] isEqualToString:@"3gp"] || [[path.lowercaseString pathExtension] isEqualToString:@"m4v"]) {
         
         fileType = @"video";
         
