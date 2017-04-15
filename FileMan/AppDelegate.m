@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 16;
+    int buildNumber = 17;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -71,10 +71,20 @@
         UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"WelcomeController"];
         self.window.rootViewController = viewController;
         
+        //NSArray *defaultMIMEs = @[@"image/*",
+        //                          @"*/pdf",
+        //                          @"audio/*",
+        //                          @"video/*"];
+        
         NSArray *defaultMIMEs = @[@"image/*",
                                   @"*/pdf",
-                                  @"audio/*",
-                                  @"video/*"];
+                                  @"*/rtf",
+                                  @"text/richtext",
+                                  @"application/msword",
+                                  @"application/vnd.ms-word*",
+                                  @"application/vnd.ms-excel",
+                                  @"application/vnd.ms-powerpoint",
+                                  @"application/vnd.iwork.*"];
         
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"titleHistory"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"urlHistory"];
@@ -96,7 +106,7 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FilefyPlus"];
         
-        [[NSUserDefaults standardUserDefaults] setInteger:16 forKey:@"buildNumber"];
+        [[NSUserDefaults standardUserDefaults] setInteger:17 forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
