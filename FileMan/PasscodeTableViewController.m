@@ -27,7 +27,7 @@
     [self.passcodeSwitch addTarget:self
                       action:@selector(stateChanged:) forControlEvents:UIControlEventValueChanged];
     
-    [self.passcodeSwitch addTarget:self
+    [self.touchIDSwitch addTarget:self
                             action:@selector(TIDstateChanged:) forControlEvents:UIControlEventValueChanged];
     
     [self updateView];
