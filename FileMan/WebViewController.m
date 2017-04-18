@@ -223,6 +223,8 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
+    [FIRAnalytics logEventWithName:@"load_any_page" parameters:@{@"url":[NSString stringWithFormat:@"%@", [response.URL absoluteString]]}];
+    
     NSLog(@"MIME Type: %@", [response MIMEType]);
     
     NSArray *mimeTypes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
@@ -370,7 +372,7 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
     
-    [FIRAnalytics logEventWithName:@"Load_Webpage" parameters:nil];
+    [FIRAnalytics logEventWithName:@"Load_Webpage_from_url_field" parameters:@{@"URL":[NSString stringWithFormat:@"%@", [url absoluteString]]}];
     
 }
 
