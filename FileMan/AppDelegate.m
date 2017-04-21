@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 18;
+    int buildNumber = 19;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -71,10 +71,10 @@
         UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"WelcomeController"];
         self.window.rootViewController = viewController;
         
-        NSArray *defaultMIMEs = @[@"image/*",
-                                  @"*/pdf",
-                                  @"audio/*",
-                                  @"video/*"];
+        //NSArray *defaultMIMEs = @[@"image/*",
+        //                          @"*/pdf",
+        //                          @"audio/*",
+        //                          @"video/*"];
         
         //NSArray *defaultMIMEs = @[@"image/*",
         //                          @"*/pdf",
@@ -85,6 +85,16 @@
         //                          @"application/vnd.ms-excel",
         //                          @"application/vnd.ms-powerpoint",
         //                          @"application/vnd.iwork.*"];
+        
+        NSArray *defaultMIMEs = @[@"image/*",
+                                  @"*/pdf",
+                                  @"*/rtf",
+                                  @"text/richtext",
+                                  @"application/msword",
+                                  @"application/vnd.ms-word*",
+                                  @"application/vnd.ms-excel*",
+                                  @"application/vnd.ms-powerpoint*",
+                                  @"application/vnd.iwork.*"];
         
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"titleHistory"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"urlHistory"];
@@ -106,7 +116,7 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FilefyPlus"];
         
-        [[NSUserDefaults standardUserDefaults] setInteger:18 forKey:@"buildNumber"];
+        [[NSUserDefaults standardUserDefaults] setInteger:19 forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
