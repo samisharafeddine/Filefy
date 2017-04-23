@@ -87,6 +87,8 @@
         //                          @"application/vnd.iwork.*"];
         
         NSArray *defaultMIMEs = @[@"image/*",
+                                  @"audio/*",
+                                  @"video/*",
                                   @"*/pdf",
                                   @"*/rtf",
                                   @"text/richtext",
@@ -123,6 +125,20 @@
     }
     
     if (buildNumber > [[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"]) {
+        
+        NSArray *addedMimes = @[@"audio/*",
+                                @"video/*"];
+        
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"] == 17) {
+            
+            NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
+            NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
+            
+            [newMimes addObjectsFromArray:addedMimes];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:newMimes forKey:@"defaultMIMETypes"];
+            
+        }
         
         // Do anything for the new build here
         NSLog(@"New Build");
