@@ -353,8 +353,7 @@
                                            controller:self
                                               openURL:^(NSURL *url) {
                                                   [[UIApplication sharedApplication] openURL:url];
-                                              }
-                                          browserAuth:YES];
+                                              }];
             
         }
         
