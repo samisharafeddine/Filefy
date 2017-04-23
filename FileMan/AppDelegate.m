@@ -126,6 +126,8 @@
     
     if (buildNumber > [[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"]) {
         
+        /* Check if build is first AppStore build 17 and add new MIMEs */
+        
         NSArray *addedMimes = @[@"audio/*",
                                 @"video/*"];
         
