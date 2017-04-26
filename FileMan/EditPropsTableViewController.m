@@ -157,6 +157,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     if (indexPath.section == 1) {
         
         [FIRAnalytics logEventWithName:@"Using_OpenIn_From_FileProps" parameters:nil];
@@ -164,6 +166,10 @@
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
         
         activityView.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard];
+        
+        activityView.popoverPresentationController.sourceView = cell;
+        activityView.popoverPresentationController.sourceRect = cell.bounds;
+        activityView.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
         
         [self presentViewController:activityView animated:YES completion:nil];
         
