@@ -491,9 +491,9 @@
 				21EFED1C1E14122B00D7755E /* Sources */,
 				21EFED1D1E14122B00D7755E /* Frameworks */,
 				21EFED1E1E14122B00D7755E /* Resources */,
-				217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */,
 				10B4FE2C3270D79429C15412 /* [CP] Embed Pods Frameworks */,
 				06E85356B29022EA4B791F74 /* [CP] Copy Pods Resources */,
+				217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */,
 			);
 			buildRules = (
 			);
