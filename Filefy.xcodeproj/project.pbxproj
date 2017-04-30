@@ -44,6 +44,9 @@
 		21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A04F951E1ABF1400254D8F /* HistoryTableViewCell.m */; };
 		21A04F991E1C244500254D8F /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A04F981E1C244500254D8F /* SettingsTableViewController.m */; };
 		21A0ECC71E46B54800E156D8 /* FileManagerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A0ECC61E46B54800E156D8 /* FileManagerTableViewCell.m */; };
+		21BA55F21EB620C100B70BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21BA55F11EB620C100B70BF7 /* Foundation.framework */; };
+		21BA55F41EB620CE00B70BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21BA55F31EB620CE00B70BF7 /* UIKit.framework */; };
+		21BA55F61EB620D900B70BF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21BA55F51EB620D900B70BF7 /* CoreGraphics.framework */; };
 		21C19DBE1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C19DBD1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m */; };
 		21C70EAC1E96E02D00A52BC8 /* PasscodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C70EAB1E96E02D00A52BC8 /* PasscodeTableViewController.m */; };
 		21C70EB21E96E05B00A52BC8 /* LTHKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C70EAF1E96E05B00A52BC8 /* LTHKeychainUtils.m */; };
@@ -131,6 +134,9 @@
 		21A04F981E1C244500254D8F /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		21A0ECC51E46B54800E156D8 /* FileManagerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerTableViewCell.h; sourceTree = "<group>"; };
 		21A0ECC61E46B54800E156D8 /* FileManagerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManagerTableViewCell.m; sourceTree = "<group>"; };
+		21BA55F11EB620C100B70BF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		21BA55F31EB620CE00B70BF7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		21BA55F51EB620D900B70BF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		21C19DBC1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedDownloadsTableViewCell.h; sourceTree = "<group>"; };
 		21C19DBD1E6D75FE00C56D70 /* CompletedDownloadsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedDownloadsTableViewCell.m; sourceTree = "<group>"; };
 		21C70EAA1E96E02D00A52BC8 /* PasscodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasscodeTableViewController.h; sourceTree = "<group>"; };
@@ -164,6 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BA55F61EB620D900B70BF7 /* CoreGraphics.framework in Frameworks */,
+				21BA55F41EB620CE00B70BF7 /* UIKit.framework in Frameworks */,
+				21BA55F21EB620C100B70BF7 /* Foundation.framework in Frameworks */,
 				2103B9D01E9AA4FD00F5DA0A /* StoreKit.framework in Frameworks */,
 				2169102B1E994D1900A44D5D /* Security.framework in Frameworks */,
 				216910291E994D1000A44D5D /* QuartzCore.framework in Frameworks */,
@@ -241,6 +250,9 @@
 		211E7E161E2D3B8F00F571B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21BA55F51EB620D900B70BF7 /* CoreGraphics.framework */,
+				21BA55F31EB620CE00B70BF7 /* UIKit.framework */,
+				21BA55F11EB620C100B70BF7 /* Foundation.framework */,
 				2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */,
 				2169102A1E994D1900A44D5D /* Security.framework */,
 				216910281E994D1000A44D5D /* QuartzCore.framework */,
