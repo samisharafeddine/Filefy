@@ -37,6 +37,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+    
     [LTHPasscodeViewController sharedUser].delegate = self;
     
     // Initiate reference to AppDelegate.
@@ -150,6 +153,18 @@
     [super viewDidDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AVPlayerItemBecameCurrentNotification" object:nil];
+    
+}
+
+-(void)appWillResignActive:(NSNotification*)note {
+    
+    [self.webView stopLoading];
+    
+}
+-(void)appWillTerminate:(NSNotification*)note {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
     
 }
 

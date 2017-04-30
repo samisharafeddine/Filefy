@@ -12,6 +12,7 @@ target 'Filefy' do
 
   pod "MWPhotoBrowser"
   pod "SSZipArchive"
+  pod "UnrarKit"
 
   pod 'NAKPlaybackIndicatorView'
 

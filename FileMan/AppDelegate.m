@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 20;
+    int buildNumber = 21;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -96,7 +96,9 @@
                                   @"application/vnd.ms-word*",
                                   @"application/vnd.ms-excel*",
                                   @"application/vnd.ms-powerpoint*",
-                                  @"application/vnd.iwork.*"];
+                                  @"application/vnd.iwork.*",
+                                  @"application/octet-stream",
+                                  @"application/zip"];
         
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"titleHistory"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"urlHistory"];
@@ -118,7 +120,7 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FilefyPlus"];
         
-        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"buildNumber"];
+        [[NSUserDefaults standardUserDefaults] setInteger:21 forKey:@"buildNumber"];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -128,10 +130,26 @@
         
         /* Check if build is first AppStore build 17 and add new MIMEs */
         
-        NSArray *addedMimes = @[@"audio/*",
-                                @"video/*"];
+        NSInteger savedBuild = [[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"];
         
-        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"buildNumber"] == 17) {
+        if (savedBuild == 17) {
+            
+            NSArray *addedMimes = @[@"audio/*",
+                                    @"video/*"];
+            
+            NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
+            NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
+            
+            [newMimes addObjectsFromArray:addedMimes];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:newMimes forKey:@"defaultMIMETypes"];
+            
+        }
+        
+        if (savedBuild == 17 || savedBuild == 18 || savedBuild == 19 || savedBuild == 20) {
+            
+            NSArray *addedMimes = @[@"application/octet-stream",
+                                    @"application/zip"];
             
             NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
             NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];

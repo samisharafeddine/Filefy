@@ -10,6 +10,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "MWPhotoBrowser.h"
 #import "SSZipArchive.h"
+#import "MBProgressHUD.h"
+#import "UnrarKit.h"
 
 @interface FileManagerTableViewController : UITableViewController <UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UIScrollViewDelegate, MWPhotoBrowserDelegate> {
     

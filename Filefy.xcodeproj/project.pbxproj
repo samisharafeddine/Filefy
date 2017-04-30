@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2103B9D01E9AA4FD00F5DA0A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */; };
 		210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 210F8F3F1E2DB6150096E5C3 /* URLTextField.m */; };
+		2111934D1EB630DE00F1AB3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2111934C1EB630DE00F1AB3B /* GoogleService-Info.plist */; };
 		2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */; };
 		21183E561E46A60700029939 /* XFileParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 21183E551E46A60700029939 /* XFileParserTest.m */; };
 		21183E5A1E46ACA200029939 /* FileManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21183E591E46ACA200029939 /* FileManagerTableViewController.m */; };
@@ -35,7 +36,6 @@
 		217B069A1E6DE0E00083846F /* EditMIMETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B06991E6DE0E00083846F /* EditMIMETableViewController.m */; };
 		2180963A1E2ECF9C0059870E /* AddBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218096391E2ECF9C0059870E /* AddBTableViewController.m */; };
 		2180963F1E2EE8740059870E /* DataRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 2180963E1E2EE8740059870E /* DataRef.m */; };
-		2188E5A81E9AB89B005B602E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2188E5A71E9AB89B005B602E /* GoogleService-Info.plist */; };
 		219B814C1E4B649300620348 /* PDFViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219B814B1E4B649300620348 /* PDFViewerViewController.m */; };
 		219B81501E4B83F500620348 /* TextViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 219B814F1E4B83F500620348 /* TextViewerViewController.m */; };
 		219B81521E4BABB500620348 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219B81511E4BABB500620348 /* MediaPlayer.framework */; };
@@ -58,15 +58,14 @@
 		21EFED331E14122B00D7755E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EFED311E14122B00D7755E /* LaunchScreen.storyboard */; };
 		21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED3B1E141ADC00D7755E /* WebViewController.m */; };
 		21EFED451E157FE000D7755E /* URLNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21EFED441E157FE000D7755E /* URLNavView.m */; };
-		97EAE85BDED054BF1C7573BD /* libPods-Filefy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */; };
+		9AC1013E170518BB26E824F1 /* libPods-Filefy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252F7913B99862599AA4649A /* libPods-Filefy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.debug.xcconfig"; sourceTree = "<group>"; };
-		135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.release.xcconfig"; sourceTree = "<group>"; };
 		2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		210F8F3E1E2DB6150096E5C3 /* URLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLTextField.h; sourceTree = "<group>"; };
 		210F8F3F1E2DB6150096E5C3 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLTextField.m; sourceTree = "<group>"; };
+		2111934C1EB630DE00F1AB3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		211527191E686AFC005F5C92 /* DefaultTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTabTableViewController.h; sourceTree = "<group>"; };
 		2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTabTableViewController.m; sourceTree = "<group>"; };
 		21183E541E46A60700029939 /* XFileParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFileParserTest.h; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 		218096391E2ECF9C0059870E /* AddBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBTableViewController.m; sourceTree = "<group>"; };
 		2180963D1E2EE8740059870E /* DataRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRef.h; sourceTree = "<group>"; };
 		2180963E1E2EE8740059870E /* DataRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRef.m; sourceTree = "<group>"; };
-		2188E5A71E9AB89B005B602E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		219B814A1E4B649300620348 /* PDFViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewerViewController.h; sourceTree = "<group>"; };
 		219B814B1E4B649300620348 /* PDFViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewerViewController.m; sourceTree = "<group>"; };
 		219B814E1E4B83F500620348 /* TextViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewerViewController.h; sourceTree = "<group>"; };
@@ -156,7 +154,9 @@
 		21EFED3B1E141ADC00D7755E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		21EFED431E157FE000D7755E /* URLNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLNavView.h; sourceTree = "<group>"; };
 		21EFED441E157FE000D7755E /* URLNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLNavView.m; sourceTree = "<group>"; };
-		61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Filefy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		252F7913B99862599AA4649A /* libPods-Filefy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Filefy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		654C5C420F71582C7A6114F4 /* Pods-Filefy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.release.xcconfig"; sourceTree = "<group>"; };
+		CCDEE1077EF1CCD18D24588A /* Pods-Filefy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filefy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Filefy/Pods-Filefy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 				214E00591E4CB30000B5ACC2 /* CoreImage.framework in Frameworks */,
 				219B81521E4BABB500620348 /* MediaPlayer.framework in Frameworks */,
 				211E7E181E2D3B8F00F571B2 /* MessageUI.framework in Frameworks */,
-				97EAE85BDED054BF1C7573BD /* libPods-Filefy.a in Frameworks */,
+				9AC1013E170518BB26E824F1 /* libPods-Filefy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +248,7 @@
 				214E00581E4CB30000B5ACC2 /* CoreImage.framework */,
 				219B81511E4BABB500620348 /* MediaPlayer.framework */,
 				211E7E171E2D3B8F00F571B2 /* MessageUI.framework */,
-				61937FB8E3DA2AD56791BDBA /* libPods-Filefy.a */,
+				252F7913B99862599AA4649A /* libPods-Filefy.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				21EFED221E14122B00D7755E /* Filefy */,
 				21EFED211E14122B00D7755E /* Products */,
 				211E7E161E2D3B8F00F571B2 /* Frameworks */,
-				25352B48FA745596B314957C /* Pods */,
+				AE19A555E23F9C2E2257BCB3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -464,18 +464,18 @@
 		21EFED231E14122B00D7755E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2188E5A71E9AB89B005B602E /* GoogleService-Info.plist */,
+				2111934C1EB630DE00F1AB3B /* GoogleService-Info.plist */,
 				21EFED341E14122B00D7755E /* Info.plist */,
 				21EFED241E14122B00D7755E /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		25352B48FA745596B314957C /* Pods */ = {
+		AE19A555E23F9C2E2257BCB3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */,
-				135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */,
+				CCDEE1077EF1CCD18D24588A /* Pods-Filefy.debug.xcconfig */,
+				654C5C420F71582C7A6114F4 /* Pods-Filefy.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -487,12 +487,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21EFED371E14122B00D7755E /* Build configuration list for PBXNativeTarget "Filefy" */;
 			buildPhases = (
-				5208C89ACF239D4B0CD68C07 /* [CP] Check Pods Manifest.lock */,
+				CB012FE1163C1152542819AE /* [CP] Check Pods Manifest.lock */,
 				21EFED1C1E14122B00D7755E /* Sources */,
 				21EFED1D1E14122B00D7755E /* Frameworks */,
 				21EFED1E1E14122B00D7755E /* Resources */,
-				10B4FE2C3270D79429C15412 /* [CP] Embed Pods Frameworks */,
-				06E85356B29022EA4B791F74 /* [CP] Copy Pods Resources */,
+				43AC25B8E480AA969A6BE11C /* [CP] Embed Pods Frameworks */,
+				193D1C78BC186644EEB34003 /* [CP] Copy Pods Resources */,
 				217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */,
 			);
 			buildRules = (
@@ -556,7 +556,7 @@
 			files = (
 				21EFED331E14122B00D7755E /* LaunchScreen.storyboard in Resources */,
 				21EFED301E14122B00D7755E /* Assets.xcassets in Resources */,
-				2188E5A81E9AB89B005B602E /* GoogleService-Info.plist in Resources */,
+				2111934D1EB630DE00F1AB3B /* GoogleService-Info.plist in Resources */,
 				21EFED2E1E14122B00D7755E /* Main.storyboard in Resources */,
 				21C70EB51E96EBCB00A52BC8 /* LTHPasscodeViewController.bundle in Resources */,
 			);
@@ -565,7 +565,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06E85356B29022EA4B791F74 /* [CP] Copy Pods Resources */ = {
+		193D1C78BC186644EEB34003 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -578,21 +578,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Filefy/Pods-Filefy-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		10B4FE2C3270D79429C15412 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Filefy/Pods-Filefy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		217E46F71E74322F004E9F2A /* Run Script for firebase crash reporting  */ = {
@@ -609,7 +594,22 @@
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
 		};
-		5208C89ACF239D4B0CD68C07 /* [CP] Check Pods Manifest.lock */ = {
+		43AC25B8E480AA969A6BE11C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Filefy/Pods-Filefy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB012FE1163C1152542819AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -787,7 +787,7 @@
 		};
 		21EFED381E14122B00D7755E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0613E0E9DCF33F7B35557C01 /* Pods-Filefy.debug.xcconfig */;
+			baseConfigurationReference = CCDEE1077EF1CCD18D24588A /* Pods-Filefy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;
@@ -803,7 +803,7 @@
 		};
 		21EFED391E14122B00D7755E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 135948AAD036B81588AE20AB /* Pods-Filefy.release.xcconfig */;
+			baseConfigurationReference = 654C5C420F71582C7A6114F4 /* Pods-Filefy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;

@@ -109,7 +109,7 @@
  * Supported Image formats: .gif, .jpg, .jpeg, .png, Returns File Type "image".
  * Supported Video formats: .mp4, .mov, .avi, .3gp, .m4v, Returns File Type "video".
  * Supported Audio formats: .mp3, .m4a, .wav, Returns File Type "audio".
- * Archives (.zip), Documents (.pdf), Text (.txt), Json (.json), Returns "archive", "pdf", "txt", "json" respectively.
+ * Archives (.zip, .rar), Documents (.pdf), Text (.txt), Json (.json), Returns "archive", "pdf", "txt", "json" respectively.
  * If File Extension is not recognized, Return "unknown".
  *
  */
@@ -132,7 +132,7 @@
         
         fileType = @"pdf";
         
-    } else if ([[path.lowercaseString pathExtension] isEqualToString:@"zip"]) {
+    } else if ([[path.lowercaseString pathExtension] isEqualToString:@"zip"] || [[path.lowercaseString pathExtension] isEqualToString:@"rar"]) {
         
         fileType = @"archive";
         

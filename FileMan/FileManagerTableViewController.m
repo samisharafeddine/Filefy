@@ -489,51 +489,79 @@
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        for (int i = 0; i < self.searchResults.count; i++) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        hud.labelText = @"Loading...";
+                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                            // Do something...
                             
-                            XFile *file = self.searchResults[i];
-                            
-                            if ([file.fileType isEqual:@"audio"]) {
+                            for (int i = 0; i < self.searchResults.count; i++) {
                                 
-                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
+                                XFile *file = self.searchResults[i];
                                 
-                                [self.musicFiles addObject:musicFile];
-                                [self.musicIndex addObject:file];
+                                if ([file.fileType isEqual:@"audio"]) {
+                                    
+                                    XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
+                                    
+                                    [self.musicFiles addObject:musicFile];
+                                    [self.musicIndex addObject:file];
+                                    
+                                }
                                 
                             }
                             
-                        }
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [hud hide:YES];
+                                musicVC.musicFiles = self.musicFiles;
+                                musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                                musicVC.fromSelection = YES;
+                                
+                                [self presentMusicViewController:musicVC];
+                                
+                                appDelegate.dataRef.hasPlayedOnce = YES;
+                                [self updateButtons];
+                            });
+                        });
+
                         
                     } else {
                         
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        for (int i = 0; i < self.files.count; i++) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        hud.labelText = @"Loading...";
+                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                            // Do something...
                             
-                            XFile *file = self.files[i];
-                            
-                            if ([file.fileType isEqual:@"audio"]) {
+                            for (int i = 0; i < self.files.count; i++) {
                                 
-                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
+                                XFile *file = self.files[i];
                                 
-                                [self.musicFiles addObject:musicFile];
-                                [self.musicIndex addObject:file];
+                                if ([file.fileType isEqual:@"audio"]) {
+                                    
+                                    XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
+                                    
+                                    [self.musicFiles addObject:musicFile];
+                                    [self.musicIndex addObject:file];
+                                    
+                                }
                                 
                             }
                             
-                        }
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [hud hide:YES];
+                                musicVC.musicFiles = self.musicFiles;
+                                musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                                musicVC.fromSelection = YES;
+                                
+                                [self presentMusicViewController:musicVC];
+                                
+                                appDelegate.dataRef.hasPlayedOnce = YES;
+                                [self updateButtons];
+                            });
+                        });
                         
                     }
-                    
-                    musicVC.musicFiles = self.musicFiles;
-                    musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
-                    musicVC.fromSelection = YES;
-                    
-                    [self presentMusicViewController:musicVC];
-                    
-                    appDelegate.dataRef.hasPlayedOnce = YES;
-                    [self updateButtons];
                     
                 } else if ([selectedFile.fileType isEqual:@"image"]) {
                     
@@ -590,12 +618,60 @@
                     
                 } else if ([selectedFile.fileType isEqual:@"archive"]) {
                     
-                    NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
-                    NSLog(@"FileName: %@", fileName);
-                    
-                    if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
+                    if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
                         
-                        [self loadFiles];
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        hud.mode = MBProgressHUDModeIndeterminate;
+                        hud.labelText = @"Extracting...";
+                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                            // Do something...
+                            
+                            NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
+                            NSLog(@"FileName: %@", fileName);
+                            
+                            if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
+                                
+                                [self loadFiles];
+                                
+                            }
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            });
+                        });
+                        
+                    } else if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"rar"]) {
+                        
+                        NSError *archiveError;
+                        URKArchive *archive = [[URKArchive alloc] initWithPath:selectedFile.filePath error:&archiveError];
+                        if (archiveError) {
+                            
+                            NSLog(@"Archive Error: %@", archiveError.localizedDescription);
+                            [self errorMessage:@"Archive is invalid"];
+                            
+                        } else {
+                            
+                            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+                            hud.labelText = @"Extracting...";
+                            NSError *error;
+                            [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
+                                
+                                NSLog(@"Decompressed: %f", percentArchiveDecompressed);
+                                hud.progress = percentArchiveDecompressed;
+                                
+                            } error:&error];
+                            
+                            if (error) {
+                                
+                                NSLog(@"Error UnRaring: %@", error);
+                                
+                            }
+                            
+                            [hud hide:YES];
+                            [self loadFiles];
+                            
+                        }
                         
                     }
                     
