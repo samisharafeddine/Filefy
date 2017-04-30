@@ -7,15 +7,14 @@ target 'Filefy' do
 
   # Pods for Filefy
 
-  pod "Firebase/Core"
-  pod "Firebase/Crash"
+  pod 'Firebase/Core'
+  pod 'Firebase/Crash'
 
   pod "MWPhotoBrowser"
   pod "SSZipArchive"
-  pod "UnrarKit"
 
-  pod "NAKPlaybackIndicatorView"
+  pod 'NAKPlaybackIndicatorView'
 
-  pod "ObjectiveDropboxOfficial"
+  pod 'ObjectiveDropboxOfficial'
 
 end

@@ -590,24 +590,12 @@
                     
                 } else if ([selectedFile.fileType isEqual:@"archive"]) {
                     
-                    if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
+                    NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
+                    NSLog(@"FileName: %@", fileName);
+                    
+                    if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
                         
-                        NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
-                        NSLog(@"FileName: %@", fileName);
-                        
-                        if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
-                            
-                            [self loadFiles];
-                            
-                        } else {
-                            
-                            [self errorMessage:@"Could not extract Zip archive"];
-                            
-                        }
-                        
-                    } else if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"rar"]) {
-                        
-                        [ProgressHUD showHUDAddedTo:self.view animated:YES];
+                        [self loadFiles];
                         
                     }
                     
