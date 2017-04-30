@@ -110,6 +110,8 @@
     self.shuffleButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.shuffleButton.layer.shadowOffset = CGSizeMake(0, 0);
     
+    self.albumArtwork.layer.cornerRadius = 5;
+    
     MPVolumeView *mpVolumeView = [[MPVolumeView alloc]initWithFrame:self.volumeSliderView.bounds];
     NSArray *tempArray = mpVolumeView.subviews;
     
