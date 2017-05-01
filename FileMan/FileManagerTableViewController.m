@@ -489,8 +489,8 @@
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                        hud.labelText = @"Loading...";
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+                        hud.label.text = @"Loading...";
                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                             // Do something...
                             
@@ -510,7 +510,7 @@
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [hud hide:YES];
+                                [hud hideAnimated:YES];
                                 musicVC.musicFiles = self.musicFiles;
                                 musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
                                 musicVC.fromSelection = YES;
@@ -528,8 +528,8 @@
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                        hud.labelText = @"Loading...";
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+                        hud.label.text = @"Loading...";
                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                             // Do something...
                             
@@ -549,7 +549,7 @@
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [hud hide:YES];
+                                [hud hideAnimated:YES];
                                 musicVC.musicFiles = self.musicFiles;
                                 musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
                                 musicVC.fromSelection = YES;
@@ -620,9 +620,9 @@
                     
                     if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
                         hud.mode = MBProgressHUDModeIndeterminate;
-                        hud.labelText = @"Extracting...";
+                        hud.label.text = @"Extracting...";
                         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                             // Do something...
                             
@@ -651,9 +651,9 @@
                             
                         } else {
                             
-                            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
                             hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-                            hud.labelText = @"Extracting...";
+                            hud.label.text = @"Extracting...";
                             NSError *error;
                             [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
                                 
@@ -668,7 +668,7 @@
                                 
                             }
                             
-                            [hud hide:YES];
+                            [hud hideAnimated:YES];
                             [self loadFiles];
                             
                         }

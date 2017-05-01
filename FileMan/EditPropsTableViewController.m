@@ -181,9 +181,9 @@
             
             NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:self.path];
             
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
             hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-            hud.labelText = @"Uploading...";
+            hud.label.text = @"Uploading...";
             
             [[[client.filesRoutes uploadData:[NSString stringWithFormat:@"/%@", [self.path lastPathComponent]] inputData:fileData]
               setResponseBlock:^(DBFILESFileMetadata *result, DBFILESUploadError *routeError, DBRequestError *networkError) {
@@ -201,7 +201,7 @@
                   
                   if (uploadProgress == 1.0) {
                       
-                      [hud hide:YES];
+                      [hud hideAnimated:YES];
                       
                   }
                   

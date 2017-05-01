@@ -10,12 +10,16 @@ target 'Filefy' do
   pod 'Firebase/Core'
   pod 'Firebase/Crash'
 
-  pod "MWPhotoBrowser"
+  #pod "MWPhotoBrowser"
   pod "SSZipArchive"
   pod "UnrarKit"
 
   pod 'NAKPlaybackIndicatorView'
 
   pod 'ObjectiveDropboxOfficial'
+
+  pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'SDWebImage', '~> 3.7', '!= 3.7.2'
+  pod 'DACircularProgress', '~> 2.3'
 
 end
