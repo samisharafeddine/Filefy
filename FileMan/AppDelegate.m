@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 23;
+    int buildNumber = 24;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
