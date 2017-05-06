@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 25;
+    int buildNumber = 26;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -97,7 +97,6 @@
                                   @"application/vnd.ms-excel*",
                                   @"application/vnd.ms-powerpoint*",
                                   @"application/vnd.iwork.*",
-                                  @"application/octet-stream",
                                   @"application/zip"];
         
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"titleHistory"];
@@ -148,8 +147,7 @@
         
         if (savedBuild == 17 || savedBuild == 18 || savedBuild == 19 || savedBuild == 20) {
             
-            NSArray *addedMimes = @[@"application/octet-stream",
-                                    @"application/zip"];
+            NSArray *addedMimes = @[@"application/zip"];
             
             NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
             NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
@@ -165,7 +163,11 @@
             NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
             NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
             
-            [newMimes removeObject:@"application/octet-stream"];
+            if ([newMimes containsObject:@"application/octet-stream"]) {
+                
+                [newMimes removeObject:@"application/octet-stream"];
+                
+            }
             
             [[NSUserDefaults standardUserDefaults] setObject:newMimes forKey:@"defaultMIMETypes"];
             
