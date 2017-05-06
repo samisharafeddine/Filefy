@@ -1067,7 +1067,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Copyright © 2017 Sami Sharaf All rights reserved. / Version 1.1.0" id="O5G-ds-tMi">
+                            <tableViewSection footerTitle="Copyright © 2017 Sami Sharaf All rights reserved. / Version 1.1.1" id="O5G-ds-tMi">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PQj-r9-27S">
                                         <rect key="frame" x="0.0" y="757" width="375" height="44"/>

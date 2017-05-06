@@ -34,7 +34,7 @@
         
     }
     
-    int buildNumber = 24;
+    int buildNumber = 25;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -155,6 +155,17 @@
             NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
             
             [newMimes addObjectsFromArray:addedMimes];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:newMimes forKey:@"defaultMIMETypes"];
+            
+        }
+        
+        if (savedBuild == 24) {
+            
+            NSArray *mimes = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultMIMETypes"];
+            NSMutableArray *newMimes = [[NSMutableArray alloc] initWithArray:mimes];
+            
+            [newMimes removeObject:@"application/octet-stream"];
             
             [[NSUserDefaults standardUserDefaults] setObject:newMimes forKey:@"defaultMIMETypes"];
             
