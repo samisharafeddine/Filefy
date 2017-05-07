@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *loadingProgressView;
 @property (weak, nonatomic) IBOutlet URLNavView *navBarView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *urlEffect;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *tabsButton;
 
 @end
 
@@ -36,6 +37,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController ) {
+        
+        [self.tabsButton setTarget: self.revealViewController];
+        [self.tabsButton setAction:@selector(revealToggle:)];
+        
+    }
+    
+    self.revealViewController.rearViewRevealOverdraw = 0;
+    self.revealViewController.frontViewShadowOffset = CGSizeMake(0, 0);
+    self.revealViewController.frontViewShadowOpacity = 0.0f;
+    self.revealViewController.frontViewShadowRadius = 0.0f;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "LTHPasscodeViewController.h"
+#import "SWRevealViewController.h"
 
 @interface WebViewController : UIViewController <UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, NSURLConnectionDelegate, LTHPasscodeViewControllerDelegate> {
     

@@ -91,66 +91,7 @@
                     <navigationItem key="navigationItem" id="l5A-S3-lUO">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Browser" id="txN-Eg-Me4"/>
-                        <view key="titleView" contentMode="scaleToFill" id="m7y-eh-wff" customClass="URLNavView">
-                            <rect key="frame" x="8" y="5.5" width="359" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-r7-aZ4">
-                                    <rect key="frame" x="0.0" y="1" width="359" height="30"/>
-                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CDC-G4-aBC">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wua-fA-Rye">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwU-pf-54R">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="j5t-tE-4Zq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                                <vibrancyEffect>
-                                                    <blurEffect style="light"/>
-                                                </vibrancyEffect>
-                                            </visualEffectView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Wua-fA-Rye" secondAttribute="trailing" id="MI6-gW-KP7"/>
-                                            <constraint firstItem="Wua-fA-Rye" firstAttribute="top" secondItem="CDC-G4-aBC" secondAttribute="top" id="X1a-3f-V5j"/>
-                                            <constraint firstItem="Wua-fA-Rye" firstAttribute="leading" secondItem="CDC-G4-aBC" secondAttribute="leading" id="YTx-98-eZl"/>
-                                            <constraint firstAttribute="bottom" secondItem="Wua-fA-Rye" secondAttribute="bottom" id="gKo-dZ-fNy"/>
-                                        </constraints>
-                                    </view>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="gJY-c6-cC1"/>
-                                    </constraints>
-                                    <vibrancyEffect>
-                                        <blurEffect style="light"/>
-                                    </vibrancyEffect>
-                                </visualEffectView>
-                                <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search or enter website name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cab-hH-sh4" customClass="URLTextField">
-                                    <rect key="frame" x="0.0" y="1" width="359" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="QCp-14-PcP"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
-                                </textField>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="cab-hH-sh4" firstAttribute="leading" secondItem="m7y-eh-wff" secondAttribute="leading" id="11s-eb-d8Q"/>
-                                <constraint firstItem="cab-hH-sh4" firstAttribute="centerY" secondItem="m7y-eh-wff" secondAttribute="centerY" id="5ML-hY-0Ke"/>
-                                <constraint firstAttribute="trailing" secondItem="cab-hH-sh4" secondAttribute="trailing" id="AOh-PR-OD3"/>
-                                <constraint firstItem="Ndn-r7-aZ4" firstAttribute="leading" secondItem="m7y-eh-wff" secondAttribute="leading" id="ONf-0c-Nx9"/>
-                                <constraint firstItem="Ndn-r7-aZ4" firstAttribute="centerY" secondItem="m7y-eh-wff" secondAttribute="centerY" id="P3g-Ej-tF2"/>
-                                <constraint firstAttribute="trailing" secondItem="Ndn-r7-aZ4" secondAttribute="trailing" id="qbf-dx-tTB"/>
-                            </constraints>
-                        </view>
+                        <barButtonItem key="leftBarButtonItem" image="Tabs" id="ni9-2C-PtV"/>
                     </navigationItem>
                     <connections>
                         <outlet property="actionSheetButton" destination="Cf7-q9-X3T" id="xSD-HY-3nj"/>
@@ -158,15 +99,13 @@
                         <outlet property="forwardButton" destination="0fC-2a-OEq" id="Fvh-qH-VLk"/>
                         <outlet property="homeButton" destination="l0Y-yP-KQ1" id="jYd-tI-cDn"/>
                         <outlet property="loadingProgressView" destination="3bS-he-b5K" id="ZWi-2V-6D3"/>
-                        <outlet property="navBarView" destination="m7y-eh-wff" id="X5X-MK-YBE"/>
-                        <outlet property="urlEffect" destination="Ndn-r7-aZ4" id="1js-9y-Pqf"/>
-                        <outlet property="urlField" destination="cab-hH-sh4" id="C8Z-Go-0Tu"/>
+                        <outlet property="tabsButton" destination="ni9-2C-PtV" id="K63-gL-VZO"/>
                         <outlet property="webView" destination="n7Q-Jt-oCU" id="P8E-kz-ttF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15.942028985507248" y="-430.43478260869568"/>
+            <point key="canvasLocation" x="918" y="-430"/>
         </scene>
         <!--History-->
         <scene sceneID="GFI-7U-fL4">
@@ -251,7 +190,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Row-r9-zmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724" y="-430.43478260869568"/>
+            <point key="canvasLocation" x="5591" y="-430"/>
         </scene>
         <!--Add Bookmark-->
         <scene sceneID="FOb-1H-JXa">
@@ -351,7 +290,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZ7-2o-nN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4581.6000000000004" y="-430.43478260869568"/>
+            <point key="canvasLocation" x="7449" y="-430"/>
         </scene>
         <!--Add Bookmark NavController-->
         <scene sceneID="7Md-XT-3Bf">
@@ -367,7 +306,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aST-ns-RJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3630" y="-430"/>
+            <point key="canvasLocation" x="6497" y="-430"/>
         </scene>
         <!--File Manager NavController-->
         <scene sceneID="IjS-o8-Uvb">
@@ -1724,7 +1663,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWS-uQ-LpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3866" y="937"/>
+            <point key="canvasLocation" x="3785" y="937"/>
         </scene>
         <!--Search Engine-->
         <scene sceneID="Hy5-Rv-B6z">
@@ -2168,7 +2107,7 @@
                         <color key="tintColor" red="0.11764705882352941" green="0.69411764705882351" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="GNK-9Y-iYK" kind="relationship" relationship="viewControllers" id="qHd-8j-UDv"/>
+                        <segue destination="0Tv-jA-DPm" kind="relationship" relationship="viewControllers" id="uax-8l-7Zz"/>
                         <segue destination="ttw-9m-lLq" kind="relationship" relationship="viewControllers" id="FMG-pT-0vo"/>
                         <segue destination="fW3-yF-d0k" kind="relationship" relationship="viewControllers" id="U1q-JC-Ip3"/>
                         <segue destination="1Qw-Gl-cin" kind="relationship" relationship="viewControllers" id="mZ0-AH-hFu"/>
@@ -2177,6 +2116,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lr6-dk-Fqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2038" y="589"/>
+        </scene>
+        <!--Tabs-->
+        <scene sceneID="U93-3Y-4c5">
+            <objects>
+                <tableViewController id="vgY-et-IiZ" customClass="TabsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="v6D-r3-qS2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="e2x-rU-5sg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e2x-rU-5sg" id="Kng-0m-lcl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vgY-et-IiZ" id="9PI-0R-lZb"/>
+                            <outlet property="delegate" destination="vgY-et-IiZ" id="Olm-R8-Vyv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tabs" id="gpg-Ta-kTk">
+                        <barButtonItem key="rightBarButtonItem" image="Forward" id="jtb-6F-1pu"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="hideTabs" destination="jtb-6F-1pu" id="gwV-Eg-Mcj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jkF-ys-Ee3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2689" y="-430"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s7p-H7-Lyy">
+            <objects>
+                <navigationController id="Mjz-ir-AQf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Dd-FM-Vce">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vgY-et-IiZ" kind="relationship" relationship="rootViewController" id="L4f-j3-IZg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VMZ-2e-067" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="-430"/>
         </scene>
         <!--Bookmarks NavController-->
         <scene sceneID="e4a-1x-u18">
@@ -2199,7 +2188,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mC-HJ-6IS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="-430"/>
+            <point key="canvasLocation" x="3785" y="-430"/>
         </scene>
         <!--Bookmarks-->
         <scene sceneID="Ohf-gL-1a6">
@@ -2273,12 +2262,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aey-kw-GXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="-430"/>
+            <point key="canvasLocation" x="4700" y="-430"/>
+        </scene>
+        <!--Browser-->
+        <scene sceneID="FSH-Ke-KzF">
+            <objects>
+                <viewController id="0Tv-jA-DPm" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u29-AW-Ki7"/>
+                        <viewControllerLayoutGuide type="bottom" id="fFb-BB-g5C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="473-ii-hFx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Browser" image="BrowserNotSelected" selectedImage="BrowserSelected" id="UNc-CM-NVq"/>
+                    <connections>
+                        <segue destination="Mjz-ir-AQf" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="4j6-yj-Sda"/>
+                        <segue destination="GNK-9Y-iYK" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="518-TK-C1l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="73x-9K-Sl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-922" y="-430"/>
         </scene>
         <!--Browser NavController-->
         <scene sceneID="Yen-wT-agr">
             <objects>
-                <navigationController title="Browser NavController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="GNK-9Y-iYK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="browserNavController" title="Browser NavController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="GNK-9Y-iYK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Browser" image="BrowserNotSelected" selectedImage="BrowserSelected" id="JGO-mE-o7l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="azC-EW-00c">
@@ -2297,7 +2309,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8D-Pc-Jf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-922" y="-430"/>
+            <point key="canvasLocation" x="17" y="-430"/>
         </scene>
         <!--Tutorial-->
         <scene sceneID="Ig7-bL-jaO">
@@ -2725,6 +2737,7 @@
         <image name="PricetagBlue" width="50" height="50"/>
         <image name="SettingsNotSelected" width="22" height="22"/>
         <image name="SettingsSelected" width="22" height="22"/>
+        <image name="Tabs" width="22" height="22"/>
         <image name="VolumeHigh" width="50" height="50"/>
         <image name="VolumeLow" width="50" height="50"/>
     </resources>

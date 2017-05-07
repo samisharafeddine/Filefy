@@ -27,6 +27,8 @@
 		214FD0841E998A6D008A69BC /* WelcomeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 214FD0831E998A6D008A69BC /* WelcomeControllerViewController.m */; };
 		215129061E57071D0059428B /* XMusicFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 215129051E57071D0059428B /* XMusicFile.m */; };
 		2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2158CED01E59F6FF0072A460 /* MusicPlayerViewController.m */; };
+		21685D591EBF923600A34118 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21685D581EBF923600A34118 /* SWRevealViewController.m */; };
+		21685D5C1EBFA33500A34118 /* TabsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21685D5B1EBFA33500A34118 /* TabsTableViewController.m */; };
 		216910291E994D1000A44D5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216910281E994D1000A44D5D /* QuartzCore.framework */; };
 		2169102B1E994D1900A44D5D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2169102A1E994D1900A44D5D /* Security.framework */; };
 		217010D51E43D7DB00A316F7 /* XFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 217010D41E43D7DB00A316F7 /* XFile.m */; };
@@ -139,6 +141,10 @@
 		215129051E57071D0059428B /* XMusicFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMusicFile.m; sourceTree = "<group>"; };
 		2158CECF1E59F6FF0072A460 /* MusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayerViewController.h; sourceTree = "<group>"; };
 		2158CED01E59F6FF0072A460 /* MusicPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayerViewController.m; sourceTree = "<group>"; };
+		21685D571EBF923600A34118 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		21685D581EBF923600A34118 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		21685D5A1EBFA33500A34118 /* TabsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsTableViewController.h; sourceTree = "<group>"; };
+		21685D5B1EBFA33500A34118 /* TabsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsTableViewController.m; sourceTree = "<group>"; };
 		216910281E994D1000A44D5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2169102A1E994D1900A44D5D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2169102C1E99532600A44D5D /* Filefy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filefy.entitlements; sourceTree = SOURCE_ROOT; };
@@ -320,6 +326,8 @@
 				21EFED441E157FE000D7755E /* URLNavView.m */,
 				210F8F3E1E2DB6150096E5C3 /* URLTextField.h */,
 				210F8F3F1E2DB6150096E5C3 /* URLTextField.m */,
+				21685D5A1EBFA33500A34118 /* TabsTableViewController.h */,
+				21685D5B1EBFA33500A34118 /* TabsTableViewController.m */,
 			);
 			name = "Web Browser";
 			sourceTree = "<group>";
@@ -383,6 +391,15 @@
 				215129051E57071D0059428B /* XMusicFile.m */,
 			);
 			name = XMusicFile;
+			sourceTree = "<group>";
+		};
+		21685D491EBF745100A34118 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21685D571EBF923600A34118 /* SWRevealViewController.h */,
+				21685D581EBF923600A34118 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		217010D61E43D7E200A316F7 /* File Manager */ = {
@@ -497,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				21BCA4011EB7934500BC2C6D /* MWPhotoBrowser */,
+				21685D491EBF745100A34118 /* SWRevealViewController */,
 			);
 			name = ThirdParty;
 			sourceTree = "<group>";
@@ -784,7 +802,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
 		};
 		370296CFF071A36C4E30875B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -859,9 +877,11 @@
 				2180963F1E2EE8740059870E /* DataRef.m in Sources */,
 				219B815F1E4BDB1F00620348 /* EditPropsTableViewController.m in Sources */,
 				21C70EB21E96E05B00A52BC8 /* LTHKeychainUtils.m in Sources */,
+				21685D591EBF923600A34118 /* SWRevealViewController.m in Sources */,
 				21EFED3C1E141ADC00D7755E /* WebViewController.m in Sources */,
 				2158CED11E59F6FF0072A460 /* MusicPlayerViewController.m in Sources */,
 				21183E561E46A60700029939 /* XFileParserTest.m in Sources */,
+				21685D5C1EBFA33500A34118 /* TabsTableViewController.m in Sources */,
 				217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */,
 				21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */,
 				21BCA4191EB7935600BC2C6D /* MWGridViewController.m in Sources */,
