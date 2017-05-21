@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shuffleButton;
 @property (weak, nonatomic) IBOutlet UISlider *songSlider;
 @property (weak, nonatomic) IBOutlet UIView *volumeSliderView;
+@property (weak, nonatomic) IBOutlet UIView *airPlayView;
 
 @property (strong, nonatomic) AVAudioPlayer *player;
 
@@ -112,7 +113,7 @@
     
     self.albumArtwork.layer.cornerRadius = 5;
     
-    MPVolumeView *mpVolumeView = [[MPVolumeView alloc]initWithFrame:self.volumeSliderView.bounds];
+    MPVolumeView *mpVolumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSliderView.bounds];
     NSArray *tempArray = mpVolumeView.subviews;
     
     for (id current in tempArray){
@@ -127,6 +128,11 @@
     mpVolumeView.showsRouteButton = NO;
     [self.volumeSliderView addSubview:mpVolumeView];
     [mpVolumeView sizeToFit];
+    
+    MPVolumeView *mpAirplayView = [[MPVolumeView alloc] initWithFrame:self.airPlayView.bounds];
+    mpAirplayView.showsVolumeSlider = NO;
+    [self.airPlayView addSubview:mpAirplayView];
+    [mpAirplayView sizeToFit];
     
     UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissVc)];
     swipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
