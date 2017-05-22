@@ -667,13 +667,21 @@
 
 -(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player {
     
-    [self playOrPause];
+    if (self.player.isPlaying) {
+        
+        [self playOrPause];
+        
+    }
     
 }
 
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)player {
     
-    [self playOrPause];
+    if (!self.player.isPlaying) {
+        
+        [self playOrPause];
+        
+    }
     
 }
 
