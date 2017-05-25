@@ -229,6 +229,12 @@
         
     }
     
+    if (self.searchController.active) {
+        
+        self.searchController.active = NO;
+        
+    }
+    
     NSLog(@"Number of files: %i", [self filesNumber:documentPaths[0]]);
     
     [self loadFiles];
