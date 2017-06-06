@@ -11,6 +11,8 @@
 #import "TWRDownloadManager.h"
 #import "LTHPasscodeViewController.h"
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -24,6 +26,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [Fabric with:@[[Answers class], [Crashlytics class]]];
+    [FIRApp configure];
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
         
         NSLog(@"Filefy Plus Enabled");
@@ -34,7 +39,7 @@
         
     }
     
-    int buildNumber = 31;
+    int buildNumber = 32;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -57,8 +62,6 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"finishedLaunching"];
         
     }
-    
-    [FIRApp configure];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
         
