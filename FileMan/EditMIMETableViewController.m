@@ -7,6 +7,7 @@
 //
 
 #import "EditMIMETableViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -36,6 +37,7 @@
 -(IBAction)cancel:(id)sender {
     
     FIRCrashLog(@"Canceled editing MIME");
+    CLS_LOG(@"Canceled editing MIME");
     
     [[NSNotificationCenter defaultCenter] removeObserver:@"newMIME"];
     [self.navigationController popViewControllerAnimated:YES];
@@ -45,6 +47,7 @@
 -(IBAction)save:(id)sender {
     
     FIRCrashLog(@"Save edited MIME");
+    CLS_LOG(@"Canceled editing MIME");
     
     if ([self.mime.text isEqualToString:@""] || self.mime.text == nil) {
         

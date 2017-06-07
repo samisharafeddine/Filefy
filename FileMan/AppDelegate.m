@@ -39,7 +39,7 @@
         
     }
     
-    int buildNumber = 32;
+    int buildNumber = 33;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -276,6 +276,7 @@
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
     [FIRAnalytics logEventWithName:@"Used_File_Importing" parameters:@{@"File_Type": [url pathExtension]}];
+    [Answers logCustomEventWithName:@"Used_File_Importing" customAttributes:@{@"File_Type": [url pathExtension]}];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openFile" object:url];
     

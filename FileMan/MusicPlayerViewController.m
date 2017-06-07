@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 
 #include <stdlib.h>
+#include <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -144,6 +145,7 @@
     [super viewWillAppear:animated];
     
     [FIRAnalytics logEventWithName:@"Using_Music_Player" parameters:nil];
+    [Answers logCustomEventWithName:@"Using_Music_Player" customAttributes:nil];
     
     if (self.fromSelection) {
         
@@ -527,6 +529,7 @@
 -(IBAction)playButtonPressed:(id)sender {
     
     FIRCrashLog(@"Play song");
+    CLS_LOG(@"Play song");
     
     [self playOrPause];
     
@@ -535,6 +538,7 @@
 -(IBAction)goBackPressed:(id)sender {
     
     FIRCrashLog(@"GoBack song");
+    CLS_LOG(@"GoBack song");
     
     [self back];
     
@@ -543,6 +547,7 @@
 -(IBAction)goForwardPressed:(id)sender {
     
     FIRCrashLog(@"GoForward Song");
+    CLS_LOG(@"GoForward Song");
     
     [self next:NO];
     
@@ -551,6 +556,7 @@
 -(IBAction)repeatPressed:(id)sender {
     
     FIRCrashLog(@"Repeat pressed");
+    CLS_LOG(@"Repeat pressed");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -598,6 +604,7 @@
 -(IBAction)shuffleButtonSelected:(id)sender {
     
     FIRCrashLog(@"Shufffle selected");
+    CLS_LOG(@"Shufffle selected");
     
     if (!shuffleEnabled) {
         
@@ -616,6 +623,7 @@
 -(IBAction)timeSliderValueChanged:(id)sender {
     
     FIRCrashLog(@"Time Slider Value changed");
+    CLS_LOG(@"Time Slider Value changed");
     
     if (timer) {
         
@@ -630,6 +638,7 @@
 -(IBAction)timeSliderFinishedChanging:(id)sender {
     
     FIRCrashLog(@"Time slider value finished changing");
+    CLS_LOG(@"Time slider value finished changing");
     
     if (self.player.playing) {
         
@@ -652,6 +661,7 @@
 -(IBAction)hideMusicVC:(id)sender {
     
     FIRCrashLog(@"Hiding MusicVC");
+    CLS_LOG(@"Hiding MusicVC");
     
     [self dismissVc];
     

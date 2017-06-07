@@ -8,6 +8,7 @@
 
 #import "HistoryTableViewController.h"
 #import "HistoryTableViewCell.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -49,6 +50,7 @@
 -(IBAction)clearButton:(id)sender {
     
     FIRCrashLog(@"Clearing all history");
+    CLS_LOG(@"Clearing all history");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Are you sure you want to clear all history?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -103,6 +105,7 @@
 -(IBAction)doneButton:(id)sender {
     
     FIRCrashLog(@"Done viewing history");
+    CLS_LOG(@"Done viewing history");
     
     [self dismissViewControllerAnimated:YES completion:^{
         

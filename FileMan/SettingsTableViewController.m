@@ -11,6 +11,7 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -250,6 +251,7 @@
         if (indexPath.row == 0) {
             
             [FIRAnalytics logEventWithName:@"Rate_App" parameters:nil];
+            [Answers logCustomEventWithName:@"Rate_App" customAttributes:nil];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -258,6 +260,7 @@
         } else if (indexPath.row == 1) {
             
             [FIRAnalytics logEventWithName:@"Send_Mail" parameters:nil];
+            [Answers logCustomEventWithName:@"Send_Mail" customAttributes:nil];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -294,6 +297,7 @@
     } else if (indexPath.section == 0) {
         
         [FIRAnalytics logEventWithName:@"Pressed_PasscodeLock" parameters:nil];
+        [Answers logCustomEventWithName:@"Pressed_PasscodeLock" customAttributes:nil];
         
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
             
@@ -364,6 +368,7 @@
         if (indexPath.row == 0) {
             
             [FIRAnalytics logEventWithName:@"Pressed_Purchase" parameters:nil];
+            [Answers logCustomEventWithName:@"Pressed_Purchase" customAttributes:nil];
             
             if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
                 
@@ -409,6 +414,7 @@
         } else if (indexPath.row == 1) {
             
             [FIRAnalytics logEventWithName:@"Pressed_Restore_Purchase" parameters:nil];
+            [Answers logCustomEventWithName:@"Pressed_Restore_Purchase" customAttributes:nil];
             
             //this is called when the user restores purchases, you should hook this up to a button
             [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -502,6 +508,13 @@
             [self enableFilefyPro]; //you can add your code for what you want to happen when the user buys the purchase here, for this tutorial we use removing ads
             [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
             NSLog(@"Transaction state -> Purchased");
+            [Answers logPurchaseWithPrice:[NSDecimalNumber decimalNumberWithString:@"1.99"]
+                                 currency:@"USD"
+                                  success:@YES
+                                 itemName:@"Filefy Plus"
+                                 itemType:@"In-App Purchase"
+                                   itemId:kRemoveAdsProductIdentifier
+                         customAttributes:nil];
             
         } else if (transaction.transactionState == SKPaymentTransactionStateRestored) {
             
@@ -600,6 +613,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [FIRAnalytics logEventWithName:@"Clear_Coockies" parameters:nil];
+    [Answers logCustomEventWithName:@"Clear_Coockies" customAttributes:nil];
     
 }
 
@@ -609,6 +623,7 @@
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     [FIRAnalytics logEventWithName:@"Clear_Cache" parameters:nil];
+    [Answers logCustomEventWithName:@"Clear_Cache" customAttributes:nil];
     
 }
 
@@ -642,8 +657,10 @@
 -(IBAction)loveMePlz:(id)sender {
     
     FIRCrashLog(@"Dina :3");
+    CLS_LOG(@"Dina :3");
     
     [FIRAnalytics logEventWithName:@"Dina" parameters:nil];
+    [Answers logCustomEventWithName:@"Dina" customAttributes:nil];
     
     SLComposeViewController *tweetSheet = [[SLComposeViewController alloc] init];
     

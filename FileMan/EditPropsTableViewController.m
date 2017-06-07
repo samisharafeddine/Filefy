@@ -9,6 +9,7 @@
 #import "EditPropsTableViewController.h"
 
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -45,6 +46,7 @@
     [super viewWillAppear:animated];
     
     [FIRAnalytics logEventWithName:@"Using_FileProps_Editing" parameters:nil];
+    [Answers logCustomEventWithName:@"Using_FileProps_Editing" customAttributes:nil];
     
     [self.navigationController setToolbarHidden:YES];
     
@@ -86,6 +88,7 @@
 -(IBAction)editPressed:(id)sender {
     
     FIRCrashLog(@"Editing a file props");
+    CLS_LOG(@"Editing a file props");
     
     if (editMode) {
         
@@ -162,6 +165,7 @@
     if (indexPath.section == 1) {
         
         [FIRAnalytics logEventWithName:@"Using_OpenIn_From_FileProps" parameters:nil];
+        [Answers logCustomEventWithName:@"Using_OpenIn_From_FileProps" customAttributes:nil];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
         

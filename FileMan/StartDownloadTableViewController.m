@@ -8,6 +8,7 @@
 
 #import "StartDownloadTableViewController.h"
 #import "TWRDownloadManager.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -57,6 +58,7 @@
 -(IBAction)cancel:(id)sender {
     
     FIRCrashLog(@"Canceled starting download");
+    CLS_LOG(@"Canceled starting download");
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -77,6 +79,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
             
             [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
+            [Answers logCustomEventWithName:@"Used_Download_Function" customAttributes:nil];
             
             [self dismissViewControllerAnimated:YES completion:^{
                 
@@ -121,6 +124,7 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
                     
                     [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
+                    [Answers logCustomEventWithName:@"Used_Download_Function" customAttributes:nil];
                     
                     [self dismissViewControllerAnimated:YES completion:^{
                         

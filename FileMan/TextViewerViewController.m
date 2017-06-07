@@ -7,6 +7,7 @@
 //
 
 #import "TextViewerViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -53,6 +54,7 @@
     [super viewWillAppear:animated];
     
     [FIRAnalytics logEventWithName:@"Using_Text_Viewer" parameters:nil];
+    [Answers logCustomEventWithName:@"Using_Text_Viewer" customAttributes:nil];
     
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setToolbarHidden:YES];
@@ -119,6 +121,7 @@
 -(IBAction)edit:(id)sender {
     
     FIRCrashLog(@"Editing text");
+    CLS_LOG(@"Editing text");
     
     if (!editMode) {
         
@@ -153,6 +156,7 @@
 -(IBAction)back:(id)sender {
     
     FIRCrashLog(@"Going back from text viewer");
+    CLS_LOG(@"Going back from text viewer");
     
     if (!editMode) {
         
@@ -213,8 +217,10 @@
 -(IBAction)actionPressed:(id)sender {
     
     FIRCrashLog(@"Action button pressed in text viewer");
+    CLS_LOG(@"Action button pressed in text viewer");
     
     [FIRAnalytics logEventWithName:@"OpenIn_From_TextViewer" parameters:nil];
+    [Answers logCustomEventWithName:@"OpenIn_From_TextViewer" customAttributes:nil];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[NSURL fileURLWithPath:self.path]] applicationActivities:nil];
     

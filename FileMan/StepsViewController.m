@@ -8,6 +8,7 @@
 
 #import "StepsViewController.h"
 #import "AppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -34,6 +35,7 @@
 -(IBAction)myAppIsDope:(id)sender {
     
     FIRCrashLog(@"Tutorial Start Button Pushed");
+    CLS_LOG(@"Tutorial Start Button Pushed");
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasCompletedTutorial"]) {
         

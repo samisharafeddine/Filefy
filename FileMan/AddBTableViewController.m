@@ -7,6 +7,7 @@
 //
 
 #import "AddBTableViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -88,6 +89,8 @@
 -(IBAction)cancelButton:(id)sender {
     
     FIRCrashLog(@"Canceled adding a bookmark");
+    CLS_LOG(@"Canceled adding a bookmark");
+    
     
     [self dismissViewControllerAnimated:YES completion:^{
         

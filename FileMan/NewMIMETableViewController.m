@@ -7,6 +7,7 @@
 //
 
 #import "NewMIMETableViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -36,6 +37,7 @@
 -(IBAction)cancel:(id)sender {
     
     FIRCrashLog(@"Cancel adding new MIME");
+    CLS_LOG(@"Cancel adding new MIME");
     
     [[NSNotificationCenter defaultCenter] removeObserver:@"newMIME"];
     [self.navigationController popViewControllerAnimated:YES];
@@ -45,6 +47,7 @@
 -(IBAction)save:(id)sender {
     
     FIRCrashLog(@"Save new MIME");
+    CLS_LOG(@"Save new MIME");
     
     if ([self.mime.text isEqualToString:@""] || self.mime.text == nil) {
         

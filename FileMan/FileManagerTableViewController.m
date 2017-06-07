@@ -20,6 +20,7 @@
 #import "LTHPasscodeViewController.h"
 
 #import <NAKPlaybackIndicatorView.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -85,6 +86,7 @@
 -(IBAction)showPlayer:(id)sender {
     
     FIRCrashLog(@"Showing music player");
+    CLS_LOG(@"Showing music player");
     
     if (appDelegate.dataRef.hasPlayedOnce) {
         
@@ -715,23 +717,28 @@
                 fmtvc.path = selectedFile.filePath;
                 [self.navigationController pushViewController:fmtvc animated:YES];
                 
+            } else {
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"Looks like you have more than 7 files / folders in File Manager! Please consider purchasing Filefy Plus in order to open files, or delete some files first and then open any!" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+                
+                alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+                
+                [alert addAction:action];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+                
+                [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+                
+                [FIRAnalytics logEventWithName:@"Excess_Files_Propmt" parameters:nil];
+                [Answers logCustomEventWithName:@"Excess_Files_Propmt" customAttributes:nil];
+                
             }
             
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"Looks like you have more than 7 files / folders in File Manager! Please consider purchasing Filefy Plus in order to open files, or delete some files first and then open any!" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-            
-            alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-            
-            [alert addAction:action];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-            
-            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
         }
             
-        }
+    }
     
 }
 
@@ -827,8 +834,10 @@
 -(IBAction)editButtonPressed:(id)sender {
     
     [FIRAnalytics logEventWithName:@"Using_File_Editing" parameters:nil];
+    [Answers logCustomEventWithName:@"Using_OpenIn_From_FileProps" customAttributes:nil];
     
     FIRCrashLog(@"Files editing started");
+    CLS_LOG(@"Files editing started");
     
     if (!isEditing) {
         
@@ -855,6 +864,7 @@
 -(IBAction)deleteSelectedItems:(id)sender {
     
     FIRCrashLog(@"File deletion");
+    CLS_LOG(@"File deletion");
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete selected items?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -907,6 +917,7 @@
 -(IBAction)optionsPressed:(id)sender {
     
     FIRCrashLog(@"Options List");
+    CLS_LOG(@"Options List");
     
     NSString *moveActionTitle;
     NSString *copyActionTitle;
@@ -1044,6 +1055,7 @@
 -(IBAction)newFolder:(id)sender {
     
     FIRCrashLog(@"New folder");
+    CLS_LOG(@"New Folder");
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Folder" message:@"Enter folder name" preferredStyle:UIAlertControllerStyleAlert];
     

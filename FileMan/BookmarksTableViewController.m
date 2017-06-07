@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BookmarksTableViewController.h"
 #import "BookmarkTableViewCell.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -120,6 +121,7 @@
 -(IBAction)doneButton:(id)sender {
     
     FIRCrashLog(@"Done viewing bookmarks");
+    CLS_LOG(@"Done viewing bookmarks");
     
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -168,6 +170,7 @@
 -(IBAction)addBookmark:(id)sender {
     
     FIRCrashLog(@"Add bookmark pressed");
+    CLS_LOG(@"Add bookmark pressed");
     
     //assert(false);
     

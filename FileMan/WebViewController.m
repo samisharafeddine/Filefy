@@ -10,6 +10,7 @@
 #import "WebViewController.h"
 #import "URLNavView.h"
 #import "StartDownloadTableViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -239,6 +240,7 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
     [FIRAnalytics logEventWithName:@"load_any_page" parameters:@{@"url":[NSString stringWithFormat:@"%@", [response.URL absoluteString]]}];
+    [Answers logCustomEventWithName:@"load_any_page" customAttributes:@{@"url":[NSString stringWithFormat:@"%@", [response.URL absoluteString]]}];
     
     NSLog(@"MIME Type: %@", [response MIMEType]);
     
@@ -388,6 +390,7 @@
     [self.webView loadRequest:urlRequest];
     
     [FIRAnalytics logEventWithName:@"Load_Webpage_from_url_field" parameters:@{@"URL":[NSString stringWithFormat:@"%@", [url absoluteString]]}];
+    [Answers logCustomEventWithName:@"Load_Webpage_from_url_field" customAttributes:@{@"URL":[NSString stringWithFormat:@"%@", [url absoluteString]]}];
     
 }
 
@@ -480,6 +483,7 @@
 -(IBAction)refreshOrStop {
     
     FIRCrashLog(@"Refresh button pressed");
+    CLS_LOG(@"Refresh button pressed");
     
     if (self.webView.loading == YES) {
         
@@ -537,6 +541,7 @@
 -(IBAction)goBack:(id)sender {
     
     FIRCrashLog(@"GoBack button pressed");
+    CLS_LOG(@"GoBack button pressed");
     
     [_webView goBack];
     
@@ -545,6 +550,7 @@
 -(IBAction)goForward:(id)sender {
     
     FIRCrashLog(@"GoForward Button pressed");
+    CLS_LOG(@"GoForward Button pressed");
     
     [_webView goForward];
     
@@ -625,6 +631,7 @@
 -(IBAction)actionSheetPopup:(id)sender {
     
     FIRCrashLog(@"Action Sheet from web view controller");
+    CLS_LOG(@"Action Sheet from web view controller");
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@", self.webView.request.URL] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -721,6 +728,7 @@
     }
     
     [FIRAnalytics logEventWithName:@"Using_Search" parameters:@{@"Search_Engine": currentSearchEngine}];
+    [Answers logCustomEventWithName:@"Using_Search" customAttributes:@{@"Search_Engine": currentSearchEngine}];
     
 }
 
@@ -765,6 +773,7 @@
 -(IBAction)showBookmarks:(id)sender {
     
     FIRCrashLog(@"Show bookmarks pressed");
+    CLS_LOG(@"Show bookmarks pressed");
     
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
@@ -826,6 +835,7 @@
 -(IBAction)homeTapped:(id)sender {
     
     FIRCrashLog(@"Home Tapped in web view controller");
+    CLS_LOG(@"Home Tapped in web view controller");
     
     NSString *homePage = [[NSUserDefaults standardUserDefaults] valueForKey:@"Homepage"];
     [self urlProcessing:homePage fromHomePageSetting:@"yes"];

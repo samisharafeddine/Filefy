@@ -7,6 +7,7 @@
 //
 
 #import "PDFViewerViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @import Firebase;
 
@@ -34,6 +35,7 @@
     [super viewWillAppear:animated];
     
     [FIRAnalytics logEventWithName:@"Using_PDF_Viewer" parameters:nil];
+    [Answers logCustomEventWithName:@"Using_PDF_Viewer" customAttributes:nil];
     
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setToolbarHidden:YES];
@@ -43,8 +45,10 @@
 -(IBAction)actionPressed:(id)sender {
     
     FIRCrashLog(@"Action button pressed in PDF viewer");
+    CLS_LOG(@"Action button pressed in PDF viewer");
     
     [FIRAnalytics logEventWithName:@"OpenIn_From_PDFViewer" parameters:nil];
+    [Answers logCustomEventWithName:@"OpenIn_From_PDFViewer" customAttributes:nil];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[self.pdfURL] applicationActivities:nil];
     
