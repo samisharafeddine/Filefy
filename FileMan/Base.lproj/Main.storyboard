@@ -23,6 +23,7 @@
         <!--Browser-->
         <scene sceneID="n5R-1m-esz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Browser" id="0Ge-ij-8Y6" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sVh-we-AlG"/>
@@ -171,7 +172,6 @@
                         <outlet property="webView" destination="n7Q-Jt-oCU" id="P8E-kz-ttF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15.942028985507248" y="-430.43478260869568"/>
         </scene>
@@ -1813,7 +1813,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="6xP-Jy-8LO" id="hwW-pk-ZTm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Engine" id="q3P-43-hoh"/>
+                    <navigationItem key="navigationItem" title="Search Engine" largeTitleDisplayMode="never" id="q3P-43-hoh"/>
                     <connections>
                         <outlet property="bingCell" destination="FJG-wZ-tYv" id="z3f-Pj-Lr3"/>
                         <outlet property="duckDuckGoCell" destination="Rn1-EV-FqP" id="hI5-A4-lEZ"/>
@@ -1894,7 +1894,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="zRO-2F-NcS" id="66y-AF-178"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Default Tab" id="yEf-va-3u2"/>
+                    <navigationItem key="navigationItem" title="Default Tab" largeTitleDisplayMode="never" id="yEf-va-3u2"/>
                     <connections>
                         <outlet property="browserCell" destination="puC-SA-bZE" id="Wks-Aw-rTS"/>
                         <outlet property="downloadsCell" destination="Ax7-h5-cU9" id="NCC-hr-DB6"/>
@@ -1929,7 +1929,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="KrC-x3-Bha" id="1g9-Mq-RL7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MIME Types" id="cK6-6n-Cow"/>
+                    <navigationItem key="navigationItem" title="MIME Types" largeTitleDisplayMode="never" id="cK6-6n-Cow"/>
                     <connections>
                         <segue destination="zxE-he-T8P" kind="show" identifier="newMIME" id="DFy-8t-Emb"/>
                         <segue destination="7mB-zu-4lR" kind="show" identifier="editMIME" id="YbK-G8-9co"/>
@@ -2147,7 +2147,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="xgC-zI-gkY" id="4XL-JY-07w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Passcode Lock" id="YCC-Vg-M6R"/>
+                    <navigationItem key="navigationItem" title="Passcode Lock" largeTitleDisplayMode="never" id="YCC-Vg-M6R"/>
                     <connections>
                         <outlet property="passcodeSwitch" destination="8L6-Cf-yFw" id="YTO-jg-Zxg"/>
                         <outlet property="touchIDSwitch" destination="92P-Wo-OQU" id="SPh-Dn-23V"/>
@@ -2309,7 +2309,7 @@ Version 1.4.1</string>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
-                        <segue destination="0Ge-ij-8Y6" kind="relationship" relationship="rootViewController" id="d8C-38-yLC"/>
+                        <segue destination="0Ge-ij-8Y6" kind="relationship" relationship="rootViewController" id="UMD-4B-vMC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8D-Pc-Jf4" userLabel="First Responder" sceneMemberID="firstResponder"/>

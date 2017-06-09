@@ -12,7 +12,11 @@
 
 -(CGSize)sizeThatFits:(CGSize)size {
     
-    return size;
+    CGFloat width = size.width;
+    
+    CGSize newSize = CGSizeMake(width, 33);
+    
+    return newSize;
     
 }
 
