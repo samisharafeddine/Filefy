@@ -28,6 +28,11 @@ Filefy is a fully featured advanced file manager, with a built in web browser, c
 - Clearing caches
 - Lots more!
 
+### Future Plans
+
+- Tabbed Browsing
+- Full iOS 11 Support
+
 ### Support or Contact
 
 My E-mail: xnightdev@gmail.com
