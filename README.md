@@ -30,5 +30,5 @@ Filefy is a fully featured advanced file manager, with a built in web browser, c
 
 ### Support or Contact
 
-My E-mail: sami.sharaf.1998@gmail.com
-Portfolio: https://xnightdev.github.io
+My E-mail: xnightdev@gmail.com
+Portfolio: http://samisharaf.me
