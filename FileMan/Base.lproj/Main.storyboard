@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Lg-XR-dmT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Lg-XR-dmT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="CourierNew.ttf">
-            <string>CourierNewPSMT</string>
-        </array>
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Browser-->
         <scene sceneID="n5R-1m-esz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Browser" id="0Ge-ij-8Y6" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sVh-we-AlG"/>
@@ -97,27 +88,28 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="l5A-S3-lUO">
+                    <navigationItem key="navigationItem" id="l5A-S3-lUO">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Browser" id="txN-Eg-Me4"/>
                         <view key="titleView" contentMode="scaleToFill" id="m7y-eh-wff" customClass="URLNavView">
-                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                            <rect key="frame" x="8" y="5.5" width="359" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-r7-aZ4">
-                                    <rect key="frame" x="0.0" y="1" width="343" height="30"/>
+                                    <rect key="frame" x="0.0" y="1" width="359" height="30"/>
                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CDC-G4-aBC">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wua-fA-Rye">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwU-pf-54R">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="j5t-tE-4Zq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                                 <vibrancyEffect>
@@ -140,7 +132,7 @@
                                     </vibrancyEffect>
                                 </visualEffectView>
                                 <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search or enter website name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cab-hH-sh4" customClass="URLTextField">
-                                    <rect key="frame" x="0.0" y="1" width="343" height="30"/>
+                                    <rect key="frame" x="0.0" y="1" width="359" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="QCp-14-PcP"/>
@@ -172,6 +164,7 @@
                         <outlet property="webView" destination="n7Q-Jt-oCU" id="P8E-kz-ttF"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15.942028985507248" y="-430.43478260869568"/>
         </scene>
@@ -325,7 +318,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Add Bookmark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b9e-56-dVa">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -380,8 +373,8 @@
         <scene sceneID="IjS-o8-Uvb">
             <objects>
                 <navigationController title="File Manager NavController" toolbarHidden="NO" id="fW3-yF-d0k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="File Manager" image="FilesSelected" id="Ccv-eu-00n"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="cps-8P-0Du">
+                    <tabBarItem key="tabBarItem" title="File Manager" image="FilesNotSelected" selectedImage="FilesSelected" id="Ccv-eu-00n"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cps-8P-0Du">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -581,15 +574,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" rowHeight="48" id="AHD-ae-WGx" customClass="FileManagerTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="48"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" rowHeight="46" id="AHD-ae-WGx" customClass="FileManagerTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AHD-ae-WGx" id="xSV-gg-mfY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wUx-Ih-VxF">
-                                            <rect key="frame" x="16" y="9" width="30" height="30"/>
+                                            <rect key="frame" x="16" y="8" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="2ap-Pa-5os"/>
                                                 <constraint firstAttribute="height" constant="30" id="SaB-dk-3U5"/>
@@ -602,8 +595,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DU3-CH-w2w">
-                                            <rect key="frame" x="62" y="27" width="305" height="13.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <rect key="frame" x="62" y="26" width="305" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -695,8 +688,8 @@
         <scene sceneID="fNi-Y2-Kc0">
             <objects>
                 <navigationController title="Downloads NavController" id="ttw-9m-lLq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Downloads" image="Downloads" landscapeImage="Downloads" selectedImage="Downloads" id="5D8-XF-ZZ4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="yw8-nN-Jhf">
+                    <tabBarItem key="tabBarItem" selectedImage="DownloadsSelected" systemItem="downloads" id="5D8-XF-ZZ4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yw8-nN-Jhf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -898,7 +891,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Clear Cookies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n2O-R7-YpZ">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -915,7 +908,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Empty Cache" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vLs-O0-ugU">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1221,7 +1214,7 @@ Version 1.4.1</string>
                             <constraint firstAttribute="bottom" secondItem="f5i-E0-jei" secondAttribute="bottom" id="z9U-da-i64"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PDF Title" largeTitleDisplayMode="never" id="JDu-gf-nJD">
+                    <navigationItem key="navigationItem" title="PDF Title" id="JDu-gf-nJD">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="cGB-Pw-poU">
                             <connections>
                                 <action selector="actionPressed:" destination="nbp-T5-7RT" id="Aph-63-uYf"/>
@@ -1265,7 +1258,7 @@ Version 1.4.1</string>
                             <constraint firstItem="wmC-4u-KOP" firstAttribute="leading" secondItem="yhX-mB-mdM" secondAttribute="leading" id="b1a-Wg-Chy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="File Title" largeTitleDisplayMode="never" id="Pxr-FO-fCc">
+                    <navigationItem key="navigationItem" title="File Title" id="Pxr-FO-fCc">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="cwg-gt-gOD">
                             <connections>
                                 <action selector="back:" destination="flN-gq-eEx" id="Q4q-Fl-zTY"/>
@@ -1340,7 +1333,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Start Download" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="08p-kD-3dA">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1439,7 +1432,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Open In..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3TU-Xx-mlf">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1501,7 +1494,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="LJ1-CE-T0n" id="2qB-y4-5DI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Props" largeTitleDisplayMode="never" id="anE-gA-PYh">
+                    <navigationItem key="navigationItem" title="Edit Props" id="anE-gA-PYh">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="OWs-Z9-C6T">
                             <connections>
                                 <action selector="editPressed:" destination="LJ1-CE-T0n" id="PpD-9n-xba"/>
@@ -1534,13 +1527,13 @@ Version 1.4.1</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Album" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-OV-vB9">
-                                <rect key="frame" x="27.5" y="28" width="320" height="320"/>
+                                <rect key="frame" x="27.5" y="72" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DF6-OV-vB9" secondAttribute="height" multiplier="1:1" id="LsN-62-KX5"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgR-0a-iHu">
-                                <rect key="frame" x="0.0" y="356" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="400" width="375" height="267"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-2J-M2p">
                                         <rect key="frame" x="14" y="0.0" width="347" height="31"/>
@@ -1565,7 +1558,7 @@ Version 1.4.1</string>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2e-U4-OIU">
-                                        <rect key="frame" x="169" y="137" width="38" height="38"/>
+                                        <rect key="frame" x="169" y="115" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="779-N3-fIO"/>
                                             <constraint firstAttribute="width" constant="38" id="ba1-fj-MFU"/>
@@ -1576,7 +1569,7 @@ Version 1.4.1</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZN-zo-aTg">
-                                        <rect key="frame" x="239" y="137" width="38" height="38"/>
+                                        <rect key="frame" x="239" y="115" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="f9o-ZZ-PPb"/>
                                             <constraint firstAttribute="width" constant="38" id="pfb-VT-myO"/>
@@ -1587,7 +1580,7 @@ Version 1.4.1</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKQ-G4-PXN">
-                                        <rect key="frame" x="99" y="137" width="38" height="38"/>
+                                        <rect key="frame" x="99" y="115" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Mlf-5a-dIw"/>
                                             <constraint firstAttribute="width" constant="38" id="bpr-Co-a40"/>
@@ -1611,7 +1604,7 @@ Version 1.4.1</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-hP-303">
-                                        <rect key="frame" x="310" y="273" width="49" height="30"/>
+                                        <rect key="frame" x="310" y="229" width="49" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Shuffle">
@@ -1622,7 +1615,7 @@ Version 1.4.1</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDU-OB-nOZ">
-                                        <rect key="frame" x="16" y="273" width="50" height="30"/>
+                                        <rect key="frame" x="16" y="229" width="50" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Repeat">
@@ -1633,21 +1626,21 @@ Version 1.4.1</string>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VolumeLow" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-dD-pbr">
-                                        <rect key="frame" x="43" y="239" width="22" height="22"/>
+                                        <rect key="frame" x="43" y="195" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="ZKI-Ns-fhY"/>
                                             <constraint firstAttribute="width" constant="22" id="btx-1G-ERH"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VolumeHigh" translatesAutoresizingMaskIntoConstraints="NO" id="hG6-VX-sDC">
-                                        <rect key="frame" x="311" y="239" width="22" height="22"/>
+                                        <rect key="frame" x="311" y="195" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="Xpc-xI-HgZ"/>
                                             <constraint firstAttribute="height" constant="22" id="adV-M9-h1O"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iny-d3-cZi">
-                                        <rect key="frame" x="73" y="241" width="230" height="30"/>
+                                        <rect key="frame" x="73" y="197" width="230" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="DIl-ql-nhh"/>
@@ -1762,7 +1755,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fO4-qk-kzz">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1779,7 +1772,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yKx-bH-Bta">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1796,7 +1789,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="DuckDuckGo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kme-fn-0ij">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1813,7 +1806,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="6xP-Jy-8LO" id="hwW-pk-ZTm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Engine" largeTitleDisplayMode="never" id="q3P-43-hoh"/>
+                    <navigationItem key="navigationItem" title="Search Engine" id="q3P-43-hoh"/>
                     <connections>
                         <outlet property="bingCell" destination="FJG-wZ-tYv" id="z3f-Pj-Lr3"/>
                         <outlet property="duckDuckGoCell" destination="Rn1-EV-FqP" id="hI5-A4-lEZ"/>
@@ -1843,7 +1836,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Web Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HZS-CS-82v">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1860,7 +1853,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Downloads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SSg-lx-CVa">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1877,7 +1870,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="File Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xxO-UL-DTO">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1894,7 +1887,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="zRO-2F-NcS" id="66y-AF-178"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Default Tab" largeTitleDisplayMode="never" id="yEf-va-3u2"/>
+                    <navigationItem key="navigationItem" title="Default Tab" id="yEf-va-3u2"/>
                     <connections>
                         <outlet property="browserCell" destination="puC-SA-bZE" id="Wks-Aw-rTS"/>
                         <outlet property="downloadsCell" destination="Ax7-h5-cU9" id="NCC-hr-DB6"/>
@@ -1929,7 +1922,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="KrC-x3-Bha" id="1g9-Mq-RL7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MIME Types" largeTitleDisplayMode="never" id="cK6-6n-Cow"/>
+                    <navigationItem key="navigationItem" title="MIME Types" id="cK6-6n-Cow"/>
                     <connections>
                         <segue destination="zxE-he-T8P" kind="show" identifier="newMIME" id="DFy-8t-Emb"/>
                         <segue destination="7mB-zu-4lR" kind="show" identifier="editMIME" id="YbK-G8-9co"/>
@@ -1979,7 +1972,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="zxE-he-T8P" id="RDU-gH-UVp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New MIME Type" largeTitleDisplayMode="never" id="82v-kB-Ndp">
+                    <navigationItem key="navigationItem" title="New MIME Type" id="82v-kB-Ndp">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="v4A-bX-QdX">
                             <connections>
                                 <action selector="cancel:" destination="zxE-he-T8P" id="EKp-zs-r9L"/>
@@ -2039,7 +2032,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="7mB-zu-4lR" id="hHD-6s-gtO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit MIME Type" largeTitleDisplayMode="never" id="qh8-eY-LqF">
+                    <navigationItem key="navigationItem" title="Edit MIME Type" id="qh8-eY-LqF">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xQU-f4-CW4">
                             <connections>
                                 <action selector="cancel:" destination="7mB-zu-4lR" id="Fck-Uz-g3D"/>
@@ -2130,7 +2123,7 @@ Version 1.4.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Passcode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dX0-Us-3rW">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2147,7 +2140,7 @@ Version 1.4.1</string>
                             <outlet property="delegate" destination="xgC-zI-gkY" id="4XL-JY-07w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Passcode Lock" largeTitleDisplayMode="never" id="YCC-Vg-M6R"/>
+                    <navigationItem key="navigationItem" title="Passcode Lock" id="YCC-Vg-M6R"/>
                     <connections>
                         <outlet property="passcodeSwitch" destination="8L6-Cf-yFw" id="YTO-jg-Zxg"/>
                         <outlet property="touchIDSwitch" destination="92P-Wo-OQU" id="SPh-Dn-23V"/>
@@ -2161,8 +2154,8 @@ Version 1.4.1</string>
         <scene sceneID="4sl-WD-ADz">
             <objects>
                 <navigationController title="Settings NavController" id="1Qw-Gl-cin" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsSelected" id="pA8-An-AE4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="VEe-0o-PCF">
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsNotSelected" selectedImage="SettingsSelected" id="pA8-An-AE4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEe-0o-PCF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2200,7 +2193,7 @@ Version 1.4.1</string>
             <objects>
                 <navigationController storyboardIdentifier="BookmarksController" title="Bookmarks NavController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="ehG-dB-z0v" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="IWf-qo-k6C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IWf-qo-k6C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2296,7 +2289,7 @@ Version 1.4.1</string>
         <scene sceneID="Yen-wT-agr">
             <objects>
                 <navigationController title="Browser NavController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="GNK-9Y-iYK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Browser" image="BrowserSelected" landscapeImage="BrowserSelected" id="JGO-mE-o7l"/>
+                    <tabBarItem key="tabBarItem" title="Browser" image="BrowserNotSelected" selectedImage="BrowserSelected" id="JGO-mE-o7l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="azC-EW-00c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2309,7 +2302,7 @@ Version 1.4.1</string>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
-                        <segue destination="0Ge-ij-8Y6" kind="relationship" relationship="rootViewController" id="UMD-4B-vMC"/>
+                        <segue destination="0Ge-ij-8Y6" kind="relationship" relationship="rootViewController" id="d8C-38-yLC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8D-Pc-Jf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2495,7 +2488,7 @@ Version 1.4.1</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Web Browser" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="331.5" translatesAutoresizingMaskIntoConstraints="NO" id="nO8-b6-QOB">
-                                <rect key="frame" x="117" y="66" width="141" height="29"/>
+                                <rect key="frame" x="117" y="46" width="141" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="141" id="YbS-zJ-Vwd"/>
                                     <constraint firstAttribute="height" constant="29" id="vw5-gV-0r3"/>
@@ -2504,7 +2497,7 @@ Version 1.4.1</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BrowserPage" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-eT-H9j">
-                                <rect key="frame" x="95" y="131" width="185" height="346"/>
+                                <rect key="frame" x="95" y="111" width="185" height="366"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next: Downloads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-Gh-q5m">
                                 <rect key="frame" x="0.0" y="601" width="375" height="66"/>
@@ -2569,7 +2562,7 @@ Version 1.4.1</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloads" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="331.5" translatesAutoresizingMaskIntoConstraints="NO" id="czT-nM-uz9">
-                                <rect key="frame" x="129" y="66" width="118" height="29"/>
+                                <rect key="frame" x="129" y="46" width="118" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="COA-eF-aAW"/>
                                     <constraint firstAttribute="width" constant="118" id="TCW-j9-rF2"/>
@@ -2578,7 +2571,7 @@ Version 1.4.1</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownloadsPage" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-6J-kS5">
-                                <rect key="frame" x="96" y="131" width="184" height="346"/>
+                                <rect key="frame" x="96" y="111" width="184" height="366"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse your download history and monitor any active downlods, with the ability to cancel/restart any download" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="cee-Dt-H31">
                                 <rect key="frame" x="32" y="495" width="313" height="85"/>
@@ -2625,7 +2618,7 @@ Version 1.4.1</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File Manager" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="87.5" translatesAutoresizingMaskIntoConstraints="NO" id="tbo-rv-WH6">
-                                <rect key="frame" x="120" y="66" width="135" height="29"/>
+                                <rect key="frame" x="120" y="46" width="135" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="K4d-NK-EA1"/>
                                     <constraint firstAttribute="width" constant="135" id="nHU-Lw-88m"/>
@@ -2634,7 +2627,7 @@ Version 1.4.1</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FileManagerPage" translatesAutoresizingMaskIntoConstraints="NO" id="Cat-7H-oLv">
-                                <rect key="frame" x="95" y="131" width="184" height="355"/>
+                                <rect key="frame" x="95" y="111" width="184" height="375"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188.5" translatesAutoresizingMaskIntoConstraints="NO" id="KGt-ZS-snL">
                                 <rect key="frame" x="31" y="498" width="313" height="87"/>
@@ -2689,14 +2682,16 @@ Version 1.4.1</string>
         <image name="AppStore" width="50" height="50"/>
         <image name="Back" width="22" height="22"/>
         <image name="BackButton" width="52" height="52"/>
+        <image name="BrowserNotSelected" width="22" height="22"/>
         <image name="BrowserPage" width="243" height="488"/>
         <image name="BrowserSelected" width="22" height="22"/>
         <image name="Delete" width="22" height="22"/>
-        <image name="Downloads" width="22" height="22"/>
         <image name="DownloadsPage" width="243" height="488"/>
+        <image name="DownloadsSelected" width="22" height="22"/>
         <image name="DropBox" width="50" height="50"/>
         <image name="FileMan Icon" width="321" height="284"/>
         <image name="FileManagerPage" width="243" height="488"/>
+        <image name="FilesNotSelected" width="22" height="22"/>
         <image name="FilesSelected" width="22" height="22"/>
         <image name="Forward" width="22" height="22"/>
         <image name="ForwardButton" width="52" height="52"/>
@@ -2709,6 +2704,7 @@ Version 1.4.1</string>
         <image name="NewFolder" width="22" height="22"/>
         <image name="PlayButton" width="52" height="52"/>
         <image name="PricetagBlue" width="50" height="50"/>
+        <image name="SettingsNotSelected" width="22" height="22"/>
         <image name="SettingsSelected" width="22" height="22"/>
         <image name="VolumeHigh" width="50" height="50"/>
         <image name="VolumeLow" width="50" height="50"/>

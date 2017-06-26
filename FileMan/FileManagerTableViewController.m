@@ -21,7 +21,6 @@
 
 #import <NAKPlaybackIndicatorView.h>
 #import <Crashlytics/Crashlytics.h>
-#import <AVKit/AVKit.h>
 
 @import Firebase;
 
@@ -63,8 +62,7 @@
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     
     // Add the search bar
     self.tableView.tableHeaderView = self.searchController.searchBar;
@@ -485,15 +483,10 @@
                 } else if ([selectedFile.fileType isEqual:@"video"]) {
                     
                     NSURL *videoURL = [NSURL fileURLWithPath:selectedFile.filePath];
-                    AVPlayerViewController *videoPlayer = [[AVPlayerViewController alloc] init];
-                    AVPlayer *player = [[AVPlayer alloc] initWithURL:videoURL];
-                    videoPlayer.player = player;
+                    MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
                     
-                    [self presentViewController:videoPlayer animated:YES completion:^{
-                        
-                        [videoPlayer.player play];
-                        
-                    }];
+                    [self presentMoviePlayerViewControllerAnimated:moviePlayer];
+                    [moviePlayer.moviePlayer play];
                     
                 } else if ([selectedFile.fileType isEqual:@"audio"]) {
                     
@@ -746,12 +739,6 @@
         }
             
     }
-    
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 48.0;
     
 }
 
