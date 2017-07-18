@@ -65,7 +65,9 @@
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     
     // Add the search bar
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+    //self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.navigationItem.searchController = self.searchController;
+    self.navigationItem.hidesSearchBarWhenScrolling = NO;
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
     
