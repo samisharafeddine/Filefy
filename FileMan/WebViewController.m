@@ -266,7 +266,7 @@
     
     // REVERSE THIS IF STATEMENT TO MAKE YOUTUBE DOWNLOADING AVAILABLE.
     
-    if (![urlString containsString:@"youtube"] && ![urlString containsString:@"google"]) {
+    if (![urlString containsString:@"google"]) {
         
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@", URL] message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         

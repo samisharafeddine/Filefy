@@ -14,12 +14,17 @@
     self = [super init];
     
     self.path = path;
-    self.songTitle = [self songTitleForFileAtPath:path];
-    self.artistName = [self songArtistForFileAtPath:path];
-    self.albumName = [self albumNameForFileAtPath:path];
-    self.albumArtwork = [self albumArtworkForFileAtPath:path];
     
     return self;
+    
+}
+
+- (void)fetchMetadata {
+    
+    self.songTitle = [self songTitleForFileAtPath:self.path];
+    self.artistName = [self songArtistForFileAtPath:self.path];
+    self.albumName = [self albumNameForFileAtPath:self.path];
+    self.albumArtwork = [self albumArtworkForFileAtPath:self.path];
     
 }
 

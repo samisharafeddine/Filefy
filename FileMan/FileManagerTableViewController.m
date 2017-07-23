@@ -18,6 +18,7 @@
 #import "MusicPlayerViewController.h"
 #import "XMusicFile.h"
 #import "LTHPasscodeViewController.h"
+#import "VersionCheckMacros.h"
 
 #import <NAKPlaybackIndicatorView.h>
 #import <Crashlytics/Crashlytics.h>
@@ -65,9 +66,13 @@
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
     
     // Add the search bar
-    //self.tableView.tableHeaderView = self.searchController.searchBar;
-    self.navigationItem.searchController = self.searchController;
-    self.navigationItem.hidesSearchBarWhenScrolling = NO;
+    if (@available(iOS 11.0, *)) {
+        self.navigationItem.searchController = self.searchController;
+        self.navigationItem.hidesSearchBarWhenScrolling = NO;
+    } else {
+        // Fallback on earlier versions.
+        self.tableView.tableHeaderView = self.searchController.searchBar;
+    }
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
     
@@ -499,77 +504,58 @@
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-                        hud.label.text = @"Loading...";
-                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                            // Do something...
+                        for (int i = 0; i < self.searchResults.count; i++) {
                             
-                            for (int i = 0; i < self.searchResults.count; i++) {
+                            XFile *file = self.searchResults[i];
+                            
+                            if ([file.fileType isEqual:@"audio"]) {
                                 
-                                XFile *file = self.searchResults[i];
+                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
                                 
-                                if ([file.fileType isEqual:@"audio"]) {
-                                    
-                                    XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
-                                    
-                                    [self.musicFiles addObject:musicFile];
-                                    [self.musicIndex addObject:file];
-                                    
-                                }
+                                [self.musicFiles addObject:musicFile];
+                                [self.musicIndex addObject:file];
                                 
                             }
                             
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [hud hideAnimated:YES];
-                                musicVC.musicFiles = self.musicFiles;
-                                musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
-                                musicVC.fromSelection = YES;
-                                
-                                [self presentMusicViewController:musicVC];
-                                
-                                appDelegate.dataRef.hasPlayedOnce = YES;
-                                [self updateButtons];
-                            });
-                        });
-
+                        }
+                        
+                        musicVC.musicFiles = self.musicFiles;
+                        musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                        musicVC.fromSelection = YES;
+                        
+                        [self presentMusicViewController:musicVC];
+                        
+                        appDelegate.dataRef.hasPlayedOnce = YES;
+                        [self updateButtons];
                         
                     } else {
                         
                         self.musicFiles = [[NSMutableArray alloc] init];
                         self.musicIndex = [[NSMutableArray alloc] init];
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-                        hud.label.text = @"Loading...";
-                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                            // Do something...
+                        for (int i = 0; i < self.files.count; i++) {
                             
-                            for (int i = 0; i < self.files.count; i++) {
+                            XFile *file = self.files[i];
+                            
+                            if ([file.fileType isEqual:@"audio"]) {
                                 
-                                XFile *file = self.files[i];
+                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
                                 
-                                if ([file.fileType isEqual:@"audio"]) {
-                                    
-                                    XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
-                                    
-                                    [self.musicFiles addObject:musicFile];
-                                    [self.musicIndex addObject:file];
-                                    
-                                }
+                                [self.musicFiles addObject:musicFile];
+                                [self.musicIndex addObject:file];
                                 
                             }
                             
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [hud hideAnimated:YES];
-                                musicVC.musicFiles = self.musicFiles;
-                                musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
-                                musicVC.fromSelection = YES;
-                                
-                                [self presentMusicViewController:musicVC];
-                                
-                                appDelegate.dataRef.hasPlayedOnce = YES;
-                                [self updateButtons];
-                            });
-                        });
+                        }
+                        
+                        musicVC.musicFiles = self.musicFiles;
+                        musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                        musicVC.fromSelection = YES;
+                        
+                        [self presentMusicViewController:musicVC];
+                        
+                        appDelegate.dataRef.hasPlayedOnce = YES;
+                        [self updateButtons];
                         
                     }
                     

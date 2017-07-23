@@ -19,5 +19,6 @@
 @property UIImage *albumArtwork;
 
 -(instancetype)initWithPath:(NSURL *)path;
+-(void)fetchMetadata;
 
 @end

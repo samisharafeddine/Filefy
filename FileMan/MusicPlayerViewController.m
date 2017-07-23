@@ -114,6 +114,8 @@
     
     self.albumArtwork.layer.cornerRadius = 5;
     
+    // TODO - Bugfix: - MPVolumeView UISlider and/or AirPlay Button Never shows, probably an iOS 11 Beta Bug.
+    
     MPVolumeView *mpVolumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSliderView.bounds];
     NSArray *tempArray = mpVolumeView.subviews;
     
@@ -201,6 +203,7 @@
     self.player = nil;
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile.path error:&error];
     self.player.delegate = self;
+    [musicFile fetchMetadata];
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
@@ -213,13 +216,14 @@
     
     MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:musicFile.albumArtwork];
     
-    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = @{
-                                                              MPMediaItemPropertyTitle : musicFile.songTitle,
-                                                              MPMediaItemPropertyArtist : musicFile.artistName,
-                                                              MPMediaItemPropertyArtwork : artwork,
-                                                              MPNowPlayingInfoPropertyPlaybackRate : @1.0f,
-                                                              MPMediaItemPropertyPlaybackDuration : [NSString stringWithFormat:@"%f", self.player.duration]
-                                                              };
+    MPNowPlayingInfoCenter *playingInfo = [MPNowPlayingInfoCenter defaultCenter];
+    [playingInfo setNowPlayingInfo:@{
+                                     MPMediaItemPropertyTitle : musicFile.songTitle,
+                                     MPMediaItemPropertyArtist : musicFile.artistName,
+                                     MPMediaItemPropertyArtwork : artwork,
+                                     MPNowPlayingInfoPropertyPlaybackRate : @1.0f,
+                                     MPMediaItemPropertyPlaybackDuration : [NSString stringWithFormat:@"%f", self.player.duration],
+                                     }];
     
     if (error) {
         
