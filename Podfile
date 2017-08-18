@@ -17,7 +17,7 @@ target 'Filefy' do
   pod 'NAKPlaybackIndicatorView'
 
   pod 'ObjectiveDropboxOfficial'
-
+  pod 'SVProgressHUD'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'SDWebImage', '~> 3.7', '!= 3.7.2'
   pod 'DACircularProgress', '~> 2.3'

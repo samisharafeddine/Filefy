@@ -19,6 +19,8 @@
 #import "XMusicFile.h"
 #import "LTHPasscodeViewController.h"
 #import "VersionCheckMacros.h"
+#import <AVKit/AVKit.h>
+#import "SVProgressHUD.h"
 
 #import <NAKPlaybackIndicatorView.h>
 #import <Crashlytics/Crashlytics.h>
@@ -490,10 +492,15 @@
                 } else if ([selectedFile.fileType isEqual:@"video"]) {
                     
                     NSURL *videoURL = [NSURL fileURLWithPath:selectedFile.filePath];
-                    MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                    AVPlayerViewController *playerViewController = [[AVPlayerViewController alloc] init];
+                    AVPlayer *player = [[AVPlayer alloc] initWithURL:videoURL];
+                    playerViewController.player = player;
                     
-                    [self presentMoviePlayerViewControllerAnimated:moviePlayer];
-                    [moviePlayer.moviePlayer play];
+                    [self presentViewController:playerViewController animated:YES completion:^{
+                        
+                        [playerViewController.player play];
+                        
+                    }];
                     
                 } else if ([selectedFile.fileType isEqual:@"audio"]) {
                     
@@ -616,11 +623,10 @@
                     
                     if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
                         
-                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-                        hud.mode = MBProgressHUDModeIndeterminate;
-                        hud.label.text = @"Extracting...";
-                        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-                            // Do something...
+                        [SVProgressHUD showWithStatus:@"Extracting..."];
+                        
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                            // time-consuming task
                             
                             NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
                             NSLog(@"FileName: %@", fileName);
@@ -632,7 +638,7 @@
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                [SVProgressHUD dismiss];
                             });
                         });
                         
