@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "WebViewController.h"
-#import "URLNavView.h"
 #import "StartDownloadTableViewController.h"
 #import <Crashlytics/Crashlytics.h>
 
@@ -23,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionSheetButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *loadingProgressView;
-@property (weak, nonatomic) IBOutlet URLNavView *navBarView;
+@property (weak, nonatomic) IBOutlet UIView *navBarView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *urlEffect;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *urlFieldWidthConstraint;
 
 @end
 
@@ -37,6 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = NO;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
@@ -59,6 +63,11 @@
     _urlField.layer.cornerRadius = 5;
     _urlEffect.layer.cornerRadius = 5;
     _urlEffect.layer.masksToBounds = YES;
+    
+    CGRect screenSize = [UIScreen mainScreen].bounds;
+    CGFloat screenWidth = screenSize.size.width;
+    NSLog(@"Screen Width: %f", screenWidth);
+    self.urlFieldWidthConstraint.constant = screenWidth - 22;
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     _urlField.leftView = paddingView;
@@ -83,23 +92,23 @@
         
         didEnterPasscode = NO;
         
-        if (homePage == nil || [homePage isEqual:@""]) {
+    }
+    
+    if (homePage == nil || [homePage isEqual:@""]) {
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasURL"] == YES) {
             
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasURL"] == YES) {
-                
-                NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastURL"];
-                NSURL *lastUrl = [NSURL URLWithString:urlString];
-                NSURLRequest *request = [NSURLRequest requestWithURL:lastUrl];
-                
-                [self.webView loadRequest:request];
-                
-            }
+            NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastURL"];
+            NSURL *lastUrl = [NSURL URLWithString:urlString];
+            NSURLRequest *request = [NSURLRequest requestWithURL:lastUrl];
             
-        } else {
-            
-            [self urlProcessing:homePage fromHomePageSetting:@"yes"];
+            [self.webView loadRequest:request];
             
         }
+        
+    } else {
+        
+        [self urlProcessing:homePage fromHomePageSetting:@"yes"];
         
     }
     

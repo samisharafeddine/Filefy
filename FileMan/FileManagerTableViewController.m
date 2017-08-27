@@ -71,6 +71,7 @@
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = self.searchController;
         self.navigationItem.hidesSearchBarWhenScrolling = NO;
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
     } else {
         // Fallback on earlier versions.
         self.tableView.tableHeaderView = self.searchController.searchBar;

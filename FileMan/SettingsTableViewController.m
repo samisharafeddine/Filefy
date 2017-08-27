@@ -38,6 +38,10 @@
     
     _homePageField.delegate = self;
     
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+    }
+    
     /*
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived)];
     [tapGestureRecognizer setDelegate:self];
