@@ -394,6 +394,12 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 50.0;
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     FileManagerTableViewCell *fileCell = [self.tableView dequeueReusableCellWithIdentifier:@"fileCell" forIndexPath:indexPath];
@@ -624,6 +630,9 @@
                     
                     if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
                         
+                        [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+                        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+                        [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
                         [SVProgressHUD showWithStatus:@"Extracting..."];
                         
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -639,6 +648,7 @@
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
+                                [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
                                 [SVProgressHUD dismiss];
                             });
                         });
@@ -654,25 +664,35 @@
                             
                         } else {
                             
-                            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-                            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-                            hud.label.text = @"Extracting...";
-                            NSError *error;
-                            [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
-                                
-                                NSLog(@"Decompressed: %f", percentArchiveDecompressed);
-                                hud.progress = percentArchiveDecompressed;
-                                
-                            } error:&error];
+                            [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+                            [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+                            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+                            [SVProgressHUD showWithStatus:@"Extracting..."];
                             
-                            if (error) {
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                // time-consuming task
                                 
-                                NSLog(@"Error UnRaring: %@", error);
+                                NSError *error;
+                                [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
+                                    
+                                    [SVProgressHUD showProgress:percentArchiveDecompressed status:@"Extracting..."];
+                                    NSLog(@"Decompressed: %f", percentArchiveDecompressed);
+                                    
+                                } error:&error];
                                 
-                            }
-                            
-                            [hud hideAnimated:YES];
-                            [self loadFiles];
+                                if (error) {
+                                    
+                                    NSLog(@"Error UnRaring: %@", error);
+                                    
+                                }
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                                    [self loadFiles];
+                                    [SVProgressHUD dismiss];
+                                });
+                            });
+                
                             
                         }
                         
@@ -871,29 +891,40 @@
     
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         
-        for (int i = 0; i < self.editingArray.count; i++) {
+        [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+        [SVProgressHUD showWithStatus:@"Deleting..."];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // time-consuming task
             
-            XFile *editingFile = self.editingArray[i];
-            NSString *filePath = editingFile.filePath;
-            
-            NSError *error;
-            
-            if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
+            for (int i = 0; i < self.editingArray.count; i++) {
                 
-                NSLog(@"[Error Deleting]: %@", error);
-                [self errorMessage:error.localizedDescription];
+                XFile *editingFile = self.editingArray[i];
+                NSString *filePath = editingFile.filePath;
+                
+                NSError *error;
+                
+                if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
+                    
+                    NSLog(@"[Error Deleting]: %@", error);
+                    [self errorMessage:error.localizedDescription];
+                    
+                }
                 
             }
             
-        }
-        
-        [self.tableView setEditing:NO animated:YES];
-        [self loadFiles];
-        
-        self.editingArray = nil;
-        isEditing = NO;
-        
-        [self updateButtons];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                self.editingArray = nil;
+                isEditing = NO;
+                [self.tableView setEditing:NO animated:YES];
+                [self loadFiles];
+                [self updateButtons];
+                [SVProgressHUD dismiss];
+            });
+        });
         
     }];
     
@@ -1010,27 +1041,39 @@
     
     if (appDelegate.dataRef.isMovingItems) {
         
-        for (int i = 0; i < appDelegate.dataRef.filesToBeMoved.count; i++) {
+        [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+        [SVProgressHUD showWithStatus:@"Copying..."];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // time-consuming task
             
-            XFile *movingFile = appDelegate.dataRef.filesToBeMoved[i];
-            NSString *filePath = movingFile.filePath;
-            
-            NSError *error;
-            
-            if (![[NSFileManager defaultManager] moveItemAtPath:filePath toPath:[NSString stringWithFormat:@"%@/%@", self.path, movingFile.displayName] error:&error]) {
+            for (int i = 0; i < appDelegate.dataRef.filesToBeMoved.count; i++) {
                 
-                NSLog(@"[Error Moving]: %@", error.localizedDescription);
-                [self errorMessage:error.localizedDescription];
+                XFile *movingFile = appDelegate.dataRef.filesToBeMoved[i];
+                NSString *filePath = movingFile.filePath;
+                
+                NSError *error;
+                
+                if (![[NSFileManager defaultManager] moveItemAtPath:filePath toPath:[NSString stringWithFormat:@"%@/%@", self.path, movingFile.displayName] error:&error]) {
+                    
+                    NSLog(@"[Error Moving]: %@", error.localizedDescription);
+                    [self errorMessage:error.localizedDescription];
+                    
+                }
                 
             }
             
-        }
-        
-        appDelegate.dataRef.isMovingItems = NO;
-        appDelegate.dataRef.filesToBeMoved = nil;
-        
-        [self.tableView setEditing:NO animated:YES];
-        [self loadFiles];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                appDelegate.dataRef.isMovingItems = NO;
+                appDelegate.dataRef.filesToBeMoved = nil;
+                [self.tableView setEditing:NO animated:YES];
+                [self loadFiles];
+                [SVProgressHUD dismiss];
+            });
+        });
         
     } else {
         
@@ -1089,27 +1132,39 @@
     
     if (appDelegate.dataRef.isCopyingItems) {
         
-        for (int i = 0; i < appDelegate.dataRef.filesToBeCopied.count; i++) {
+        [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+        [SVProgressHUD showWithStatus:@"Copying..."];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // time-consuming task
             
-            XFile *copyingFile = appDelegate.dataRef.filesToBeCopied[i];
-            NSString *filePath = copyingFile.filePath;
-            
-            NSError *error;
-            
-            if (![[NSFileManager defaultManager] copyItemAtPath:filePath toPath:[NSString stringWithFormat:@"%@/%@", self.path, copyingFile.displayName] error:&error]) {
+            for (int i = 0; i < appDelegate.dataRef.filesToBeCopied.count; i++) {
                 
-                NSLog(@"[Error Copying]: %@", error);
-                [self errorMessage:error.localizedDescription];
+                XFile *copyingFile = appDelegate.dataRef.filesToBeCopied[i];
+                NSString *filePath = copyingFile.filePath;
+                
+                NSError *error;
+                
+                if (![[NSFileManager defaultManager] copyItemAtPath:filePath toPath:[NSString stringWithFormat:@"%@/%@", self.path, copyingFile.displayName] error:&error]) {
+                    
+                    NSLog(@"[Error Copying]: %@", error);
+                    [self errorMessage:error.localizedDescription];
+                    
+                }
                 
             }
             
-        }
-        
-        appDelegate.dataRef.isCopyingItems = NO;
-        appDelegate.dataRef.filesToBeCopied = nil;
-        
-        [self.tableView setEditing:NO animated:YES];
-        [self loadFiles];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                appDelegate.dataRef.isCopyingItems = NO;
+                appDelegate.dataRef.filesToBeCopied = nil;
+                [self.tableView setEditing:NO animated:YES];
+                [self loadFiles];
+                [SVProgressHUD dismiss];
+            });
+        });
         
     } else {
         
@@ -1207,10 +1262,15 @@
     } else if ([file.fileType isEqual:@"video"]) {
         
         NSURL *videoURL = [NSURL fileURLWithPath:file.filePath];
-        MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+        AVPlayerViewController *playerViewController = [[AVPlayerViewController alloc] init];
+        AVPlayer *player = [[AVPlayer alloc] initWithURL:videoURL];
+        playerViewController.player = player;
         
-        [self presentMoviePlayerViewControllerAnimated:moviePlayer];
-        [moviePlayer.moviePlayer play];
+        [self presentViewController:playerViewController animated:YES completion:^{
+            
+            [playerViewController.player play];
+            
+        }];
         
     } else if ([file.fileType isEqual:@"audio"]) {
         

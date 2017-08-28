@@ -66,7 +66,8 @@
         self.fileExtension = nil;
         self.fileType = @"directory";
         self.fileAttributes = nil;
-        self.fileSize = [self sizeForFolderAtPath:path];
+        self.fileSize = @"Calculating...";
+        [self sizeForFolderAtPath:path];
         
     } else {
         
@@ -204,17 +205,26 @@
  *
  */
 
--(NSString *)sizeForFolderAtPath:(NSString *)path {
+-(void)sizeForFolderAtPath:(NSString *)path {
     
-    NSString *size = [NSByteCountFormatter stringFromByteCount:[self folderSize:path] countStyle:NSByteCountFormatterCountStyleFile];
-    
-    if ([size containsString:@"Zero"]) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // time-consuming task
         
-        size = @"Empty Folder";
+        unsigned long long int fileFize = [self folderSize:path];
         
-    }
-    
-    return size;
+        NSString *size = [NSByteCountFormatter stringFromByteCount:fileFize countStyle:NSByteCountFormatterCountStyleFile];
+        
+        if ([size containsString:@"Zero"]) {
+            
+            self.fileSize = @"Empty Folder";
+            
+        } else {
+            
+            self.fileSize = size;
+            
+        }
+        
+    });
     
 }
 
