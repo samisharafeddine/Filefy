@@ -784,7 +784,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
 		};
 		21C63DBC1EDDA02D00047BD3 /* Fabric Analytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -798,7 +798,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f69277e3b5fe1ba3237d4048c5bc2068ca5311c1 ecf347b83de1d1d8d642a360b22428108688ecaf9e08481bb33c02086e617ebc";
+			shellScript = "#\"${PODS_ROOT}/Fabric/run\" f69277e3b5fe1ba3237d4048c5bc2068ca5311c1 ecf347b83de1d1d8d642a360b22428108688ecaf9e08481bb33c02086e617ebc";
 		};
 		370296CFF071A36C4E30875B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

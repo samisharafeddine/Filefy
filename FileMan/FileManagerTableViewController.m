@@ -692,7 +692,6 @@
                                     [SVProgressHUD dismiss];
                                 });
                             });
-                
                             
                         }
                         
@@ -834,6 +833,7 @@
                 }
                 
             }
+            
         }
         
     }
@@ -1326,7 +1326,13 @@
         
         EditPropsTableViewController *editor = [segue destinationViewController];
         
-        XFile *selectedFile = self.files[indexPathForAccessoryButton.row];
+        XFile *selectedFile;
+        
+        if (self.searchController.isActive) {
+            selectedFile = self.searchResults[indexPathForAccessoryButton.row];
+        } else {
+            selectedFile = self.files[indexPathForAccessoryButton.row];
+        }
         
         editor.path = selectedFile.filePath;
         editor.fileTitle = selectedFile.displayName;

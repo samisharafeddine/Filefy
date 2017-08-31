@@ -39,7 +39,7 @@
         
     }
     
-    int buildNumber = 51;
+    int buildNumber = 52;
     
     [DBClientsManager setupWithAppKey:@"6c12323v2c6pvn7"];
     
@@ -74,20 +74,20 @@
         UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"WelcomeController"];
         self.window.rootViewController = viewController;
         
-        //NSArray *defaultMIMEs = @[@"image/*",
-        //                          @"*/pdf",
-        //                          @"audio/*",
-        //                          @"video/*"];
-        
-        //NSArray *defaultMIMEs = @[@"image/*",
-        //                          @"*/pdf",
-        //                          @"*/rtf",
-        //                          @"text/richtext",
-        //                          @"application/msword",
-        //                          @"application/vnd.ms-word*",
-        //                          @"application/vnd.ms-excel",
-        //                          @"application/vnd.ms-powerpoint",
-        //                          @"application/vnd.iwork.*"];
+//        NSArray *defaultMIMEs = @[@"image/*",
+//                                  @"*/pdf",
+//                                  @"audio/*",
+//                                  @"video/*"];
+//
+//        NSArray *defaultMIMEs = @[@"image/*",
+//                                  @"*/pdf",
+//                                  @"*/rtf",
+//                                  @"text/richtext",
+//                                  @"application/msword",
+//                                  @"application/vnd.ms-word*",
+//                                  @"application/vnd.ms-excel",
+//                                  @"application/vnd.ms-powerpoint",
+//                                  @"application/vnd.iwork.*"];
         
         NSArray *defaultMIMEs = @[@"image/*",
                                   @"audio/*",
