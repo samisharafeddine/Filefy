@@ -70,75 +70,20 @@
         
         NSString *name = [NSString stringWithFormat:@"%@.%@", self.fileName.text, self.fileExtension];
         
-        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        [[TWRDownloadManager sharedManager] downloadFileForURL:[self.url absoluteString] withName:name progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
         
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
+        
+        [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
+        [Answers logCustomEventWithName:@"Used_Download_Function" customAttributes:nil];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
             
-            [[TWRDownloadManager sharedManager] downloadFileForURL:[self.url absoluteString] withName:name progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:YES];
+            [[NSNotificationCenter defaultCenter] removeObserver:@"reloadData"];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-            [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
-            [Answers logCustomEventWithName:@"Used_Download_Function" customAttributes:nil];
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-                [[NSNotificationCenter defaultCenter] removeObserver:@"reloadData"];
-                
-                [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                
-            }];
-            
-        } else {
-            
-            if ([self filesNumber:documentPaths[0]] > 7) {
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"You cannot store more than 7 files or folders in File Manager unless you purchase Filefy Plus" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                
-                alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-                
-                [alert addAction:action];
-                
-                [self presentViewController:alert animated:YES completion:nil];
-                
-            } else {
-                
-                if ([[[TWRDownloadManager sharedManager] downloads] count] >= 2) {
-                    
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"You cannot have more than 2 simultaneous Downloads, please wait for one of the downloads to complete or consider purchasing Filefy Plus for unlimited simultaneous downloads" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                    
-                    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-                    
-                    [alert addAction:action];
-                    
-                    [self presentViewController:alert animated:YES completion:nil];
-                    
-                } else {
-                    
-                    [[TWRDownloadManager sharedManager] downloadFileForURL:[self.url absoluteString] withName:name progressBlock:nil remainingTime:nil completionBlock:nil infoBlock:nil enableBackgroundMode:NO];
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:nil];
-                    
-                    [FIRAnalytics logEventWithName:@"Used_Download_Function" parameters:nil];
-                    [Answers logCustomEventWithName:@"Used_Download_Function" customAttributes:nil];
-                    
-                    [self dismissViewControllerAnimated:YES completion:^{
-                        
-                        [[NSNotificationCenter defaultCenter] removeObserver:@"reloadData"];
-                        
-                        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                        
-                    }];
-                    
-                }
-                
-            }
-            
-        }
+        }];
         
     }
     

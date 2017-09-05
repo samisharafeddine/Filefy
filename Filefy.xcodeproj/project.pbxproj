@@ -155,7 +155,6 @@
 		218096391E2ECF9C0059870E /* AddBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBTableViewController.m; sourceTree = "<group>"; };
 		2180963D1E2EE8740059870E /* DataRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRef.h; sourceTree = "<group>"; };
 		2180963E1E2EE8740059870E /* DataRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRef.m; sourceTree = "<group>"; };
-		2181DC641F24C5C1006D8342 /* VersionCheckMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VersionCheckMacros.h; sourceTree = "<group>"; };
 		219B814A1E4B649300620348 /* PDFViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewerViewController.h; sourceTree = "<group>"; };
 		219B814B1E4B649300620348 /* PDFViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewerViewController.m; sourceTree = "<group>"; };
 		219B814E1E4B83F500620348 /* TextViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewerViewController.h; sourceTree = "<group>"; };
@@ -613,7 +612,6 @@
 			isa = PBXGroup;
 			children = (
 				2169102C1E99532600A44D5D /* Filefy.entitlements */,
-				2181DC641F24C5C1006D8342 /* VersionCheckMacros.h */,
 				21EFED261E14122B00D7755E /* AppDelegate.h */,
 				21EFED271E14122B00D7755E /* AppDelegate.m */,
 				2180963D1E2EE8740059870E /* DataRef.h */,

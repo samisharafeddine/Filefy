@@ -967,115 +967,12 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="PBy-Qh-STp">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="tIc-Gz-4CH">
-                                        <rect key="frame" x="0.0" y="567" width="320" height="110"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tIc-Gz-4CH" id="V0j-AY-JKi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filefy Plus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t25-2S-inY">
-                                                    <rect key="frame" x="18" y="12" width="80.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Background Downloads." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBg-VH-gvu">
-                                                    <rect key="frame" x="18" y="53" width="127.5" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Unlimited File Storage." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfH-C5-SgQ">
-                                                    <rect key="frame" x="18" y="69" width="120.5" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Unlimited Simultaneous Downloads." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoR-yK-IfR">
-                                                    <rect key="frame" x="18" y="37" width="185" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Passcode Lock." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gc-CN-tfR">
-                                                    <rect key="frame" x="18" y="85" width="85" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rtd-V7-HON">
-                                                    <rect key="frame" x="214" y="40" width="98" height="30"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PricetagBlue" translatesAutoresizingMaskIntoConstraints="NO" id="MiI-I2-joD">
-                                                            <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="4V7-b1-wWX"/>
-                                                                <constraint firstAttribute="width" constant="25" id="9YP-CI-hru"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.99USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bp5-hS-pyn">
-                                                            <rect key="frame" x="29" y="6" width="61" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Bp5-hS-pyn" secondAttribute="trailing" constant="8" id="9dS-lc-DcU"/>
-                                                        <constraint firstItem="Bp5-hS-pyn" firstAttribute="centerY" secondItem="Rtd-V7-HON" secondAttribute="centerY" id="Gyn-d4-zn0"/>
-                                                        <constraint firstItem="Bp5-hS-pyn" firstAttribute="leading" secondItem="MiI-I2-joD" secondAttribute="trailing" constant="4" id="J1y-mS-7jr"/>
-                                                        <constraint firstAttribute="height" constant="30" id="dW0-XF-DKT"/>
-                                                        <constraint firstItem="MiI-I2-joD" firstAttribute="centerY" secondItem="Rtd-V7-HON" secondAttribute="centerY" id="leU-EC-fDX"/>
-                                                        <constraint firstItem="MiI-I2-joD" firstAttribute="leading" secondItem="Rtd-V7-HON" secondAttribute="leading" id="voX-3A-ZaC"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Rtd-V7-HON" firstAttribute="trailing" secondItem="V0j-AY-JKi" secondAttribute="trailingMargin" id="2Z7-Bc-7Dg"/>
-                                                <constraint firstItem="xoR-yK-IfR" firstAttribute="leading" secondItem="V0j-AY-JKi" secondAttribute="leading" constant="18" id="5Wj-Sf-5qx"/>
-                                                <constraint firstItem="IBg-VH-gvu" firstAttribute="top" secondItem="xoR-yK-IfR" secondAttribute="bottom" constant="4" id="JLq-dD-aoZ"/>
-                                                <constraint firstItem="8Gc-CN-tfR" firstAttribute="top" secondItem="dfH-C5-SgQ" secondAttribute="bottom" constant="4" id="Lqj-n5-4en"/>
-                                                <constraint firstItem="xoR-yK-IfR" firstAttribute="top" secondItem="t25-2S-inY" secondAttribute="bottom" constant="4" id="YM8-tB-gBx"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="8Gc-CN-tfR" secondAttribute="bottom" constant="4" id="ZOT-VW-day"/>
-                                                <constraint firstItem="8Gc-CN-tfR" firstAttribute="leading" secondItem="V0j-AY-JKi" secondAttribute="leading" constant="18" id="a61-nJ-YsA"/>
-                                                <constraint firstItem="Rtd-V7-HON" firstAttribute="centerY" secondItem="V0j-AY-JKi" secondAttribute="centerY" id="c2T-cM-Nw1"/>
-                                                <constraint firstItem="t25-2S-inY" firstAttribute="top" secondItem="V0j-AY-JKi" secondAttribute="topMargin" constant="4" id="jOx-aw-azS"/>
-                                                <constraint firstItem="dfH-C5-SgQ" firstAttribute="top" secondItem="IBg-VH-gvu" secondAttribute="bottom" constant="4" id="rwX-9x-ykQ"/>
-                                                <constraint firstItem="dfH-C5-SgQ" firstAttribute="leading" secondItem="V0j-AY-JKi" secondAttribute="leading" constant="18" id="sfe-4v-Tta"/>
-                                                <constraint firstItem="t25-2S-inY" firstAttribute="leading" secondItem="V0j-AY-JKi" secondAttribute="leading" constant="18" id="smv-FN-iof"/>
-                                                <constraint firstItem="IBg-VH-gvu" firstAttribute="leading" secondItem="V0j-AY-JKi" secondAttribute="leading" constant="18" id="xEG-VR-Wmk"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4Gp-6n-SMT" style="IBUITableViewCellStyleDefault" id="NuF-08-vfw">
-                                        <rect key="frame" x="0.0" y="677" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NuF-08-vfw" id="za9-Uz-h4u">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Restore Purchase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Gp-6n-SMT">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="O5G-ds-tMi">
                                 <string key="footerTitle">Copyright © 2017 Sami Sharaf All rights reserved.
 Version 2.0.0</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PQj-r9-27S">
-                                        <rect key="frame" x="0.0" y="757" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="567" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PQj-r9-27S" id="A36-Lj-RbV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -1117,7 +1014,7 @@ Version 2.0.0</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="w8K-MF-8CB">
-                                        <rect key="frame" x="0.0" y="801" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="611" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w8K-MF-8CB" id="E3j-ug-2FN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -1177,12 +1074,9 @@ Version 2.0.0</string>
                     <connections>
                         <outlet property="defaultTab" destination="PwG-cE-hKD" id="10z-oV-HBs"/>
                         <outlet property="dropboxLabel" destination="bTd-b9-bkB" id="sQV-Po-eux"/>
-                        <outlet property="filefyPlusCell" destination="tIc-Gz-4CH" id="ygk-UD-ZCQ"/>
                         <outlet property="homePageField" destination="jqg-CT-7HN" id="O1f-ck-1mu"/>
                         <outlet property="mimes" destination="Mt5-ea-QGk" id="rxb-Wd-EU8"/>
                         <outlet property="passcodeEnabled" destination="xbU-g4-276" id="vg8-Qo-eB5"/>
-                        <outlet property="price" destination="Bp5-hS-pyn" id="xzo-hy-7lA"/>
-                        <outlet property="priceTag" destination="MiI-I2-joD" id="iry-ds-5i3"/>
                         <outlet property="searchEngineLabel" destination="VAA-lz-KLi" id="uMN-mp-1Ta"/>
                         <segue destination="xgC-zI-gkY" kind="show" identifier="showPasscode" id="ulF-sR-Xan"/>
                     </connections>
@@ -2704,7 +2598,6 @@ Version 2.0.0</string>
         <image name="Mail" width="50" height="50"/>
         <image name="NewFolder" width="22" height="22"/>
         <image name="PlayButton" width="52" height="52"/>
-        <image name="PricetagBlue" width="50" height="50"/>
         <image name="SettingsSelected" width="22" height="22"/>
         <image name="VolumeHigh" width="50" height="50"/>
         <image name="VolumeLow" width="50" height="50"/>

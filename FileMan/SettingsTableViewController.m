@@ -23,15 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *mimes;
 @property (weak, nonatomic) IBOutlet UILabel *passcodeEnabled;
 @property (weak, nonatomic) IBOutlet UILabel *dropboxLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *priceTag;
-@property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UITableViewCell *filefyPlusCell;
 
 @end
 
 @implementation SettingsTableViewController
-
-#define kRemoveAdsProductIdentifier @"com.SamiSharaf.Filefy.FilefyPlus"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,35 +91,13 @@
         
     }
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
+    if ([LTHPasscodeViewController doesPasscodeExist]) {
         
-        if ([LTHPasscodeViewController doesPasscodeExist]) {
-            
-            self.passcodeEnabled.text = @"Enabled";
-            
-        } else {
-            
-            self.passcodeEnabled.text = @"Disabled";
-            
-        }
-        
-        self.priceTag.image = [UIImage imageNamed:@"PricetagGreen"];
-        self.price.text = @"Purchased";
-        self.price.textColor = [UIColor colorWithRed:105.0/255.0 green:219.0/255.0 blue:49.0/255.0 alpha:1.0];
-        
-        self.filefyPlusCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.passcodeEnabled.text = @"Enabled";
         
     } else {
         
-        self.passcodeEnabled.text = @"Requires Filefy Plus";
-        [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
-        [LTHPasscodeViewController deletePasscode];
-        
-        self.priceTag.image = [UIImage imageNamed:@"PricetagBlue"];
-        self.price.text = @"1.99USD";
-        self.price.textColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-        
-        self.filefyPlusCell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        self.passcodeEnabled.text = @"Disabled";
         
     }
     
@@ -250,42 +223,6 @@
             
         }
         
-    } else if (indexPath.section == 6) {
-        
-        if (indexPath.row == 0) {
-            
-            [FIRAnalytics logEventWithName:@"Rate_App" parameters:nil];
-            [Answers logCustomEventWithName:@"Rate_App" customAttributes:nil];
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1222563596"]];
-            
-        } else if (indexPath.row == 1) {
-            
-            [FIRAnalytics logEventWithName:@"Send_Mail" parameters:nil];
-            [Answers logCustomEventWithName:@"Send_Mail" customAttributes:nil];
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-            // Email Subject
-            NSString *emailTitle = @"Filefy";
-            // Email Content
-            NSString *messageBody = @"";
-            // To address
-            NSArray *toRecipents = [NSArray arrayWithObject:@"xnightdev@gmail.com"];
-            
-            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-            mc.mailComposeDelegate = self;
-            [mc setSubject:emailTitle];
-            [mc setMessageBody:messageBody isHTML:NO];
-            [mc setToRecipients:toRecipents];
-            
-            // Present mail view controller on screen
-            [self presentViewController:mc animated:YES completion:NULL];
-            
-        }
-        
     } else if (indexPath.section == 1) {
         
         if (indexPath.row == 1) {
@@ -303,23 +240,7 @@
         [FIRAnalytics logEventWithName:@"Pressed_PasscodeLock" parameters:nil];
         [Answers logCustomEventWithName:@"Pressed_PasscodeLock" customAttributes:nil];
         
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
-            
-            [self performSegueWithIdentifier:@"showPasscode" sender:self];
-            
-        } else {
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"Passcode Lock is only available with Filefy Plus" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-            
-            alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-            
-            [alert addAction:action];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        }
+        [self performSegueWithIdentifier:@"showPasscode" sender:self];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
@@ -371,233 +292,37 @@
         
         if (indexPath.row == 0) {
             
-            [FIRAnalytics logEventWithName:@"Pressed_Purchase" parameters:nil];
-            [Answers logCustomEventWithName:@"Pressed_Purchase" customAttributes:nil];
-            
-            if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
-                
-                NSLog(@"User requests Filefy Plus");
-                
-                if([SKPaymentQueue canMakePayments]){
-                    NSLog(@"User can make payments");
-                    
-                    //If you have more than one in-app purchase, and would like
-                    //to have the user purchase a different product, simply define
-                    //another function and replace kRemoveAdsProductIdentifier with
-                    //the identifier for the other product
-                    
-                    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:kRemoveAdsProductIdentifier]];
-                    productsRequest.delegate = self;
-                    [productsRequest start];
-                    
-                }
-                else{
-                    NSLog(@"User cannot make payments due to parental controls");
-                    //this is called the user cannot make payments, most likely due to parental controls
-                    
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Purchase Filefy Plus" message:@"You cannot purchase Filefy Plus probably due to parental control restriction." preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                    
-                    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-                    
-                    [alert addAction:action];
-                    
-                    [self presentViewController:alert animated:YES completion:nil];
-                    
-                }
-                
-            } else {
-                
-                NSLog(@"Filefy Plus already Purchased");
-                
-            }
+            [FIRAnalytics logEventWithName:@"Rate_App" parameters:nil];
+            [Answers logCustomEventWithName:@"Rate_App" customAttributes:nil];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1222563596"]];
             
         } else if (indexPath.row == 1) {
             
-            [FIRAnalytics logEventWithName:@"Pressed_Restore_Purchase" parameters:nil];
-            [Answers logCustomEventWithName:@"Pressed_Restore_Purchase" customAttributes:nil];
-            
-            //this is called when the user restores purchases, you should hook this up to a button
-            [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-            [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+            [FIRAnalytics logEventWithName:@"Send_Mail" parameters:nil];
+            [Answers logCustomEventWithName:@"Send_Mail" customAttributes:nil];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-        }
-        
-    }
-    
-}
-
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
-    SKProduct *validProduct = nil;
-    int count = (int)[response.products count];
-    if(count > 0){
-        validProduct = [response.products objectAtIndex:0];
-        NSLog(@"Products Available!");
-        [self purchase:validProduct];
-    }
-    else if(!validProduct){
-        NSLog(@"No products available");
-        //this is called if your product id is not valid, this shouldn't be called unless that happens.
-    }
-}
-
-- (void)purchase:(SKProduct *)product{
-    SKPayment *payment = [SKPayment paymentWithProduct:product];
-    
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-- (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
-{
-    
-    if (queue.transactions.count == 0) {
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"There was a problem purchasing / restoring Filefy Plus" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        
-        alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-        
-        [alert addAction:action];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        
-    }
-    
-    NSLog(@"received restored transactions: %i", (int)queue.transactions.count);
-    for(SKPaymentTransaction *transaction in queue.transactions){
-        if(transaction.transactionState == SKPaymentTransactionStateRestored){
-            //called when the user successfully restores a purchase
-            NSLog(@"Transaction state -> Restored");
+            // Email Subject
+            NSString *emailTitle = @"Filefy";
+            // Email Content
+            NSString *messageBody = @"";
+            // To address
+            NSArray *toRecipents = [NSArray arrayWithObject:@"xnightdev@gmail.com"];
             
-            //if you have more than one in-app purchase product,
-            //you restore the correct product for the identifier.
-            //For example, you could use
-            //if(productID == kRemoveAdsProductIdentifier)
-            //to get the product identifier for the
-            //restored purchases, you can use
-            //
-            //NSString *productID = transaction.payment.productIdentifier;
-            [self enableFilefyPro];
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-            break;
-        }
-    }
-}
-
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions{
-    for(SKPaymentTransaction *transaction in transactions){
-        //if you have multiple in app purchases in your app,
-        //you can get the product identifier of this transaction
-        //by using transaction.payment.productIdentifier
-        //
-        //then, check the identifier against the product IDs
-        //that you have defined to check which product the user
-        //just purchased
-        
-        if (transaction.transactionState == SKPaymentTransactionStatePurchasing) {
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            [mc setToRecipients:toRecipents];
             
-            NSLog(@"Transaction state -> Purchasing");
-            //called when the user is in the process of purchasing, do not add any of your own code here.
-            
-        } else if (transaction.transactionState == SKPaymentTransactionStatePurchased) {
-            
-            //this is called when the user has successfully purchased the package (Cha-Ching!)
-            [self enableFilefyPro]; //you can add your code for what you want to happen when the user buys the purchase here, for this tutorial we use removing ads
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-            NSLog(@"Transaction state -> Purchased");
-            [Answers logPurchaseWithPrice:[NSDecimalNumber decimalNumberWithString:@"1.99"]
-                                 currency:@"USD"
-                                  success:@YES
-                                 itemName:@"Filefy Plus"
-                                 itemType:@"In-App Purchase"
-                                   itemId:kRemoveAdsProductIdentifier
-                         customAttributes:nil];
-            
-        } else if (transaction.transactionState == SKPaymentTransactionStateRestored) {
-            
-            NSLog(@"Transaction state -> Restored");
-            //add the same code as you did from SKPaymentTransactionStatePurchased here
-            [self enableFilefyPro];
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Purchase restored" message:@"Your Filefy Plus purchase was restored successfully" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-            
-            alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-            
-            [alert addAction:action];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        } else if (transaction.transactionState == SKPaymentTransactionStateFailed) {
-            
-            //called when the transaction does not finish
-            if(transaction.error.code == SKErrorPaymentCancelled){
-                NSLog(@"Transaction state -> Cancelled");
-                //the user cancelled the payment ;(
-            } else {
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"There was a problem purchasing / restoring Filefy Plus" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                
-                alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-                
-                [alert addAction:action];
-                
-                [self presentViewController:alert animated:YES completion:nil];
-                
-            }
-            
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            // Present mail view controller on screen
+            [self presentViewController:mc animated:YES completion:NULL];
             
         }
-        
-    }
-}
-
--(void)enableFilefyPro {
-    
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FilefyPlus"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"]) {
-        
-        if ([LTHPasscodeViewController doesPasscodeExist]) {
-            
-            self.passcodeEnabled.text = @"Enabled";
-            
-        } else {
-            
-            self.passcodeEnabled.text = @"Disabled";
-            
-        }
-        
-        self.priceTag.image = [UIImage imageNamed:@"PricetagGreen"];
-        self.price.text = @"Purchased";
-        self.price.textColor = [UIColor colorWithRed:105.0/255.0 green:219.0/255.0 blue:49.0/255.0 alpha:1.0];
-        
-        self.filefyPlusCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-    } else {
-        
-        self.passcodeEnabled.text = @"Requires Filefy Plus";
-        [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
-        [LTHPasscodeViewController deletePasscode];
-        
-        self.priceTag.image = [UIImage imageNamed:@"PricetagBlue"];
-        self.price.text = @"1.99USD";
-        self.price.textColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-        
-        self.filefyPlusCell.selectionStyle = UITableViewCellSelectionStyleDefault;
         
     }
     

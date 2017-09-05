@@ -18,7 +18,6 @@
 #import "MusicPlayerViewController.h"
 #import "XMusicFile.h"
 #import "LTHPasscodeViewController.h"
-#import "VersionCheckMacros.h"
 #import <AVKit/AVKit.h>
 #import "SVProgressHUD.h"
 
@@ -455,180 +454,210 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
     XFile *selectedFile;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FilefyPlus"] || [self filesNumber:documentPaths[0]] < 8) {
+    if (self.tableView.isEditing) {
         
-        if (self.tableView.isEditing) {
+        [self.editingArray addObject:self.files[indexPath.row]];
+        
+        [self updateButtons];
+        
+    } else {
+        
+        
+        if (self.searchController.active) {
             
-            [self.editingArray addObject:self.files[indexPath.row]];
-            
-            [self updateButtons];
+            selectedFile = self.searchResults[indexPath.row];
             
         } else {
             
+            selectedFile = self.files[indexPath.row];
             
-            if (self.searchController.active) {
-                
-                selectedFile = self.searchResults[indexPath.row];
-                
-            } else {
-                
-                selectedFile = self.files[indexPath.row];
-                
-            }
+        }
+        
+        if (selectedFile.isDirectory) {
             
-            if (selectedFile.isDirectory) {
+            FileManagerTableViewController *fmtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"fileManagerViewController"];
+            fmtvc.path = selectedFile.filePath;
+            [self.navigationController pushViewController:fmtvc animated:YES];
+            
+        } else {
+            
+            if ([selectedFile.fileType isEqual:@"pdf"]) {
                 
-                FileManagerTableViewController *fmtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"fileManagerViewController"];
-                fmtvc.path = selectedFile.filePath;
-                [self.navigationController pushViewController:fmtvc animated:YES];
+                [self performSegueWithIdentifier:@"pdfViewerSegue" sender:self];
                 
-            } else {
+            } else if ([selectedFile.fileType isEqual:@"txt"] || [selectedFile.fileType isEqual:@"json"]) {
                 
-                if ([selectedFile.fileType isEqual:@"pdf"]) {
+                [self performSegueWithIdentifier:@"textViewerSegue" sender:self];
+                
+            } else if ([selectedFile.fileType isEqual:@"video"]) {
+                
+                NSURL *videoURL = [NSURL fileURLWithPath:selectedFile.filePath];
+                AVPlayerViewController *playerViewController = [[AVPlayerViewController alloc] init];
+                AVPlayer *player = [[AVPlayer alloc] initWithURL:videoURL];
+                playerViewController.player = player;
+                
+                [self presentViewController:playerViewController animated:YES completion:^{
                     
-                    [self performSegueWithIdentifier:@"pdfViewerSegue" sender:self];
+                    [playerViewController.player play];
                     
-                } else if ([selectedFile.fileType isEqual:@"txt"] || [selectedFile.fileType isEqual:@"json"]) {
+                }];
+                
+            } else if ([selectedFile.fileType isEqual:@"audio"]) {
+                
+                MusicPlayerViewController *musicVC = [MusicPlayerViewController sharedInstance];
+                
+                if (self.searchController.active) {
                     
-                    [self performSegueWithIdentifier:@"textViewerSegue" sender:self];
+                    self.musicFiles = [[NSMutableArray alloc] init];
+                    self.musicIndex = [[NSMutableArray alloc] init];
                     
-                } else if ([selectedFile.fileType isEqual:@"video"]) {
-                    
-                    NSURL *videoURL = [NSURL fileURLWithPath:selectedFile.filePath];
-                    AVPlayerViewController *playerViewController = [[AVPlayerViewController alloc] init];
-                    AVPlayer *player = [[AVPlayer alloc] initWithURL:videoURL];
-                    playerViewController.player = player;
-                    
-                    [self presentViewController:playerViewController animated:YES completion:^{
+                    for (int i = 0; i < self.searchResults.count; i++) {
                         
-                        [playerViewController.player play];
+                        XFile *file = self.searchResults[i];
                         
-                    }];
-                    
-                } else if ([selectedFile.fileType isEqual:@"audio"]) {
-                    
-                    MusicPlayerViewController *musicVC = [MusicPlayerViewController sharedInstance];
-                    
-                    if (self.searchController.active) {
-                        
-                        self.musicFiles = [[NSMutableArray alloc] init];
-                        self.musicIndex = [[NSMutableArray alloc] init];
-                        
-                        for (int i = 0; i < self.searchResults.count; i++) {
+                        if ([file.fileType isEqual:@"audio"]) {
                             
-                            XFile *file = self.searchResults[i];
+                            XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
                             
-                            if ([file.fileType isEqual:@"audio"]) {
-                                
-                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
-                                
-                                [self.musicFiles addObject:musicFile];
-                                [self.musicIndex addObject:file];
-                                
-                            }
-                            
-                        }
-                        
-                        musicVC.musicFiles = self.musicFiles;
-                        musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
-                        musicVC.fromSelection = YES;
-                        
-                        [self presentMusicViewController:musicVC];
-                        
-                        appDelegate.dataRef.hasPlayedOnce = YES;
-                        [self updateButtons];
-                        
-                    } else {
-                        
-                        self.musicFiles = [[NSMutableArray alloc] init];
-                        self.musicIndex = [[NSMutableArray alloc] init];
-                        
-                        for (int i = 0; i < self.files.count; i++) {
-                            
-                            XFile *file = self.files[i];
-                            
-                            if ([file.fileType isEqual:@"audio"]) {
-                                
-                                XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
-                                
-                                [self.musicFiles addObject:musicFile];
-                                [self.musicIndex addObject:file];
-                                
-                            }
-                            
-                        }
-                        
-                        musicVC.musicFiles = self.musicFiles;
-                        musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
-                        musicVC.fromSelection = YES;
-                        
-                        [self presentMusicViewController:musicVC];
-                        
-                        appDelegate.dataRef.hasPlayedOnce = YES;
-                        [self updateButtons];
-                        
-                    }
-                    
-                } else if ([selectedFile.fileType isEqual:@"image"]) {
-                    
-                    MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-                    
-                    photoBrowser.displayNavArrows = YES;
-                    
-                    if (self.searchController.active) {
-                        
-                        self.photoFiles = [[NSMutableArray alloc] init];
-                        self.photoIndex = [[NSMutableArray alloc] init];
-                        
-                        for (int i = 0; i < self.searchResults.count; i++) {
-                            
-                            XFile *file = self.searchResults[i];
-                            
-                            if ([file.fileType isEqual:@"image"]) {
-                                
-                                [self.photoFiles addObject:[MWPhoto photoWithURL:[NSURL fileURLWithPath:file.filePath]]];
-                                [self.photoIndex addObject:file];
-                                
-                            }
-                            
-                        }
-                        
-                    } else {
-                        
-                        self.photoFiles = [[NSMutableArray alloc] init];
-                        self.photoIndex = [[NSMutableArray alloc] init];
-                        
-                        for (int i = 0; i < self.files.count; i++) {
-                            
-                            XFile *file = self.files[i];
-                            
-                            if ([file.fileType isEqual:@"image"]) {
-                                
-                                [self.photoFiles addObject:[MWPhoto photoWithURL:[NSURL fileURLWithPath:file.filePath]]];
-                                [self.photoIndex addObject:file];
-                                
-                            }
+                            [self.musicFiles addObject:musicFile];
+                            [self.musicIndex addObject:file];
                             
                         }
                         
                     }
                     
-                    [photoBrowser setCurrentPhotoIndex:[self.photoIndex indexOfObject:selectedFile]];
+                    musicVC.musicFiles = self.musicFiles;
+                    musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                    musicVC.fromSelection = YES;
                     
-                    photoBrowser.hidesBottomBarWhenPushed = YES;
+                    [self presentMusicViewController:musicVC];
                     
-                    [self.navigationController setToolbarHidden:YES];
-                    isBarHidden = YES;
+                    appDelegate.dataRef.hasPlayedOnce = YES;
+                    [self updateButtons];
                     
-                    [self.navigationController pushViewController:photoBrowser animated:YES];
+                } else {
                     
-                } else if ([selectedFile.fileType isEqual:@"archive"]) {
+                    self.musicFiles = [[NSMutableArray alloc] init];
+                    self.musicIndex = [[NSMutableArray alloc] init];
                     
-                    if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
+                    for (int i = 0; i < self.files.count; i++) {
+                        
+                        XFile *file = self.files[i];
+                        
+                        if ([file.fileType isEqual:@"audio"]) {
+                            
+                            XMusicFile *musicFile = [[XMusicFile alloc] initWithPath:[NSURL fileURLWithPath:file.filePath]];
+                            
+                            [self.musicFiles addObject:musicFile];
+                            [self.musicIndex addObject:file];
+                            
+                        }
+                        
+                    }
+                    
+                    musicVC.musicFiles = self.musicFiles;
+                    musicVC.index = (NSUInteger *)[self.musicIndex indexOfObject:selectedFile];
+                    musicVC.fromSelection = YES;
+                    
+                    [self presentMusicViewController:musicVC];
+                    
+                    appDelegate.dataRef.hasPlayedOnce = YES;
+                    [self updateButtons];
+                    
+                }
+                
+            } else if ([selectedFile.fileType isEqual:@"image"]) {
+                
+                MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+                
+                photoBrowser.displayNavArrows = YES;
+                
+                if (self.searchController.active) {
+                    
+                    self.photoFiles = [[NSMutableArray alloc] init];
+                    self.photoIndex = [[NSMutableArray alloc] init];
+                    
+                    for (int i = 0; i < self.searchResults.count; i++) {
+                        
+                        XFile *file = self.searchResults[i];
+                        
+                        if ([file.fileType isEqual:@"image"]) {
+                            
+                            [self.photoFiles addObject:[MWPhoto photoWithURL:[NSURL fileURLWithPath:file.filePath]]];
+                            [self.photoIndex addObject:file];
+                            
+                        }
+                        
+                    }
+                    
+                } else {
+                    
+                    self.photoFiles = [[NSMutableArray alloc] init];
+                    self.photoIndex = [[NSMutableArray alloc] init];
+                    
+                    for (int i = 0; i < self.files.count; i++) {
+                        
+                        XFile *file = self.files[i];
+                        
+                        if ([file.fileType isEqual:@"image"]) {
+                            
+                            [self.photoFiles addObject:[MWPhoto photoWithURL:[NSURL fileURLWithPath:file.filePath]]];
+                            [self.photoIndex addObject:file];
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+                [photoBrowser setCurrentPhotoIndex:[self.photoIndex indexOfObject:selectedFile]];
+                
+                photoBrowser.hidesBottomBarWhenPushed = YES;
+                
+                [self.navigationController setToolbarHidden:YES];
+                isBarHidden = YES;
+                
+                [self.navigationController pushViewController:photoBrowser animated:YES];
+                
+            } else if ([selectedFile.fileType isEqual:@"archive"]) {
+                
+                if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
+                    
+                    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
+                    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+                    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+                    [SVProgressHUD showWithStatus:@"Extracting..."];
+                    
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        // time-consuming task
+                        
+                        NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
+                        NSLog(@"FileName: %@", fileName);
+                        
+                        if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
+                            
+                            [self loadFiles];
+                            
+                        }
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                            [SVProgressHUD dismiss];
+                        });
+                    });
+                    
+                } else if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"rar"]) {
+                    
+                    NSError *archiveError;
+                    URKArchive *archive = [[URKArchive alloc] initWithPath:selectedFile.filePath error:&archiveError];
+                    if (archiveError) {
+                        
+                        NSLog(@"Archive Error: %@", archiveError.localizedDescription);
+                        [self errorMessage:@"Archive is invalid"];
+                        
+                    } else {
                         
                         [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
                         [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
@@ -638,62 +667,26 @@
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                             // time-consuming task
                             
-                            NSString *fileName = [selectedFile.displayName stringByDeletingPathExtension];
-                            NSLog(@"FileName: %@", fileName);
-                            
-                            if ([SSZipArchive unzipFileAtPath:selectedFile.filePath toDestination:[NSString stringWithFormat:@"%@/%@", self.path, fileName]]) {
+                            NSError *error;
+                            [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
                                 
-                                [self loadFiles];
+                                [SVProgressHUD showProgress:percentArchiveDecompressed status:@"Extracting..."];
+                                NSLog(@"Decompressed: %f", percentArchiveDecompressed);
+                                
+                            } error:&error];
+                            
+                            if (error) {
+                                
+                                NSLog(@"Error UnRaring: %@", error);
                                 
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
+                                [self loadFiles];
                                 [SVProgressHUD dismiss];
                             });
                         });
-                        
-                    } else if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"rar"]) {
-                        
-                        NSError *archiveError;
-                        URKArchive *archive = [[URKArchive alloc] initWithPath:selectedFile.filePath error:&archiveError];
-                        if (archiveError) {
-                            
-                            NSLog(@"Archive Error: %@", archiveError.localizedDescription);
-                            [self errorMessage:@"Archive is invalid"];
-                            
-                        } else {
-                            
-                            [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-                            [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
-                            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-                            [SVProgressHUD showWithStatus:@"Extracting..."];
-                            
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                // time-consuming task
-                                
-                                NSError *error;
-                                [archive extractFilesTo:self.path overwrite:NO progress:^(URKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed) {
-                                    
-                                    [SVProgressHUD showProgress:percentArchiveDecompressed status:@"Extracting..."];
-                                    NSLog(@"Decompressed: %f", percentArchiveDecompressed);
-                                    
-                                } error:&error];
-                                
-                                if (error) {
-                                    
-                                    NSLog(@"Error UnRaring: %@", error);
-                                    
-                                }
-                                
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [UIApplication sharedApplication].keyWindow.userInteractionEnabled = YES;
-                                    [self loadFiles];
-                                    [SVProgressHUD dismiss];
-                                });
-                            });
-                            
-                        }
                         
                     }
                     
@@ -701,57 +694,10 @@
                 
             }
             
-            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
         }
         
-    } else {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        if (self.tableView.isEditing) {
-            
-            [self.editingArray addObject:self.files[indexPath.row]];
-            
-            [self updateButtons];
-            
-        } else {
-            
-            if (self.searchController.active) {
-                
-                selectedFile = self.searchResults[indexPath.row];
-                
-            } else {
-                
-                selectedFile = self.files[indexPath.row];
-                
-            }
-            
-            if (selectedFile.isDirectory) {
-                
-                FileManagerTableViewController *fmtvc = [self.storyboard instantiateViewControllerWithIdentifier:@"fileManagerViewController"];
-                fmtvc.path = selectedFile.filePath;
-                [self.navigationController pushViewController:fmtvc animated:YES];
-                
-            } else {
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Filefy Plus" message:@"Looks like you have more than 7 files / folders in File Manager! Please consider purchasing Filefy Plus in order to open files, or delete some files first and then open any!" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-                
-                alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-                
-                [alert addAction:action];
-                
-                [self presentViewController:alert animated:YES completion:nil];
-                
-                [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-                
-                [FIRAnalytics logEventWithName:@"Excess_Files_Propmt" parameters:nil];
-                [Answers logCustomEventWithName:@"Excess_Files_Propmt" customAttributes:nil];
-                
-            }
-            
-        }
-            
     }
     
 }
