@@ -1010,6 +1010,7 @@
 			baseConfigurationReference = 4CA54025E152AD6442774220 /* Pods-Filefy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = QV3625575M;
@@ -1027,6 +1028,7 @@
 			baseConfigurationReference = C93E066D58B100F2BE2EB0AB /* Pods-Filefy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = Filefy.entitlements;
 				DEVELOPMENT_TEAM = QV3625575M;
 				INFOPLIST_FILE = FileMan/Info.plist;
