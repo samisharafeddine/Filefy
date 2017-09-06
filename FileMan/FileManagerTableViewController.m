@@ -20,6 +20,7 @@
 #import "LTHPasscodeViewController.h"
 #import <AVKit/AVKit.h>
 #import "SVProgressHUD.h"
+#import <StoreKit/StoreKit.h>
 
 #import <NAKPlaybackIndicatorView.h>
 #import <Crashlytics/Crashlytics.h>
@@ -48,6 +49,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"] > 3) {
+        [SKStoreReviewController requestReview];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFile:) name:@"openFileAtURL" object:nil];
     

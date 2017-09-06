@@ -190,6 +190,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsURLs"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"TouchID"];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"timesLaunched"];
     [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
     [LTHPasscodeViewController deletePasscode];
     [DBClientsManager unlinkAndResetClients];
@@ -252,6 +253,14 @@
 - (void)setupAppData {
     self.dataRef = [[DataRef alloc] init];
     self.XFileParser = [[XFileParser alloc] init];
+    
+    NSInteger timesOpened = [[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"];
+    
+    if (timesOpened <= 2) {
+        timesOpened++;
+        [[NSUserDefaults standardUserDefaults] setInteger:timesOpened forKey:@"timesLaunched"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     self.dataRef.hasPlayedOnce = NO;
 }

@@ -12,6 +12,7 @@
 #import <Accounts/Accounts.h>
 #import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 #import <Crashlytics/Crashlytics.h>
+#import <StoreKit/StoreKit.h>
 
 @import Firebase;
 

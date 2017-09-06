@@ -10,6 +10,7 @@
 #import "WebViewController.h"
 #import "StartDownloadTableViewController.h"
 #import <Crashlytics/Crashlytics.h>
+#import <StoreKit/StoreKit.h>
 
 @import Firebase;
 
@@ -38,6 +39,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSLog(@"Times Luanched: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"]);
+    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"] > 3) {
+        [SKStoreReviewController requestReview];
+    }
+    
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = NO;
     }
@@ -64,10 +71,7 @@
     _urlEffect.layer.cornerRadius = 5;
     _urlEffect.layer.masksToBounds = YES;
     
-    CGRect screenSize = [UIScreen mainScreen].bounds;
-    CGFloat screenWidth = screenSize.size.width;
-    NSLog(@"Screen Width: %f", screenWidth);
-    self.urlFieldWidthConstraint.constant = screenWidth - 22;
+    [self resizeUrlField];
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     _urlField.leftView = paddingView;
@@ -117,6 +121,22 @@
     [self.webView addGestureRecognizer:tapGesture];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
+}
+
+-(void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    [self resizeUrlField];
+    
+}
+
+-(void)resizeUrlField {
+    
+    CGSize screenSize = self.view.frame.size;
+    CGFloat screenWidth = screenSize.width;
+    NSLog(@"Screen Width: %f", screenWidth);
+    self.urlFieldWidthConstraint.constant = screenWidth - 22;
     
 }
 

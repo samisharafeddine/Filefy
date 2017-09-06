@@ -13,6 +13,7 @@
 #import "TWRDownloadObject.h"
 #import "StartDownloadTableViewController.h"
 #import "LTHPasscodeViewController.h"
+#import <StoreKit/StoreKit.h>
 
 @interface DownloadsTableViewController ()
 
@@ -22,6 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"timesLaunched"] > 3) {
+        [SKStoreReviewController requestReview];
+    }
     
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
