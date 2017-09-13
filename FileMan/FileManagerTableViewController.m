@@ -30,6 +30,7 @@
 @interface FileManagerTableViewController ()
 
 @property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) UIRefreshControl *fileRefresh;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *removeButton;
@@ -80,6 +81,16 @@
         // Fallback on earlier versions.
         self.tableView.tableHeaderView = self.searchController.searchBar;
     }
+    
+    self.fileRefresh = [[UIRefreshControl alloc] init];
+    [self.fileRefresh addTarget:self action:@selector(refreshFileData) forControlEvents:UIControlEventValueChanged];
+    self.fileRefresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh Files"];
+    if (@available(iOS 10.0, *)) {
+        self.tableView.refreshControl = self.fileRefresh;
+    } else {
+        [self.tableView addSubview:self.fileRefresh];
+    }
+    
     self.definesPresentationContext = YES;
     [self.searchController.searchBar sizeToFit];
     
@@ -283,6 +294,13 @@
     //[parserTest logXFileObjectsDetailsFromArray:_files];
     
     [self.tableView reloadData];
+    
+}
+
+-(void)refreshFileData {
+    
+    [self loadFiles];
+    [self.fileRefresh endRefreshing];
     
 }
 
@@ -631,7 +649,7 @@
                 if ([[selectedFile.filePath.lowercaseString pathExtension] isEqualToString:@"zip"]) {
                     
                     [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-                    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+                    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
                     [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
                     [SVProgressHUD showWithStatus:@"Extracting..."];
                     
@@ -665,7 +683,7 @@
                     } else {
                         
                         [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-                        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+                        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
                         [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
                         [SVProgressHUD showWithStatus:@"Extracting..."];
                         
@@ -843,7 +861,7 @@
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         
         [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
         [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
         [SVProgressHUD showWithStatus:@"Deleting..."];
         
@@ -881,8 +899,6 @@
     
     [alert addAction:cancel];
     [alert addAction:delete];
-    
-    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     alert.popoverPresentationController.barButtonItem = self.removeButton;
     alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
@@ -947,8 +963,6 @@
         
     }];
     
-    actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-    
     [actionSheet addAction:cancelAction];
     [actionSheet addAction:copyToClipboardAction];
     [actionSheet addAction:moveAction];
@@ -993,7 +1007,7 @@
     if (appDelegate.dataRef.isMovingItems) {
         
         [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
         [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
         [SVProgressHUD showWithStatus:@"Copying..."];
         
@@ -1068,8 +1082,6 @@
         
     }];
     
-    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-    
     [alert addAction:cancelAction];
     [alert addAction:createAction];
     
@@ -1084,7 +1096,7 @@
     if (appDelegate.dataRef.isCopyingItems) {
         
         [UIApplication sharedApplication].keyWindow.userInteractionEnabled = NO;
-        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0]];
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
         [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
         [SVProgressHUD showWithStatus:@"Copying..."];
         
@@ -1174,8 +1186,6 @@
 -(void)errorMessage:(NSString *)error {
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:UIAlertControllerStyleAlert];
-    
-    errorAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [self presentViewController:errorAlert animated:YES completion:^{
         

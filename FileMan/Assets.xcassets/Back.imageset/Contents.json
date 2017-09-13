@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Back Filled-2.png",
+      "filename" : "icons8-Back Filled-102.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Back Filled-1.png",
+      "filename" : "icons8-Back Filled-101.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Back Filled.png",
+      "filename" : "icons8-Back Filled-100.png",
       "scale" : "3x"
     }
   ],

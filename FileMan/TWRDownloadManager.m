@@ -330,6 +330,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     if (error) {
         
+        NSLog(@"An Error Occured");
+        
         if (self.downloads != nil) {
             
             NSLog(@"ERROR: %@", error);

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "PDF.png",
+      "filename" : "icons8-PDF-104.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "PDF-1.png",
+      "filename" : "icons8-PDF-105.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "PDF-2.png",
+      "filename" : "icons8-PDF-106.png",
       "scale" : "3x"
     }
   ],

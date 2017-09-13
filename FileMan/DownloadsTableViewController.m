@@ -255,16 +255,12 @@
             alert.popoverPresentationController.sourceRect = cell.bounds;
             alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
             
-            alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-            
             [alert addAction:cancel];
             [alert addAction:cancelDownload];
             
             [self presentViewController:alert animated:YES completion:nil];
             
         }];
-        
-        cancel.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:88.0/255.0 blue:48.0/255.0 alpha:1.0];
         
         return @[cancel];
         
@@ -284,7 +280,7 @@
             
         }];
         
-        start.backgroundColor = [UIColor colorWithRed:105.0/255.0 green:219.0/255.0 blue:49.0/255.0 alpha:1.0];
+        start.backgroundColor = [UIColor greenColor];
         
         UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
@@ -304,8 +300,6 @@
             
         }];
         
-        delete.backgroundColor = [UIColor colorWithRed:253.0/255.0 green:88.0/255.0 blue:48.0/255.0 alpha:1.0];
-        
         UITableViewRowAction *copyLink = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Copy URL" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
             NSString *urlString = completedDownloadsURLs[indexPath.row];
@@ -318,7 +312,7 @@
             
         }];
         
-        copyLink.backgroundColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+        copyLink.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0];
         
         return @[delete,
                  copyLink,

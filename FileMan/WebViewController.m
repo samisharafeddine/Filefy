@@ -65,10 +65,10 @@
     self.webView.scrollView.delegate = self;
     self.urlField.delegate = self;
     
-    _navBarView.layer.cornerRadius = 5;
+    _navBarView.layer.cornerRadius = 8;
     _navBarView.layer.masksToBounds = YES;
-    _urlField.layer.cornerRadius = 5;
-    _urlEffect.layer.cornerRadius = 5;
+    _urlField.layer.cornerRadius = 8;
+    _urlEffect.layer.cornerRadius = 8;
     _urlEffect.layer.masksToBounds = YES;
     
     [self resizeUrlField];
@@ -325,8 +325,6 @@
         
         actionSheet.popoverPresentationController.barButtonItem = self.actionSheetButton;
         actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
-        
-        actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
         
         [self presentViewController:actionSheet animated:YES completion:nil];
         
@@ -699,8 +697,6 @@
     actionSheet.popoverPresentationController.barButtonItem = self.actionSheetButton;
     actionSheet.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown;
     
-    actionSheet.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-    
     [self presentViewController:actionSheet animated:YES completion:nil];
     
     
@@ -898,8 +894,6 @@
     }];
     
     [addedAlert addAction:okAction];
-    
-    addedAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [self presentViewController:addedAlert animated:YES completion:nil];
     

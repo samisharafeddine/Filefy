@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Lg-XR-dmT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Lg-XR-dmT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -36,25 +36,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3bS-he-b5K">
-                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
-                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3bS-he-b5K" firstAttribute="leading" secondItem="86L-d7-i8a" secondAttribute="leading" id="3tn-ZH-CDJ"/>
                             <constraint firstAttribute="bottom" secondItem="n7Q-Jt-oCU" secondAttribute="bottom" id="4EJ-gu-iLU"/>
                             <constraint firstItem="n7Q-Jt-oCU" firstAttribute="leading" secondItem="86L-d7-i8a" secondAttribute="leading" id="6ac-PE-Zw0"/>
-                            <constraint firstItem="3bS-he-b5K" firstAttribute="top" secondItem="sVh-we-AlG" secondAttribute="bottom" id="ZKn-7g-Aua"/>
                             <constraint firstAttribute="trailing" secondItem="n7Q-Jt-oCU" secondAttribute="trailing" id="ZNF-L1-ZcP"/>
-                            <constraint firstAttribute="trailing" secondItem="3bS-he-b5K" secondAttribute="trailing" id="dZ6-uc-sWz"/>
                             <constraint firstItem="n7Q-Jt-oCU" firstAttribute="top" secondItem="86L-d7-i8a" secondAttribute="top" id="i6t-LL-gWW"/>
                         </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem image="Back" id="tIr-pz-PkV">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="goBack:" destination="0Ge-ij-8Y6" id="zcl-0w-Qej"/>
                             </connections>
@@ -63,7 +56,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem image="Forward" id="0fC-2a-OEq">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="goForward:" destination="0Ge-ij-8Y6" id="rIH-E6-7b6"/>
                             </connections>
@@ -72,7 +65,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem systemItem="action" id="Cf7-q9-X3T">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="actionSheetPopup:" destination="0Ge-ij-8Y6" id="QqU-DX-Hl0"/>
                             </connections>
@@ -81,7 +74,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem systemItem="bookmarks" id="o7Q-aQ-eQj">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="showBookmarks:" destination="0Ge-ij-8Y6" id="I8X-rX-02Z"/>
                             </connections>
@@ -90,7 +83,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem image="Home" id="l0Y-yP-KQ1">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="homeTapped:" destination="0Ge-ij-8Y6" id="jhf-dI-Loh"/>
                             </connections>
@@ -136,18 +129,25 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 </textField>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3bS-he-b5K">
+                                    <rect key="frame" x="0.0" y="28" width="167" height="2"/>
+                                    <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </progressView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="csP-m3-gPn" firstAttribute="top" secondItem="1ga-4C-LMq" secondAttribute="top" id="5By-qD-3q9"/>
+                                <constraint firstItem="3bS-he-b5K" firstAttribute="leading" secondItem="1ga-4C-LMq" secondAttribute="leading" id="6je-59-h9W"/>
+                                <constraint firstAttribute="bottom" secondItem="3bS-he-b5K" secondAttribute="bottom" id="P9v-OB-Dsl"/>
                                 <constraint firstAttribute="trailing" secondItem="csP-m3-gPn" secondAttribute="trailing" id="TbZ-Ws-6Me"/>
                                 <constraint firstItem="1uX-fk-S3q" firstAttribute="top" secondItem="1ga-4C-LMq" secondAttribute="top" id="U9r-PL-Drd"/>
                                 <constraint firstItem="csP-m3-gPn" firstAttribute="leading" secondItem="1ga-4C-LMq" secondAttribute="leading" id="ZIf-3M-eei"/>
                                 <constraint firstItem="1uX-fk-S3q" firstAttribute="leading" secondItem="1ga-4C-LMq" secondAttribute="leading" id="cas-Zg-fDi"/>
                                 <constraint firstAttribute="bottom" secondItem="1uX-fk-S3q" secondAttribute="bottom" id="dbF-OE-buR"/>
                                 <constraint firstAttribute="trailing" secondItem="1uX-fk-S3q" secondAttribute="trailing" id="ebW-6r-5jm"/>
+                                <constraint firstAttribute="trailing" secondItem="3bS-he-b5K" secondAttribute="trailing" id="ubO-dM-nqP"/>
                                 <constraint firstAttribute="bottom" secondItem="csP-m3-gPn" secondAttribute="bottom" id="zOd-PP-h6T"/>
                             </constraints>
                         </view>
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfD-4Q-RdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="-430.98591549295776"/>
+            <point key="canvasLocation" x="13.6" y="-431.33433283358323"/>
         </scene>
         <!--History-->
         <scene sceneID="GFI-7U-fL4">
@@ -233,7 +233,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="KgS-Fc-J9K"/>
                         <barButtonItem title="Clear" id="1T6-ZK-9s0">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="clearButton:" destination="neC-99-kAx" id="mO2-GK-X1e"/>
                             </connections>
@@ -322,7 +322,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -416,9 +416,6 @@
                                         </label>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xpx-Ze-lME">
                                             <rect key="frame" x="8" y="37" width="325" height="2"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="2" id="KEe-bg-cVw"/>
-                                            </constraints>
                                             <color key="trackTintColor" red="0.88406170685279184" green="0.88406170685279184" blue="0.88406170685279184" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No progress information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-Q4-ekO">
@@ -460,7 +457,6 @@
                                     <outlet property="name" destination="CDO-Ll-r6F" id="o1k-yj-6zP"/>
                                     <outlet property="percentage" destination="Mig-2O-A6l" id="A4s-K2-MhZ"/>
                                     <outlet property="progress" destination="xpx-Ze-lME" id="VI9-dr-N0d"/>
-                                    <outlet property="progressHeight" destination="KEe-bg-cVw" id="gCE-1F-CGK"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyDownloadsCell" rowHeight="60" id="OJz-GP-6fT">
@@ -631,28 +627,28 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem image="NewFolder" id="WP5-Xc-3F1">
-                            <color key="tintColor" red="0.41176470590000003" green="0.85882352939999995" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="newFolder:" destination="DEF-Tb-nsl" id="B0c-cm-MzH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aqB-pj-cib"/>
                         <barButtonItem image="List" id="Skn-y3-hEd">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="optionsPressed:" destination="DEF-Tb-nsl" id="O0B-cw-D0m"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="qAu-1D-EoR"/>
                         <barButtonItem image="Delete" id="Sfd-gg-jCA">
-                            <color key="tintColor" red="0.99215686270000003" green="0.34509803919999998" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="deleteSelectedItems:" destination="DEF-Tb-nsl" id="7S1-ox-yzM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="flexibleSpace" id="dMd-du-sOH"/>
                         <barButtonItem title="Item" id="VSH-dH-FGT">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="editButtonPressed:" destination="DEF-Tb-nsl" id="Pfs-AB-Qtd"/>
                             </connections>
@@ -897,7 +893,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -914,7 +910,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -944,7 +940,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link DropBox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-b9-bkB">
                                                             <rect key="frame" x="30" y="4" width="99" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -991,7 +987,7 @@ Version 2.0.0</string>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate on AppStore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3U-ls-knV">
                                                             <rect key="frame" x="30" y="4" width="131" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1033,7 +1029,7 @@ Version 2.0.0</string>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Feedback or Suggestion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31V-hd-4bz">
                                                             <rect key="frame" x="30" y="4" width="223" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1065,7 +1061,7 @@ Version 2.0.0</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="DcW-Sb-ZdE">
                         <barButtonItem key="rightBarButtonItem" image="Heart" id="Qrj-Lv-RrZ">
-                            <color key="tintColor" red="0.99215686274509807" green="0.34509803921568627" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="loveMePlz:" destination="Xy1-hw-wU7" id="1ce-1J-aMv"/>
                             </connections>
@@ -1233,7 +1229,7 @@ Version 2.0.0</string>
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1249,7 +1245,7 @@ Version 2.0.0</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Download" id="XCR-lp-tzz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lSu-UI-xIR">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="1Nf-cZ-tnW" id="Das-RF-3a2"/>
                             </connections>
@@ -1332,7 +1328,7 @@ Version 2.0.0</string>
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1362,7 +1358,7 @@ Version 2.0.0</string>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload to Dropbox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQO-K4-q1u">
                                                             <rect key="frame" x="30" y="4" width="139" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                            <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -2023,7 +2019,7 @@ Version 2.0.0</string>
                                                     <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2072,7 +2068,6 @@ Version 2.0.0</string>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9qz-ja-3lU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.11764705882352941" green="0.69411764705882351" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="GNK-9Y-iYK" kind="relationship" relationship="viewControllers" id="qHd-8j-UDv"/>
@@ -2161,7 +2156,7 @@ Version 2.0.0</string>
                     </tableView>
                     <toolbarItems>
                         <barButtonItem systemItem="add" id="RvV-wN-iWd">
-                            <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addBookmark:" destination="SD6-Vi-tXV" id="WnS-cp-n5U"/>
                             </connections>
@@ -2584,15 +2579,15 @@ Version 2.0.0</string>
         <image name="Delete" width="22" height="22"/>
         <image name="DownloadsPage" width="243" height="488"/>
         <image name="DownloadsSelected" width="22" height="22"/>
-        <image name="DropBox" width="50" height="50"/>
-        <image name="FileMan Icon" width="321" height="284"/>
+        <image name="DropBox" width="52" height="52"/>
+        <image name="FileMan Icon" width="325" height="284"/>
         <image name="FileManagerPage" width="243" height="488"/>
         <image name="FilesSelected" width="22" height="22"/>
         <image name="Forward" width="22" height="22"/>
         <image name="ForwardButton" width="52" height="52"/>
         <image name="Heart" width="22" height="22"/>
         <image name="HideArrow" width="22" height="22"/>
-        <image name="History" width="22" height="22"/>
+        <image name="History" width="52" height="52"/>
         <image name="Home" width="22" height="22"/>
         <image name="List" width="22" height="22"/>
         <image name="Mail" width="50" height="50"/>
@@ -2606,5 +2601,4 @@ Version 2.0.0</string>
         <segue reference="P2F-Fh-eoV"/>
         <segue reference="dwb-lK-N8q"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.1176470588" green="0.69411764710000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

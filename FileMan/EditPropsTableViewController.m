@@ -128,8 +128,6 @@
     
     UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:UIAlertControllerStyleAlert];
     
-    errorAlert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
-    
     [self presentViewController:errorAlert animated:YES completion:^{
         
         [self performSelector:@selector(dismissError:) withObject:errorAlert afterDelay:2];
@@ -141,8 +139,6 @@
 -(void)infoMessageWithTitle:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    alert.view.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
     
     [self presentViewController:alert animated:YES completion:^{
         

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2103B9D01E9AA4FD00F5DA0A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */; };
 		210F8F401E2DB6150096E5C3 /* URLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 210F8F3F1E2DB6150096E5C3 /* URLTextField.m */; };
 		2111934D1EB630DE00F1AB3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2111934C1EB630DE00F1AB3B /* GoogleService-Info.plist */; };
 		2115271B1E686AFC005F5C92 /* DefaultTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2115271A1E686AFC005F5C92 /* DefaultTabTableViewController.m */; };
@@ -103,7 +102,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		210F8F3E1E2DB6150096E5C3 /* URLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLTextField.h; sourceTree = "<group>"; };
 		210F8F3F1E2DB6150096E5C3 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLTextField.m; sourceTree = "<group>"; };
 		2111934C1EB630DE00F1AB3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2103B9D01E9AA4FD00F5DA0A /* StoreKit.framework in Frameworks */,
 				2169102B1E994D1900A44D5D /* Security.framework in Frameworks */,
 				216910291E994D1000A44D5D /* QuartzCore.framework in Frameworks */,
 				214E005B1E4CCE8C00B5ACC2 /* AVFoundation.framework in Frameworks */,
@@ -332,7 +329,6 @@
 		211E7E161E2D3B8F00F571B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2103B9CF1E9AA4FD00F5DA0A /* StoreKit.framework */,
 				2169102A1E994D1900A44D5D /* Security.framework */,
 				216910281E994D1000A44D5D /* QuartzCore.framework */,
 				214E005A1E4CCE8C00B5ACC2 /* AVFoundation.framework */,
@@ -694,7 +690,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -782,7 +778,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:61879216838:ios:1072fc1535fd4dbe\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/Keys/Filefy/filefy-59d9e-firebase-crashreporting-qkrti-9ab3fe34aa.json\"";
 		};
 		21C63DBC1EDDA02D00047BD3 /* Fabric Analytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -796,7 +792,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\"${PODS_ROOT}/Fabric/run\" f69277e3b5fe1ba3237d4048c5bc2068ca5311c1 ecf347b83de1d1d8d642a360b22428108688ecaf9e08481bb33c02086e617ebc";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f69277e3b5fe1ba3237d4048c5bc2068ca5311c1 ecf347b83de1d1d8d642a360b22428108688ecaf9e08481bb33c02086e617ebc";
 		};
 		370296CFF071A36C4E30875B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tabBar.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+    self.tabBar.tintColor = [UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchTabsAndSendOpenNotification:) name:@"openFile" object:nil];
     
@@ -46,11 +46,11 @@
     
     if ([self.tabBar.items indexOfObject:item] == 3) {
         
-        self.tabBar.tintColor = [UIColor colorWithRed:251.0/255.0 green:206.0/255.0 blue:45.0/255.0 alpha:1.0];
+        self.tabBar.tintColor = [UIColor redColor];
         
     } else {
         
-        self.tabBar.tintColor = [UIColor colorWithRed:30.0/255.0 green:177.0/255.0 blue:252.0/255.0 alpha:1.0];
+        self.tabBar.tintColor = [UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0];
         
     }
     
