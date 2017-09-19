@@ -92,7 +92,7 @@
                     <navigationItem key="navigationItem" id="l5A-S3-lUO">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Browser" id="txN-Eg-Me4"/>
-                        <view key="titleView" contentMode="scaleToFill" id="1ga-4C-LMq">
+                        <view key="titleView" contentMode="scaleToFill" id="1ga-4C-LMq" customClass="URLNavView">
                             <rect key="frame" x="104" y="7" width="167" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -158,7 +158,7 @@
                         <outlet property="forwardButton" destination="0fC-2a-OEq" id="Fvh-qH-VLk"/>
                         <outlet property="homeButton" destination="l0Y-yP-KQ1" id="jYd-tI-cDn"/>
                         <outlet property="loadingProgressView" destination="3bS-he-b5K" id="ZWi-2V-6D3"/>
-                        <outlet property="navBarView" destination="1ga-4C-LMq" id="fDw-Wd-6EO"/>
+                        <outlet property="navBarView" destination="1ga-4C-LMq" id="PzZ-QF-eEv"/>
                         <outlet property="urlEffect" destination="1uX-fk-S3q" id="vDp-52-Ba8"/>
                         <outlet property="urlField" destination="csP-m3-gPn" id="VLa-Di-Wdb"/>
                         <outlet property="urlFieldWidthConstraint" destination="MgX-jg-PvY" id="SbM-w8-Q9v"/>

@@ -90,6 +90,7 @@
 		21C70EB21E96E05B00A52BC8 /* LTHKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C70EAF1E96E05B00A52BC8 /* LTHKeychainUtils.m */; };
 		21C70EB31E96E05B00A52BC8 /* LTHPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C70EB11E96E05B00A52BC8 /* LTHPasscodeViewController.m */; };
 		21C70EB51E96EBCB00A52BC8 /* LTHPasscodeViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 21C70EB41E96EBCB00A52BC8 /* LTHPasscodeViewController.bundle */; };
+		21CA60D91F71BFDF00FB5388 /* URLNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CA60D81F71BFDF00FB5388 /* URLNavView.m */; };
 		21CA73661E648B930028BCF6 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CA73651E648B930028BCF6 /* TabBarViewController.m */; };
 		21D8690B1F24D74200A9236F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D869091F24D4F200A9236F /* Main.storyboard */; };
 		21D8690C1F24D74900A9236F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D8690A1F24D4FE00A9236F /* LaunchScreen.storyboard */; };
@@ -231,6 +232,8 @@
 		21C70EB01E96E05B00A52BC8 /* LTHPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHPasscodeViewController.h; sourceTree = "<group>"; };
 		21C70EB11E96E05B00A52BC8 /* LTHPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHPasscodeViewController.m; sourceTree = "<group>"; };
 		21C70EB41E96EBCB00A52BC8 /* LTHPasscodeViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LTHPasscodeViewController.bundle; sourceTree = "<group>"; };
+		21CA60D71F71BFDF00FB5388 /* URLNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLNavView.h; sourceTree = "<group>"; };
+		21CA60D81F71BFDF00FB5388 /* URLNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLNavView.m; sourceTree = "<group>"; };
 		21CA73641E648B930028BCF6 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		21CA73651E648B930028BCF6 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		21D869091F24D4F200A9236F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				21EFED3B1E141ADC00D7755E /* WebViewController.m */,
 				210F8F3E1E2DB6150096E5C3 /* URLTextField.h */,
 				210F8F3F1E2DB6150096E5C3 /* URLTextField.m */,
+				21CA60D71F71BFDF00FB5388 /* URLNavView.h */,
+				21CA60D81F71BFDF00FB5388 /* URLNavView.m */,
 			);
 			name = "Web Browser";
 			sourceTree = "<group>";
@@ -872,6 +877,7 @@
 				21183E561E46A60700029939 /* XFileParserTest.m in Sources */,
 				217B06931E6DD0720083846F /* MIMEsTableViewController.m in Sources */,
 				21A04F961E1ABF1400254D8F /* HistoryTableViewCell.m in Sources */,
+				21CA60D91F71BFDF00FB5388 /* URLNavView.m in Sources */,
 				21BCA4191EB7935600BC2C6D /* MWGridViewController.m in Sources */,
 				217B06971E6DDAAD0083846F /* NewMIMETableViewController.m in Sources */,
 				217010D51E43D7DB00A316F7 /* XFile.m in Sources */,

@@ -11,6 +11,7 @@
 #import "StartDownloadTableViewController.h"
 #import <Crashlytics/Crashlytics.h>
 #import <StoreKit/StoreKit.h>
+#import "URLNavView.h"
 
 @import Firebase;
 
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionSheetButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *loadingProgressView;
-@property (weak, nonatomic) IBOutlet UIView *navBarView;
+@property (weak, nonatomic) IBOutlet URLNavView *navBarView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *urlEffect;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *urlFieldWidthConstraint;
 
@@ -47,6 +48,9 @@
     
     if (@available(iOS 11.0, *)) {
         self.navigationController.navigationBar.prefersLargeTitles = NO;
+        self.urlFieldWidthConstraint.active = YES;
+    } else {
+        self.urlFieldWidthConstraint.active = NO;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
