@@ -191,8 +191,8 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"completedDownloadsStatuses"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"TouchID"];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"timesLaunched"];
-    [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
     [LTHPasscodeViewController deletePasscode];
+    [[LTHPasscodeViewController sharedUser] setAllowUnlockWithTouchID:NO];
     [DBClientsManager unlinkAndResetClients];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
