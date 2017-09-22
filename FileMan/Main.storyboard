@@ -120,7 +120,7 @@
                                         <blurEffect style="light"/>
                                     </vibrancyEffect>
                                 </visualEffectView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search or enter website name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csP-m3-gPn" customClass="URLTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search or enter website name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="csP-m3-gPn" customClass="URLTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -965,7 +965,7 @@
                             </tableViewSection>
                             <tableViewSection id="O5G-ds-tMi">
                                 <string key="footerTitle">Copyright © 2017 Sami Sharaf All rights reserved.
-Version 2.0.0</string>
+Version 2.0.1</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PQj-r9-27S">
                                         <rect key="frame" x="0.0" y="567" width="375" height="44"/>

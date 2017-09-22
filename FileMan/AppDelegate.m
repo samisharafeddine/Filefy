@@ -210,8 +210,12 @@
         [defaults setObject:currentAppVersion forKey:@"appVersion"];
         [defaults synchronize];
         
+    } else if ([previousVersion isEqualToString:currentAppVersion]) {
+        // same version
     } else {
         // Update detected
+        
+        NSLog(@"Update Detected!");
         
         [defaults setObject:currentAppVersion forKey:@"appVersion"];
         [defaults synchronize];
