@@ -965,7 +965,7 @@
                             </tableViewSection>
                             <tableViewSection id="O5G-ds-tMi">
                                 <string key="footerTitle">Copyright © 2017 Sami Sharaf All rights reserved.
-Version 2.0.1</string>
+Version 2.0.2</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PQj-r9-27S">
                                         <rect key="frame" x="0.0" y="567" width="375" height="44"/>
